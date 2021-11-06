@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+<html>
+  <head>
+    <meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UAQDVFVRGwEAXVlbBAg=",licenseKey:"8d5fb92f6e",applicationID:"2098939"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(25),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(26),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var i=t("ee"),o=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");if(!y.disabled){y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;i.on(m,function(t,e){var n=t[0];n instanceof x&&(this.bstStart=y.now())}),i.on(w,function(t,e){var n=t[0];n instanceof x&&o("bst",[n,e,this.bstStart,y.now()])}),a.on(m,function(t,e,n){this.bstStart=y.now(),this.bstType=n}),a.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),"requestAnimationFrame"])}),i.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),i.on(g+h,function(t){o("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(26),a=t(25);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],7:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],9:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],10:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function o(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(v,i,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),w=Date.now(),v={spanId:h,traceId:m,timestamp:w};return(t.sameOrigin||c(t)&&l())&&(v.traceContextParentHeader=i(h,m),v.traceContextStateHeader=o(h,w,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(v.newrelicHeader=a(h,m,w,n,r,f)),v}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(22),h=t(13);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],12:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime]))}}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=w(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(18),m=t(17),w=t(14),v=NREUM.o.REQ,g=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof g&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;"string"==typeof o?n=o:"object"==typeof o&&o instanceof v?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n);var s=(""+(o&&o instanceof v&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}),u.on("fetch-done",function(t,e){this.params||(this.params={}),this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime])})}},{}],13:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],14:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(17);e.exports=r},{}],15:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(25),s=t(26),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=i(l+e,!0,"api")}),u.addPageAction=i(l+"addPageAction",!0),u.setCurrentRouteName=i(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(p+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=i(p+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,f.now(),!1,e])}},{}],16:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],17:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],18:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],19:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(27);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],20:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof h&&!w){var e=Math.round(t.timeStamp),n={type:t.type};e<=l.now()?n.fid=l.now()-e:e>l.offset&&e<=Date.now()?(e-=l.offset,n.fid=l.now()-e):e=l.now(),w=!0,d("timing",["fi",e,n])}}function s(t){"hidden"===t&&d("pageHide",[l.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,f,u,d=t("handle"),l=t("loader"),p=t(24),h=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(m){}f=new PerformanceObserver(i);try{f.observe({entryTypes:["largest-contentful-paint"]})}catch(m){}u=new PerformanceObserver(o);try{u.observe({type:"layout-shift",buffered:!0})}catch(m){}}if("addEventListener"in document){var w=!1,v=["click","keydown","mousedown","pointerdown","touchstart"];v.forEach(function(t){document.addEventListener(t,a,!1)})}p(s)}},{}],22:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(31)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],23:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],24:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],25:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],26:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],27:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function w(t){return l[t]=l[t]||i(n)}function v(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:w,listeners:m,context:e,buffer:v,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(25),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!O++){var t=S.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+S.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+S.offset],null,"api")}var a=t(19),s=t("handle"),c=t(25),f=t("ee"),u=t(23),d=t(20),l=t(16),p=l.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,w="addEventListener",v="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!d(h.location);NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},R=g&&y&&y[w]&&!/CriOS/.test(navigator.userAgent),S=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(15),t(21),m[w]?(m[w]("DOMContentLoaded",o,!1),h[w]("load",r,!1)):(m[v]("onreadystatechange",i),h[v]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var O=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(26),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,12,4,3]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","errorBeacon":"bam-cell.nr-data.net","licenseKey":"8d5fb92f6e","applicationID":"2098939","transactionName":"ZwMAYEdSCktRWxZRXV5JJEFbUBBRX1ZNW11eEgdHQR0SUVVPERZCQgkAWFBeO1xVTANRXgolDVpBVhdMYU0HS0ZZCQxwUEcFUVxuC11FHgEHQA==","queueTime":0,"applicationTime":151,"agent":""}</script>
+    <title>Find Array Given Subset Sums - LeetCode Contest</title>
+    <meta property="og:title" content="Find Array Given Subset Sums - LeetCode Contest" />
+
+    
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover' name='viewport' />
+    
+    <meta name="description" content="Level up your coding skills and quickly land a job. This is the best place to expand your knowledge and get prepared for your next interview." />
+    
+    <meta property="og:image" content="/static/images/LeetCode_Sharing.png" />
+    <meta property="og:description" content="Level up your coding skills and quickly land a job. This is the best place to expand your knowledge and get prepared for your next interview." />
+
+    
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160" />
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192" />
+    <meta name="application-name" content="LeetCode"/>
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+
+    
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s
+  .createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m
+  .parentNode.insertBefore(a,m)})(window,document,'script',
+  '//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-159258186-1', 'leetcode.com', { userId: 1351027, sampleRate: 75 });
+  ga('set', {'dimension1': 'false', 'dimension2': '1351027'});
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+</script>
+
+<script type="text/javascript" defer="defer" src="https://extend.vimeocdn.com/ga/124665836.js"></script>
+
+
+    <link type="text/css" href="/static/bootstrap/dist/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
+    <link type="text/css" href="/static/font-awesome/css/font-awesome.min.css?cache_version=2" rel="stylesheet">
+    <link type="text/css" href="/static/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" />
+
+    
+    <link rel="stylesheet" href="/static/CACHE/css/output.c0aa09b72070.css" type="text/css">
+
+    
+
+     
+<link rel="stylesheet" href="/static/CACHE/css/output.111391214419.css" type="text/css">
+
+    
+
+    <script src="/static/CACHE/js/output.0ff5509473f6.js"></script>
+    <script type="text/javascript" src="/static/jquery/dist/jquery.min.js?v=3.3.1"></script>
+    <script>window.jQuery || document.write("<script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-3.3.1.min.js\">\x3C/script>")</script>
+    <script type="text/javascript" src="/static/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/jquery-sticky/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/static/clipboard/dist/clipboard.min.js"></script>
+    <script type="text/javascript" src="/static/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.sticky').sticky({topSpacing:0});
+      });
+
+      
+      
+      
+      window.LeetCodeData = {
+        features: {
+          questionTranslation: false,
+          subscription: true,
+          signUp: true,
+          chinaProblemDiscuss: false,
+          enableSharedWorker: true,
+          enableChannels: false,
+          enableDangerZone: true,
+          enableRecaptchaV3: true,
+          enableIndiaPricing: true,
+          enableReferralDiscount: true,
+          maxTimeTravelTicketCount: 3,
+          enableStoreShippingForm: true,
+          enableNewProblemsetBanner: true,
+        },
+        regionInfo: "US",
+        userStatus: {
+          isSignedIn: true,
+          optedIn:  true ,
+          isPremium: false,
+          isAdmin:  false ,
+          isStaff:  false ,
+          isTranslator:  false ,
+          isSuperuser:  false ,
+          request_region: 'US',
+          region: '',
+          plan: 'None',
+          countryCode: 'IN',
+          permissions: [],
+          
+            realName: '',
+            username: 'sagsango',
+            userSlug: 'sagsango',
+            avatar: 'https://assets.leetcode.com/users/sagsango/avatar_1624387091.png',
+            numUnreadNotifications: 0,
+            lastModified: 1629562471,
+          
+          
+        },
+        chinaURL: "https://leetcode-cn.com",
+        websocketUrl: "wss://sockets.leetcode.com/ws/",
+        recaptchaKey: "6LdBpsIUAAAAAKAYWjZfIpn4cJHVIk_tsmxpl7cz",
+        recaptchaKeyV2: "6LdBX8MUAAAAAAI4aZHi1C59OJizaJTvPNvWH2wz",
+        
+        navbar: {
+          
+            loginSocial: [{"id": "linkedin_oauth2", "login_url": "/accounts/linkedin_oauth2/login/"}, {"id": "google", "login_url": "/accounts/google/login/"}, {"id": "github", "login_url": "/accounts/github/login/"}, {"id": "facebook", "login_url": "/accounts/facebook/login/"}],
+          
+          loginNext: undefined,
+          subscription: true,
+          mi: true,
+          contest: true,
+          discuss: true,
+          store: true,
+          translate: false,
+          identity:  "" ,
+        },
+      };
+    </script>
+    <script type="text/javascript" src="/static/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-ui-dist/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/static/noty/lib/noty.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="/static/html5shiv/dist/html5shiv.min.js"></script>
+      <script type="text/javascript" src="/static/respond.js/dest/respond.min.js"></script>
+    <![endif]-->
+
+    
+  </head>
+  <body>
+    <script type="text/javascript" src="/static/bootstrap/dist/js/bootstrap.min.js?v=3.3.7"></script>
+    <script type="text/javascript" src="/static/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="/static/CACHE/js/output.ee2b7fc628e3.js"></script>
+
+    <script type="text/javascript" src="https://assets.leetcode.com/static_assets/public/webpack_bundles/runtime.87724bff8.js" ></script>
+    <script type="text/javascript" src="https://assets.leetcode.com/static_assets/public/webpack_bundles/common/global.73f9cbfe7.js" ></script>
+    <script type="text/javascript" src="https://assets.leetcode.com/static_assets/public/webpack_bundles/common/styles/index.98d412a4d.js" ></script>
+    <script type="text/javascript" src="https://assets.leetcode.com/static_assets/public/webpack_bundles/vendor-libs.74b989d8f.js" ></script>
+    <script type="text/javascript" src="https://assets.leetcode.com/static_assets/public/webpack_bundles/common-libs.96a3342ce.js" ></script>
+    <script type="text/javascript" src="https://assets.leetcode.com/static_assets/public/webpack_bundles/new-libs.c2e959854.js" ></script>
+
+    
+     
+
+    
+  
+  <div id="navbar-root"></div>
+  
+
+  <div class="content-wrapper" style="min-height: 100vh">
+    <div id="base_content">
+       
+
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="question-title clearfix">
+          <h3>1982. <span>Find Array Given Subset Sums</span></h3>
+          <div class="pull-right top-buttons">
+            <div class="btn-group right-pad">
+              <a class="btn btn-default" href="/contest/weekly-contest-255/problems/find-array-given-subset-sums/submissions/">My Submissions</a>
+              <a class="btn btn-success" href="/contest/weekly-contest-255/">Back to Contest</a>
+            </div>
+          </div>
+        </div>
+        <div class="row col-md-12">
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="contest-question-info pull-right">
+              <ul class="list-group">
+                
+                  <li class="list-group-item">
+                    <strong>
+                      User Accepted:
+                    </strong>
+                    <span class="pull-right">46</span>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>
+                      User Tried:
+                    </strong>
+                    <span class="pull-right">245</span>
+                  </li>
+                
+                <li class="list-group-item">
+                  <strong>Total Accepted:</strong>
+                  <span class="pull-right">53</span>
+                </li>
+                <li class="list-group-item">
+                  <strong>Total Submissions:</strong>
+                  <span class="pull-right">550</span>
+                </li>
+                <li class="list-group-item">
+                  <strong>Difficulty:</strong>
+                  <span class="pull-right label label-Hard round">Hard</span>
+                </li>
+              </ul>
+            </div>
+            <div class="question-content default-content">
+              <p>You are given an integer <code>n</code> representing the length of an unknown array that you are trying to recover. You are also given an array <code>sums</code> containing the values of all <code>2<sup>n</sup></code> <strong>subset sums</strong> of the unknown array (in no particular order).</p>
+
+<p>Return <em>the array </em><code>ans</code><em> of length </em><code>n</code><em> representing the unknown array. If <strong>multiple</strong> answers exist, return <strong>any</strong> of them</em>.</p>
+
+<p>An array <code>sub</code> is a <strong>subset</strong> of an array <code>arr</code> if <code>sub</code> can be obtained from <code>arr</code> by deleting some (possibly zero or all) elements of <code>arr</code>. The sum of the elements in <code>sub</code> is one possible <strong>subset sum</strong> of <code>arr</code>. The sum of an empty array is considered to be <code>0</code>.</p>
+
+<p><strong>Note:</strong> Test cases are generated such that there will <strong>always</strong> be at least one correct answer.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> n = 3, sums = [-3,-2,-1,0,0,1,2,3]
+<strong>Output:</strong> [1,2,-3]
+<strong>Explanation: </strong>[1,2,-3] is able to achieve the given subset sums:
+- []: sum is 0
+- [1]: sum is 1
+- [2]: sum is 2
+- [1,2]: sum is 3
+- [-3]: sum is -3
+- [1,-3]: sum is -2
+- [2,-3]: sum is -1
+- [1,2,-3]: sum is 0
+Note that any permutation of [1,2,-3] and also any permutation of [-1,-2,3] will also be accepted.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> n = 2, sums = [0,0,0,0]
+<strong>Output:</strong> [0,0]
+<strong>Explanation:</strong> The only correct answer is [0,0].
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> n = 4, sums = [0,0,5,5,4,-1,4,9,9,-1,4,3,4,8,3,8]
+<strong>Output:</strong> [0,-1,4,5]
+<strong>Explanation:</strong> [0,-1,4,5] is able to achieve the given subset sums.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= n &lt;= 15</code></li>
+	<li><code>sums.length == 2<sup>n</sup></code></li>
+	<li><code>-10<sup>4</sup> &lt;= sums[i] &lt;= 10<sup>4</sup></code></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      
+        <p class="action">
+          
+            <a class="btn btn-success btn-pad right-pad" href="https://leetcode.com/problems/find-array-given-subset-sums/discuss" target="_blank">Discuss</a>
+          
+          
+            
+          
+        </p>
+      
+    
+  </div>
+  <div class="editor-container">
+    <div id="submission-form-app"></div>
+  </div>
+
+
+    </div>
+  </div>
+
+  <div id="footer-root"></div>
+  <script type="text/javascript" src="https://assets.leetcode.com/static_assets/public/webpack_bundles/new-apps/navbar-footer/index.0e1c59901.js" ></script>
+
+
+    <script>
+      $(document).ready(function() {
+        var time_diff = new Date() - new Date(localStorage.getItem('region_switcher_last_close_ts'))
+        if (time_diff > 86400000) {  // 86400000ms == 1day
+          $("#region_switcher").removeClass('hide');
+        }
+      });
+
+      function closeRegion() {
+        $("#region_switcher").addClass('hide');
+        localStorage.setItem('region_switcher_last_close_ts', new Date());
+      }
+    </script>
+
+     
+<script>
+  var pageData = {
+    questionId: '2109',
+    questionIdHash: '',
+    questionTitleSlug: 'find-array-given-subset-sums',
+    questionTitle: 'Find Array Given Subset Sums',
+    questionExampleTestcases: '3\u000A[\u002D3,\u002D2,\u002D1,0,0,1,2,3]\u000A2\u000A[0,0,0,0]\u000A4\u000A[0,0,5,5,4,\u002D1,4,9,9,\u002D1,4,3,4,8,3,8]',
+    categoryTitle: 'Algorithms',
+    contestTitleSlug: 'weekly-contest-255',
+    loginUrl: '/accounts/login/?next=/problems/find-array-given-subset-sums/',
+    isSignedIn: true,
+
+    sessionId: '0',
+    reverseUrl: {
+      latest_submission: '/submissions/latest/',
+      account_login: '/accounts/login/',
+      maintenance: '/maintenance/',
+      profile: '/profile/'
+    },
+    enableRunCode:  true ,
+    enableSubmit: true ,
+    submitUrl: '/contest/api/weekly-contest-255/problems/find-array-given-subset-sums/submit/',
+    interpretUrl: '/contest/api/weekly-contest-255/problems/find-array-given-subset-sums/interpret_solution/',
+    judgeType: 'large',
+    nextChallengePairs: null,
+    codeDefinition: [{'value': 'cpp', 'text': 'C++', 'defaultCode': 'class Solution {\u000Apublic:\u000A    vector\u003Cint\u003E recoverArray(int n, vector\u003Cint\u003E\u0026 sums) {\u000A        \u000A    }\u000A}\u003B' },{'value': 'java', 'text': 'Java', 'defaultCode': 'class Solution {\u000A    public int[] recoverArray(int n, int[] sums) {\u000A        \u000A    }\u000A}' },{'value': 'python', 'text': 'Python', 'defaultCode': 'class Solution(object):\u000A    def recoverArray(self, n, sums):\u000A        \u0022\u0022\u0022\u000A        :type n: int\u000A        :type sums: List[int]\u000A        :rtype: List[int]\u000A        \u0022\u0022\u0022\u000A        ' },{'value': 'python3', 'text': 'Python3', 'defaultCode': 'class Solution:\u000A    def recoverArray(self, n: int, sums: List[int]) \u002D\u003E List[int]:\u000A        ' },{'value': 'c', 'text': 'C', 'defaultCode': '\u000A\u000A/**\u000A * Note: The returned array must be malloced, assume caller calls free().\u000A */\u000Aint* recoverArray(int n, int* sums, int sumsSize, int* returnSize){\u000A\u000A}' },{'value': 'csharp', 'text': 'C#', 'defaultCode': 'public class Solution {\u000A    public int[] RecoverArray(int n, int[] sums) {\u000A        \u000A    }\u000A}' },{'value': 'javascript', 'text': 'JavaScript', 'defaultCode': '/**\u000A * @param {number} n\u000A * @param {number[]} sums\u000A * @return {number[]}\u000A */\u000Avar recoverArray \u003D function(n, sums) {\u000A    \u000A}\u003B' },{'value': 'ruby', 'text': 'Ruby', 'defaultCode': '# @param {Integer} n\u000A# @param {Integer[]} sums\u000A# @return {Integer[]}\u000Adef recover_array(n, sums)\u000A    \u000Aend' },{'value': 'swift', 'text': 'Swift', 'defaultCode': 'class Solution {\u000A    func recoverArray(_ n: Int, _ sums: [Int]) \u002D\u003E [Int] {\u000A        \u000A    }\u000A}' },{'value': 'golang', 'text': 'Go', 'defaultCode': 'func recoverArray(n int, sums []int) []int {\u000A    \u000A}' },{'value': 'scala', 'text': 'Scala', 'defaultCode': 'object Solution {\u000A    def recoverArray(n: Int, sums: Array[Int]): Array[Int] \u003D {\u000A        \u000A    }\u000A}' },{'value': 'kotlin', 'text': 'Kotlin', 'defaultCode': 'class Solution {\u000A    fun recoverArray(n: Int, sums: IntArray): IntArray {\u000A        \u000A    }\u000A}' },{'value': 'rust', 'text': 'Rust', 'defaultCode': 'impl Solution {\u000A    pub fn recover_array(n: i32, sums: Vec\u003Ci32\u003E) \u002D\u003E Vec\u003Ci32\u003E {\u000A        \u000A    }\u000A}' },{'value': 'php', 'text': 'PHP', 'defaultCode': 'class Solution {\u000A\u000A    /**\u000A     * @param Integer $n\u000A     * @param Integer[] $sums\u000A     * @return Integer[]\u000A     */\u000A    function recoverArray($n, $sums) {\u000A        \u000A    }\u000A}' },{'value': 'typescript', 'text': 'TypeScript', 'defaultCode': 'function recoverArray(n: number, sums: number[]): number[] {\u000A\u000A}\u003B' },{'value': 'racket', 'text': 'Racket', 'defaultCode': '(define/contract (recover\u002Darray n sums)\u000A  (\u002D\u003E exact\u002Dinteger? (listof exact\u002Dinteger?) (listof exact\u002Dinteger?))\u000A\u000A  )' },{'value': 'erlang', 'text': 'Erlang', 'defaultCode': '\u002Dspec recover_array(N :: integer(), Sums :: [integer()]) \u002D\u003E [integer()].\u000Arecover_array(N, Sums) \u002D\u003E\u000A  .' },{'value': 'elixir', 'text': 'Elixir', 'defaultCode': 'defmodule Solution do\u000A  @spec recover_array(n :: integer, sums :: [integer]) :: [integer]\u000A  def recover_array(n, sums) do\u000A\u000A  end\u000Aend' },],
+    enableTestMode: false ,
+    metaData: JSON.parse('{\u000A  \u0022name\u0022: \u0022recoverArray\u0022,\u000A  \u0022params\u0022: [\u000A    {\u000A      \u0022name\u0022: \u0022n\u0022,\u000A      \u0022type\u0022: \u0022integer\u0022\u000A    },\u000A    {\u000A      \u0022type\u0022: \u0022integer[]\u0022,\u000A      \u0022name\u0022: \u0022sums\u0022\u000A    }\u000A  ],\u000A  \u0022return\u0022: {\u000A    \u0022type\u0022: \u0022integer[]\u0022\u000A  },\u000A  \u0022manual\u0022: false\u000A}' || '{}'),
+    sampleTestCase: '3\u000A[\u002D3,\u002D2,\u002D1,0,0,1,2,3]',
+    judgerAvailable:  true ,
+    envInfo: JSON.parse('{\u0022cpp\u0022: [\u0022C++\u0022, \u0022\u003Cp\u003ECompiled with \u003Ccode\u003E clang 11 \u003C/code\u003E using the latest C++ 17 standard.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EYour code is compiled with level two optimization (\u003Ccode\u003E\u002DO2\u003C/code\u003E). \u003Ca href\u003D\u005C\u0022https://github.com/google/sanitizers/wiki/AddressSanitizer\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003EAddressSanitizer\u003C/a\u003E is also enabled to help detect out\u002Dof\u002Dbounds and use\u002Dafter\u002Dfree bugs.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EMost standard library headers are already included automatically for your convenience.\u003C/p\u003E\u0022], \u0022java\u0022: [\u0022Java\u0022, \u0022\u003Cp\u003E\u003Ccode\u003EJava SE 13\u003C/code\u003E.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EMost standard library headers are already included automatically for your convenience.\u003C/p\u003E\u005Cr\u005Cn\u003Cp\u003EIncludes \u003Ccode\u003EPair\u003C/code\u003E class from https://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html.\u003C/p\u003E\u0022], \u0022python\u0022: [\u0022Python\u0022, \u0022\u003Cp\u003E\u003Ccode\u003EPython 2.7.12\u003C/code\u003E.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EMost libraries are already imported automatically for your convenience, such as \u003Ca href\u003D\u005C\u0022https://docs.python.org/2/library/array.html\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Earray\u003C/a\u003E, \u003Ca href\u003D\u005C\u0022https://docs.python.org/2/library/bisect.html\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Ebisect\u003C/a\u003E, \u003Ca href\u003D\u005C\u0022https://docs.python.org/2/library/collections.html\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Ecollections\u003C/a\u003E. If you need more libraries, you can import it yourself.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EFor Map/TreeMap data structure, you may use \u003Ca href\u003D\u005C\u0022http://www.grantjenks.com/docs/sortedcontainers/\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Esortedcontainers\u003C/a\u003E library.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003ENote that Python 2.7 \u003Ca href\u003D\u005C\u0022https://www.python.org/dev/peps/pep\u002D0373/\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Ewill not be maintained past 2020\u003C/a\u003E. For the latest Python, please choose Python3 instead.\u003C/p\u003E\u0022], \u0022c\u0022: [\u0022C\u0022, \u0022\u003Cp\u003ECompiled with \u003Ccode\u003Egcc 8.2\u003C/code\u003E using the gnu99 standard.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EYour code is compiled with level one optimization (\u003Ccode\u003E\u002DO1\u003C/code\u003E). \u003Ca href\u003D\u005C\u0022https://github.com/google/sanitizers/wiki/AddressSanitizer\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003EAddressSanitizer\u003C/a\u003E is also enabled to help detect out\u002Dof\u002Dbounds and use\u002Dafter\u002Dfree bugs.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EMost standard library headers are already included automatically for your convenience.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EFor hash table operations, you may use \u003Ca href\u003D\u005C\u0022https://troydhanson.github.io/uthash/\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Euthash\u003C/a\u003E. \u005C\u0022uthash.h\u005C\u0022 is included by default. Below are some examples:\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003E\u003Cb\u003E1. Adding an item to a hash.\u003C/b\u003E\u005Cr\u005Cn\u003Cpre\u003E\u005Cr\u005Cnstruct hash_entry {\u005Cr\u005Cn    int id\u003B            /* we\u0027ll use this field as the key */\u005Cr\u005Cn    char name[10]\u003B\u005Cr\u005Cn    UT_hash_handle hh\u003B /* makes this structure hashable */\u005Cr\u005Cn}\u003B\u005Cr\u005Cn\u005Cr\u005Cnstruct hash_entry *users \u003D NULL\u003B\u005Cr\u005Cn\u005Cr\u005Cnvoid add_user(struct hash_entry *s) {\u005Cr\u005Cn    HASH_ADD_INT(users, id, s)\u003B\u005Cr\u005Cn}\u005Cr\u005Cn\u003C/pre\u003E\u005Cr\u005Cn\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003E\u003Cb\u003E2. Looking up an item in a hash:\u003C/b\u003E\u005Cr\u005Cn\u003Cpre\u003E\u005Cr\u005Cnstruct hash_entry *find_user(int user_id) {\u005Cr\u005Cn    struct hash_entry *s\u003B\u005Cr\u005Cn    HASH_FIND_INT(users, \u0026user_id, s)\u003B\u005Cr\u005Cn    return s\u003B\u005Cr\u005Cn}\u005Cr\u005Cn\u003C/pre\u003E\u005Cr\u005Cn\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003E\u003Cb\u003E3. Deleting an item in a hash:\u003C/b\u003E\u005Cr\u005Cn\u003Cpre\u003E\u005Cr\u005Cnvoid delete_user(struct hash_entry *user) {\u005Cr\u005Cn    HASH_DEL(users, user)\u003B  \u005Cr\u005Cn}\u005Cr\u005Cn\u003C/pre\u003E\u005Cr\u005Cn\u003C/p\u003E\u0022], \u0022csharp\u0022: [\u0022C#\u0022, \u0022\u003Cp\u003E\u003Ca href\u003D\u005C\u0022https://docs.microsoft.com/en\u002Dus/dotnet/csharp/whats\u002Dnew/csharp\u002D8\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003EC# 8.0 \u003C/a\u003E\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EYour code is compiled with debug flag enabled (\u003Ccode\u003E/debug\u003C/code\u003E).\u003C/p\u003E\u0022], \u0022javascript\u0022: [\u0022JavaScript\u0022, \u0022\u003Cp\u003E\u003Ccode\u003ENode.js 14.8.0\u003C/code\u003E.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EYour code is run with \u003Ccode\u003E\u002D\u002Dharmony\u003C/code\u003E flag, enabling \u003Ca href\u003D\u005C\u0022http://node.green/\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Enew ES6 features\u003C/a\u003E.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003E\u003Ca href\u003D\u005C\u0022https://lodash.com\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Elodash.js\u003C/a\u003E library is included by default.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EFor Priority Queue / Queue data structures, you may use \u003Ca href\u003D\u005C\u0022https://github.com/datastructures\u002Djs/priority\u002Dqueue\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Edatastructures\u002Djs/priority\u002Dqueue\u003C/a\u003E and \u003Ca href\u003D\u005C\u0022https://github.com/datastructures\u002Djs/queue\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Edatastructures\u002Djs/queue\u003C/a\u003E.\u003C/p\u003E\u0022], \u0022ruby\u0022: [\u0022Ruby\u0022, \u0022\u003Cp\u003E\u003Ccode\u003ERuby 2.7.1\u003C/code\u003E\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003ESome common data structure implementations are provided in the Algorithms module: https://www.rubydoc.info/github/kanwei/algorithms/Algorithms\u003C/p\u003E\u0022], \u0022swift\u0022: [\u0022Swift\u0022, \u0022\u003Cp\u003E\u003Ccode\u003ESwift 5.4.2\u003C/code\u003E.\u003C/p\u003E\u0022], \u0022golang\u0022: [\u0022Go\u0022, \u0022\u003Cp\u003E\u003Ccode\u003EGo 1.16.2\u003C/code\u003E.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003ESupport \u003Ca href\u003D\u005C\u0022https://godoc.org/github.com/emirpasic/gods\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Ehttps://godoc.org/github.com/emirpasic/gods\u003C/a\u003E library.\u003C/p\u003E\u0022], \u0022python3\u0022: [\u0022Python3\u0022, \u0022\u003Cp\u003E\u003Ccode\u003EPython 3.9\u003C/code\u003E.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EMost libraries are already imported automatically for your convenience, such as \u003Ca href\u003D\u005C\u0022https://docs.python.org/3/library/array.html\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Earray\u003C/a\u003E, \u003Ca href\u003D\u005C\u0022https://docs.python.org/3/library/bisect.html\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Ebisect\u003C/a\u003E, \u003Ca href\u003D\u005C\u0022https://docs.python.org/3/library/collections.html\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Ecollections\u003C/a\u003E. If you need more libraries, you can import it yourself.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EFor Map/TreeMap data structure, you may use \u003Ca href\u003D\u005C\u0022http://www.grantjenks.com/docs/sortedcontainers/\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Esortedcontainers\u003C/a\u003E library.\u003C/p\u003E\u0022], \u0022scala\u0022: [\u0022Scala\u0022, \u0022\u003Cp\u003E\u003Ccode\u003EScala 2.13\u003C/code\u003E.\u003C/p\u003E\u0022], \u0022kotlin\u0022: [\u0022Kotlin\u0022, \u0022\u003Cp\u003E\u003Ccode\u003EKotlin 1.3.10\u003C/code\u003E.\u003C/p\u003E\u0022], \u0022rust\u0022: [\u0022Rust\u0022, \u0022\u003Cp\u003E\u003Ccode\u003ERust 1.45.2\u003C/code\u003E\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003ESupports \u003Ca href\u003D\u005C\u0022https://crates.io/crates/rand\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Erand \u003C/a\u003E v0.6\u005Cu00a0from crates.io\u003C/p\u003E\u0022], \u0022php\u0022: [\u0022PHP\u0022, \u0022\u003Cp\u003E\u003Ccode\u003EPHP 7.2\u003C/code\u003E.\u003C/p\u003E\u005Cr\u005Cn\u003Cp\u003EWith bcmath module\u003C/p\u003E\u0022], \u0022typescript\u0022: [\u0022Typescript\u0022, \u0022\u003Cp\u003E\u003Ccode\u003ENode.js 14.8.0\u003C/code\u003E.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003EYour code is run with \u003Ccode\u003E\u002D\u002Dharmony\u003C/code\u003E flag, enabling \u003Ca href\u003D\u005C\u0022http://node.green/\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Enew ES2020 features\u003C/a\u003E.\u003C/p\u003E\u005Cr\u005Cn\u005Cr\u005Cn\u003Cp\u003E\u003Ca href\u003D\u005C\u0022https://lodash.com\u005C\u0022 target\u003D\u005C\u0022_blank\u005C\u0022\u003Elodash.js\u003C/a\u003E library is included by default.\u003C/p\u003E\u0022], \u0022racket\u0022: [\u0022Racket\u0022, \u0022\u003Cp\u003ERun with \u003Ccode\u003ERacket 8.0\u003C/code\u003E.\u003C/p\u003E\u0022], \u0022erlang\u0022: [\u0022Erlang\u0022, \u0022Erlang/OTP 24.0.2\u0022], \u0022elixir\u0022: [\u0022Elixir\u0022, \u0022Elixir 1.12.0 with Erlang/OTP 24.0.2\u0022]}'),
+  };
+</script>
+<script type="text/javascript" src="/static/angular-nvd3/node_modules/d3/d3.min.js"></script>
+<script src="/static/CACHE/js/output.a2a1bcb93434.js"></script>
+<script type="text/javascript" src="https://assets.leetcode.com/static_assets/public/webpack_bundles/apps/contest/question_detail.b9544a61b.js" ></script>
+
+    
+      <script type="text/javascript">
+
+  var eventURL = '/discuss/general-discussion/655704/';
+  var CONTENT = "🚀 August LeetCoding Challenge 2021 🚀";
+
+  function getHashCode(str) {
+    var hash = 0,
+      i,
+      chr;
+    if (str.length === 0) return hash;
+    for (i = 0; i < str.length; i++) {
+      chr = str.charCodeAt(i);
+      hash = (hash << 5) - hash + chr;
+      hash |= 0;
+    }
+    return hash;
+  }
+
+  var LOCAL_STORAGE_KEY = 'feedback-tab:' + getHashCode(eventURL + CONTENT);
+  var CLOSE_BUTTON_CLICKED = false;
+
+  var CLOSE_BUTTON_HTML =
+    '\
+        <?xml version="1.0" encoding="UTF-8"?>\
+        <svg id="close-icon-svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\
+            <title>icon/close</title>\
+            <defs></defs>\
+            <g id="close-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
+                <polygon id="path-1" points="19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12"></polygon>\
+            </g>\
+        </svg>\
+    ';
+
+  function onClickClose(e) {
+    e.preventDefault();
+    document
+      .querySelector('.feedback-anchor')
+      .classList.add('feedback-anchor-closing');
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, Date.now());
+    CLOSE_BUTTON_CLICKED = true;
+  }
+
+  function onTransitionEnd(event) {
+    if (
+      event.target &&
+      CLOSE_BUTTON_CLICKED &&
+      event.propertyName === 'opacity'
+    ) {
+      event.target.remove();
+    }
+  }
+
+  function createFeedbackTab() {
+    var closeButton = document.createElement('span');
+    closeButton.classList.add('feedback-tab-close-button');
+    closeButton.innerHTML = CLOSE_BUTTON_HTML;
+    closeButton.addEventListener('click', onClickClose);
+
+    var feedbackTabContent = document.createElement('span');
+    feedbackTabContent.innerHTML = CONTENT;
+
+    var feedbackTab = document.createElement('div');
+    feedbackTab.classList.add('feedback-tab');
+
+    feedbackTab.appendChild(feedbackTabContent);
+    feedbackTab.appendChild(closeButton);
+
+    var feedbackAnchor = document.createElement('a');
+    feedbackAnchor.classList.add('feedback-anchor');
+    feedbackAnchor.setAttribute('href', eventURL);
+    feedbackAnchor.setAttribute('target', '_blank');
+    feedbackAnchor.appendChild(feedbackTab);
+    feedbackAnchor.addEventListener('transitionend', onTransitionEnd);
+    return feedbackAnchor;
+  }
+
+  function createComingSoonBanner(text) {
+    var banner = document.createElement('div');
+    banner.classList.add('card-label');
+    banner.style.background = 'rgb(95, 123, 230)';
+    banner.style.color = 'white';
+    banner.style['font-weight'] = 'bold';
+    banner.innerHTML = text;
+    return banner;
+  }
+
+  function insertFeedbackTab() {
+    var feedbackTab = createFeedbackTab();
+    var navbarRightContainer = document.getElementById(
+      'navbar-right-container'
+    );
+    if (navbarRightContainer) {
+      navbarRightContainer.insertBefore(
+        feedbackTab,
+        navbarRightContainer.firstChild
+      );
+    }
+  }
+
+  function insertComingSoonBanner(text, clsname) {
+    var banner = createComingSoonBanner(text);
+    var exploreCardContainer = document.getElementsByClassName(clsname);
+
+    if (!exploreCardContainer.length) {
+      return false;
+    }
+
+    var innerLayer = exploreCardContainer[0].getElementsByClassName(
+      'top-inner-layer'
+    );
+
+    if (!innerLayer.length) {
+      return false;
+    }
+
+    innerLayer[0].insertBefore(banner, innerLayer[0].firstChild);
+    return true;
+  }
+
+  function loadLeetCodeChallenge() {
+    if (!window.localStorage.getItem(LOCAL_STORAGE_KEY)) {
+      setTimeout(insertFeedbackTab, 500);
+    }
+
+    if (window.location.pathname === '/explore/') {
+      var comingSoonInterval = setInterval(function() {
+        var res2 = insertComingSoonBanner(
+          'Day 24',
+          'august-leetcoding-challenge-2021'
+        );
+        if (/*res && */ res2 && comingSoonInterval) {
+          clearInterval(comingSoonInterval);
+        }
+      }, 300);
+    }
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://leetcode.com/static/cn.js';
+    document.body.appendChild(script);
+  }
+</script>
+<style>
+  .feedback-tab {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0px;
+    right: 270px;
+    background-color: #455a64;
+    color: white;
+    opacity: 0.6;
+    border-radius: 0 0 3px 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+  }
+  .feedback-tab:hover {
+    opacity: 1;
+  }
+  .feedback-tab-close-button {
+    margin-left: 5px;
+    height: 1em;
+    width: 1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .feedback-anchor:focus {
+    text-decoration: none;
+  }
+  .feedback-anchor-closing {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  aside#region_switcher {
+    position: initial;
+  }
+  #close-icon-svg {
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+  }
+  #close-icon-svg:hover {
+    opacity: 1;
+  }
+  #close-icon {
+    fill: white;
+  }
+</style>
+
+
+<!--@START: Nav Highlight Tag -->
+<style>
+  [class*='nav-item-container'] a[href='/explore/']::after {
+    display: block;
+    border-radius: 20px;
+    padding: 0px 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: -9px;
+    font-weight: 500;
+    transform: scale(0.6);
+    right: -25px;
+    content: 'Day 24';
+    background: rgb(236, 64, 122);
+  }
+  [id='interview-nav-item'] a.ant-dropdown-link::after {
+    display: block;
+    border-radius: 20px;
+    padding: 0px 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: -9px;
+    font-weight: 500;
+    transform: scale(0.6);
+    right: -25px;
+    content: 'New';
+    background: rgb(236, 64, 122);
+  }
+  [class*='nav-item-container'] a[href='/contest/']::after {
+    display: block;
+    background: red;
+    border-radius: 20px;
+    padding: 0px 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: -9px;
+    right: -15px;
+    font-weight: 500;
+    transform: scale(0.6);
+  }
+</style>
+
+<script type="text/javascript">
+  var DISCOUNT_URL = '/subscribe/';
+  var DISCOUNT_CONTENT =
+    'In an effort to fight COVID-19, from now until a limited time only, users residing in India can enjoy discount on both&nbsp';
+  var DISCOUNT_LINK = 'monthly and annual subscriptions';
+
+  function createDiscountTab() {
+    var discountTabContent = document.createElement('span');
+    discountTabContent.innerHTML = DISCOUNT_CONTENT;
+    var subscribeLink = document.createElement('a');
+    subscribeLink.setAttribute('href', DISCOUNT_URL);
+    subscribeLink.classList.add('subscribe-link');
+    subscribeLink.innerHTML = DISCOUNT_LINK;
+    var exclamation = document.createElement('span');
+    exclamation.innerHTML = '!';
+
+    var discountTab = document.createElement('div');
+    discountTab.classList.add('col-md-12');
+    discountTab.classList.add('alert');
+    discountTab.classList.add('alert-warning');
+
+    discountTab.appendChild(discountTabContent);
+    discountTab.appendChild(subscribeLink);
+    discountTab.appendChild(exclamation);
+
+    var DiscountContainer = document.createElement('div');
+    DiscountContainer.classList.add('container');
+    DiscountContainer.classList.add('row');
+    DiscountContainer.classList.add('no-margin');
+    DiscountContainer.classList.add('container-center');
+    DiscountContainer.appendChild(discountTab);
+    return DiscountContainer;
+  }
+
+  function insertDiscountTab() {
+    var discountTab = createDiscountTab();
+    var container = document.getElementById('base_content');
+    if (container) {
+      container.insertBefore(discountTab, container.firstChild);
+    }
+  }
+
+  window.onload = function() {
+    if (window.LeetCodeData) {
+      const {
+        features: { enableIndiaPricing },
+        userStatus: { countryCode },
+      } = window.LeetCodeData;
+      if (
+        (window.location.pathname === '/' ||
+          window.location.pathname.startsWith('/problemset')) &&
+        enableIndiaPricing &&
+        countryCode === 'IN'
+      ) {
+        setTimeout(insertDiscountTab, 500);
+      }
+
+      var script = document.createElement('script');
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    loadLeetCodeChallenge();
+  };
+</script>
+<style>
+  .container-center {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    margin-top: -10px;
+  }
+  .subscribe-link {
+    cursor: pointer;
+  }
+</style>
+    
+
+    
+
+    <script type="text/javascript" src="/static/legacy/common/js/base.js"></script>
+
+    <script>
+      try {
+        ace.config.set("basePath", "/static/ace-builds/src-noconflict/")
+      } catch(err) {}
+    </script>
+
+    <script>
+      function recaptchaV2Callback() {
+        window.grecaptchaV2 = Object.assign(Object.create(Object.getPrototypeOf(window.grecaptcha)), window.grecaptcha)
+      }
+
+      function recaptchaV3Callback() {
+        window.grecaptchaV3 = Object.assign(Object.create(Object.getPrototypeOf(window.grecaptcha)), window.grecaptcha)
+      }
+    </script>
+
+    <script type="text/javascript" src="https://www.recaptcha.net/recaptcha/api.js?onload=recaptchaV2Callback&render=explicit" async
+      defer></script>
+
+    
+    <script
+      src="https://www.recaptcha.net/recaptcha/api.js?onload=recaptchaV3Callback&render=6LdBpsIUAAAAAKAYWjZfIpn4cJHVIk_tsmxpl7cz"></script>
+  </body>
+</html>

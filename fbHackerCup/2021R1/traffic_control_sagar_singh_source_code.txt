@@ -1,0 +1,190 @@
+
+//
+//  mod.cpp
+//
+//
+//  Created by Sagar Singh on 17/12/20.
+//
+
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <vector>
+#include <set>
+#include <map>
+#include <cstring>
+#include <string>
+#include <cmath>
+#include <cassert>
+#include <ctime>
+#include <algorithm>
+#include <numeric>
+#include <sstream>
+#include <list>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <cstdlib>
+#include <cstdio>
+#include <iterator>
+#include <functional>
+#include <bitset>
+#include <unordered_map>
+#include <unordered_set>
+
+#define WHILE_ONCE  while(false)
+#define bug1( x )                   do{ cerr << (#x) << "=" << x << endl; }WHILE_ONCE;
+#define bug2( x , y )               do{ cerr << (#x) << "=" << x << "    " << (#y) << "=" << y << endl; }WHILE_ONCE;
+#define bug3( x , y , z )           do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << endl; }WHILE_ONCE;
+#define bug4( x , y , z , w)        do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << endl; }WHILE_ONCE;
+#define bug5( x , y , z , w ,p)     do{ cerr << (#x) <<    "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << endl; }WHILE_ONCE;
+#define bug6( x , y , z , w ,p , q) do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << "    " << (#q) <<"="<< q << endl; }WHILE_ONCE;
+#define bugn( x , n )               do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ cout  << x[i] << "    "; } cout << endl; }WHILE_ONCE;
+#define bugnm( x , n , m )          do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ for(int j=0;j<m;j++) cout << x[i][j] << "    "; } cout << endl; }WHILE_ONCE;
+
+typedef unsigned long long ul;
+typedef long double ld;
+typedef long long ll;
+using namespace std;
+
+template<typename T, typename K>
+inline bool smax(T &x,K y){ return x < y ? x = y, true : false; }
+template<typename T, typename K>
+inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
+
+const int mod = 1e9+7;
+int add(int x,int y){
+    int z = x + y;
+    if( z >= mod ){
+        z -= mod;
+    }
+    return z;
+}
+int sub(int x,int y){
+    int z = x - y;
+    if( z < 0 ){
+        z += mod;
+    }
+    return z;
+}
+int mul(int x,int y){
+    ll z = 1ll * x * y;
+    if( z >= mod ){
+        z %= mod;
+    }
+    return z;
+}
+int binpow(int a,ll p){
+    int r = 1;
+    while( p ){
+        if( p & 1 )
+            r = mul(r,a);
+        a = mul(a,a), p >>= 1;
+    }
+    return r;
+}
+
+const int nax = 50+5;
+int arr[nax][nax], dp[nax][nax], ways[nax][nax], n, m, a, b, ok;
+vector<int>dx,dy;
+
+int main(){
+    ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+    int T; cin >> T;
+    for(int tt=1;tt<=T;++tt){
+			cin >> n >> m >> a >> b, ok = 1;
+			if( a < n + m - 1 || a > ( n + m - 1 ) * 1000 || b < n + m -1 || b > ( n + m - 1 ) * 1000 ){
+				ok = 0;
+			}
+			if( ok ){
+				for(int i=0;i<n;++i){
+					for(int j=0;j<m;++j){
+						arr[i][j] = 1000;
+						if( j == 0 || j == m-1 || i == n-1 )
+							arr[i][j] = 1;
+					}
+				}
+				arr[0][0] = a - ( n + m - 2 );
+				arr[0][m-1] = b - ( n + m - 2);
+
+				for(int i=0;i<n;++i){
+					for(int j=0;j<m;++j){
+						ways[i][j] = 0;
+						dp[i][j] = 1e9;
+					}
+				}
+				dx = {-1,0};
+				dy = {0,-1};
+
+				dp[0][0] = arr[0][0], ways[0][0] = 1;
+				for(int i=0;i<n;++i){
+					for(int j=0;j<m;++j){
+						for(int k=0;k<2;++k){
+							int x = i + dx[k], y = j + dy[k];
+							if( x >= 0 && x < n && y >= 0 && y < m ){
+								dp[i][j] = min(dp[i][j], dp[x][y] + arr[i][j] );
+							}
+						}
+						for(int k=0;k<2;++k){
+							int x = i + dx[k], y = j + dy[k];
+							if( x >= 0 && x < n && y >= 0 && y < m  && dp[i][j] == dp[x][y] + arr[i][j] ){
+								ways[i][j] += ways[x][y];
+								ways[i][j] = min(ways[i][j],2);
+							}
+						}
+					}
+				}
+				//ok &= ways[n-1][m-1] == 1;
+				ok &= dp[n-1][m-1] == a;
+
+
+				for(int i=0;i<n;++i){
+					for(int j=0;j<m;++j){
+						ways[i][j] = 0;
+						dp[i][j] = 1e9;
+					}
+				}
+				dx = {-1,0};
+				dy = {0,+1};
+
+				dp[0][m-1] = arr[0][m-1], ways[0][m-1] = 1;
+				for(int i=0;i<n;++i){
+					for(int j=m-1;j>=0;--j){
+						for(int k=0;k<2;++k){
+							int x = i + dx[k], y = j + dy[k];
+							if( x >= 0 && x < n && y >= 0 && y < m ){
+								dp[i][j] = min(dp[i][j], dp[x][y] + arr[i][j] );
+							}
+						}
+						for(int k=0;k<2;++k){
+							int x = i + dx[k], y = j + dy[k];
+							if( x >= 0 && x < n && y >= 0 && y < m  && dp[i][j] == dp[x][y] + arr[i][j] ){
+								ways[i][j] += ways[x][y];
+								ways[i][j] = min(ways[i][j],2);
+							}
+						}
+					}
+				}
+				//ok &= ways[n-1][0] == 1;
+				ok &= dp[n-1][0] == b;
+
+				
+			}
+
+			string ans = ( ok ? "Possible" : "Impossible" );
+
+
+			cout << "Case #"<<tt<<": "<< ans <<endl;
+
+			if( ok ){
+				for(int i=0;i<n;++i){
+					for(int j=0;j<m;++j){
+						cout << arr[i][j] << " ";
+					}
+					cout << endl;
+				}
+			}
+    }
+}
+
+

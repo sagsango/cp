@@ -1,0 +1,8 @@
+->ManageLREP/LREPTest.cpp:	sSleepFile = std::string("/tmp/LREPTest") ;
+=>prePopulateEvents/prePopulateEvents.cpp:	#define PREPOPULATE_EVENT_SLEEP "/tmp/prepopulateevents.sleep"
+->cxunix/source/include/ds_common.h
+->CvDataPipe/modules/h/server_agent.h:#define VLDB_BACKUP_DEBUG_HOOK "/tmp/GDB_VLDB_BACKUP_HOOK"
+->CvMPIO/SolarisNative/SolarisNative.cpp:#define hook_file "/tmp/SOLNATIVE_DEBUG_HOOK"
+// Hello
+->CVHDS/HDSProvider/CVHDSProvider.cpp:    string  hookfile = "/tmp/";
+=>PrePostInstall/PrePostInstall.cpp:/*		    string tmpPath = "/tmp";

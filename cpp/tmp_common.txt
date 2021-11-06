@@ -1,0 +1,545 @@
+CvMessagingQueue/custom/bin/CvMessageQueue.config:-Djava.io.tmpdir=%(messagequeueDataDir)s/tmp
+CvMessagingQueue/custom/bin/CvMessageQueue.config.tmpl:APPLICATION_OPTS="$APPLICATION_OPTS -Djava.io.tmpdir=$messagequeueDataDir/tmp"
+CvMonoLib/CvMonoLib.cpp:	// tar xf /tmp/cvmono/mono/rhel7/*.tgz -C /tmp/cvmono
+ManageCelerra/CelerraHTTPInterface.cpp:			m_sTmpDir = "/tmp/";
+ManageCelerra/CelerraHTTPInterface.cpp:	m_sCookieJar = "/tmp";
+CvSnapCelerra/CVSnapEngineCelerra.cpp:#define hook_file "/tmp/CVSNAPENGINECELERRA_DEBUG_HOOK"
+->ManageLREP/LREPTest.cpp:	sSleepFile = std::string("/tmp/LREPTest") ;
+=>prePopulateEvents/prePopulateEvents.cpp:	#define PREPOPULATE_EVENT_SLEEP "/tmp/prepopulateevents.sleep"
+prePopulateEvents/prePopulateEvents.cpp:	#define PREPOPULATE_EVENT_TMPDIR "/tmp/Events"
+QCLI/QCLQuickRun.cpp:	 strcpy(tempPath,"/tmp");
+Simpana/Simpana/installer/edge:#"/usr/bin/osascript" "${RSC_FOLDER}/customizedmg" "${VOLUME_NAME}" 1>/tmp/edge.out.$$ 2>/tmp/edge.err.$$
+Simpana/Simpana/installer/edge:#cat /tmp/edge.out.$$
+Simpana/Simpana/installer/edge:#cat /tmp/edge.err.$$
+Simpana/Simpana/installer/edge:#grep "Finder got an error" /tmp/edge.err.$$ >/dev/null || grep "Finder got an error" /tmp/edge.out.$$ >/dev/null || break
+Simpana/Simpana/installer/edge:#rm -rf /tmp/edge.out.$$ /tmp/edge.err.$$ >/dev/null 2>&1
+Simpana/Simpana/installer/edge:    [ -f /tmp/cvpkgadd_unlock_trial ] && cp /tmp/cvpkgadd_unlock_trial $RP_DIR/.
+Simpana/Simpana/installer/edge:	typeset tmpdir="${2:-/tmp}"
+Simpana/Simpana/installer/edge:GALAXY_TEMP_DIRECTORY;/CVInstallManager_ClientSetup/installFlags/unixTempDirectory;/tmp/.gxsetup
+Simpana/Simpana/installer/edge:TMP_PKGINFO="${GX_TMP_DIR:-/tmp}/silent_pkginfo_$CLIENT_NAME.$$"
+Simpana/Simpana/installer/edge:[[ -f /tmp/Simpana_show_data ]] && logFile $TMP_PKGINFO
+Simpana/Simpana/installer/edge:#[[ -f /tmp/Simpana_show_data ]] && logFile $2.plist
+Simpana/Simpana/installer/edge:	[[ -f /tmp/cvdbg ]] && SETX=true || SETX=false
+Simpana/Simpana/installer/edge:	ANS_XML_UNIX="${GX_TMP_DIR:-/tmp}/answer.$$.xml";
+Simpana/Simpana/installer/edge:	ANS_INI="${GX_TMP_DIR:-/tmp}/answer.$$.ini";
+Simpana/Simpana/installer/edge:	if [[ -f /tmp/cvpkgadd_unlock_dmg ]]; then
+Simpana/Simpana/installer/edge:	[[ -f /tmp/cvdbg ]] && SETX=true || SETX=false
+Simpana/Simpana/installer/edge:	if [[ -f /tmp/cvpkgadd_unlock_dmg ]]; then
+Simpana/Simpana/installer/edge:	[[ -f /tmp/cvdbg ]] && SETX=true || SETX=false
+Simpana/Simpana/installer/edge:	[[ -f /tmp/cvdbg ]] && SETX=true || SETX=false
+Binary file Simpana/Simpana/installer/ksh matches
+Binary file Simpana/Simpana/plugins/Policy.bundle/Contents/MacOS/Policy matches
+Binary file Simpana/Simpana/plugins/Authentication.bundle/Contents/MacOS/Authentication matches
+Binary file Simpana/Simpana/plugins/Firewall.bundle/Contents/MacOS/Firewall matches
+Binary file Simpana/Simpana/plugins/CommServe.bundle/Contents/MacOS/CommServe matches
+Simpana/Simpana/CvAppDelegate+CvExpressInstall.m:        if ([self fileExist:@"/tmp/.simpanaapp.retry"]) [self rm:@"/tmp/.simpanaapp.retry"];
+Simpana/Simpana/CvAppDelegate.m:    NSString *try = [NSString stringWithFormat:@"sudo ls -d /tmp 2>&1"];
+Simpana/Simpana/CvAppDelegate.m:    NSString *try = [NSString stringWithFormat:@"cat '%@' | sudo -S ls -d /tmp 2>&1", pPath];
+Simpana/Simpana/CvAppDelegate+CvUtilities.m:    //[self cp:fi to:@"/tmp/install.gz"];
+Simpana/plugins/common/CVInstallerPane.m:    if ([self fileExist:@"/tmp/cvdbg"]) cvdbg = YES;
+utils/TestProxyPaths.C:	// strcpy(fullSubClientPath,"/tmp");
+OpenSSL/openssl-1.1.1l/Configurations/unix-Makefile.tmpl:# /usr/ and yet have everything installed to /tmp/somedir/usr/.
+OpenSSL/openssl-1.1.1l/Configurations/unix-Makefile.tmpl:		if [ -f "$$a" ]; then ( trap "rm -rf /tmp/ar.$$$$" INT 0; \
+OpenSSL/openssl-1.1.1l/Configurations/unix-Makefile.tmpl:			mkdir /tmp/ar.$$$$; ( cd /tmp/ar.$$$$; \
+OpenSSL/openssl-1.1.1l/doc/man5/config.pod:priority and B</tmp> used if neither is defined:
+OpenSSL/openssl-1.1.1l/doc/man5/config.pod: TMP=/tmp
+OpenSSL/openssl-1.1.1l/doc/man5/config.pod: tmpfile=${ENV::TEMP}/tmp.filename
+OpenSSL/openssl-1.1.1l/doc/man3/OPENSSL_malloc.pod:  ...app invocation... 3>/tmp/log$$
+OpenSSL/openssl-1.0.2l/openssl.spec:BuildRoot:   /var/tmp/%{name}-%{version}-root
+OpenSSL/openssl-1.0.2l/ssl/s3_clnt.c:        out = fopen("/tmp/vsign.der", "w");
+OpenSSL/openssl-1.0.2l/config:  sh -c "$CROSS_COMPILE${CC:-gcc} -Wa,--help -c -o /tmp/null.$$.o -x assembler /dev/null && rm /tmp/null.$$.o" 2>&1 | \
+OpenSSL/openssl-1.0.2l/PROBLEMS:   following 'test' script for example in /tmp:
+OpenSSL/openssl-1.0.2l/PROBLEMS:   Then 'chmod a+x /tmp/test; ln /tmp/test /tmp/[' and *prepend*
+OpenSSL/openssl-1.0.2l/PROBLEMS:   your $PATH with chosen location, e.g. PATH=/tmp:$PATH. Alter-
+OpenSSL/openssl-1.0.2l/doc/apps/config.pod:priority and B</tmp> used if neither is defined:
+OpenSSL/openssl-1.0.2l/doc/apps/config.pod: TMP=/tmp
+OpenSSL/openssl-1.0.2l/doc/apps/config.pod: tmpfile=${ENV::TEMP}/tmp.filename
+OpenSSL/openssl-1.0.2l/doc/ssleay.txt:the processes environment variables (eg ENV::HOME=/tmp).  If there is a
+OpenSSL/openssl-1.0.2l/doc/ssleay.txt:FILE="/tmp/"`date '+%y%m%d%H%M%S'-`$$
+OpenSSL/openssl-1.0.2l/doc/ssleay.txt:	file as input.  For example, if the file were named /tmp/cert.req,
+OpenSSL/openssl-1.0.2l/doc/ssleay.txt:	$SSLDIR/bin/ca -spkac /tmp/cert.req -out /tmp/cert
+OpenSSL/openssl-1.0.2l/doc/ssleay.txt:-	Now, you pick up the output from /tmp/cert and pass it back to
+OpenSSL/openssl-1.0.2l/Makefile.bak:# for, say, /usr/ and yet have everything installed to /tmp/somedir/usr/.
+OpenSSL/openssl-1.0.2l/util/openssl-format-source:      tmp=$(mktemp /tmp/indent.XXXXXX)
+OpenSSL/openssl-1.0.2l/util/cygwin.sh:INSTALL_PREFIX=/tmp/install/INSTALL
+OpenSSL/openssl-1.0.2l/crypto/threads/th-lock.c:    strcpy(filename, "/tmp/mttest.XXXXXX");
+OpenSSL/openssl-1.0.2l/crypto/threads/mttest.c:    strcpy(filename, "/tmp/mttest.XXXXXX");
+OpenSSL/openssl-1.0.2l/crypto/conf/ssleay.cnf:HOME		= /tmp/eay
+OpenSSL/openssl-1.0.2l/crypto/des/KERBEROS:  	       chdir("/tmp");
+OpenSSL/openssl-1.0.2l/crypto/des/KERBEROS:  	       chdir("/tmp");
+OpenSSL/openssl-1.0.2l/INSTALL:       $ make INSTALL_PREFIX=/tmp/package-root install
+OpenSSL/openssl-1.0.2l/INSTALL:     (or specify "--install_prefix=/tmp/package-root" as a configure
+OpenSSL/openssl-1.0.2l/Makefile.org:# for, say, /usr/ and yet have everything installed to /tmp/somedir/usr/.
+OpenSSL/openssl-1.0.2l/Makefile:# for, say, /usr/ and yet have everything installed to /tmp/somedir/usr/.
+CvSnapIsilon/CvSnapEngineIsilon.cpp:#define hook_file "/tmp/CVSNAPHANDLERIsilon_DEBUG_HOOK"
+SyncRegKeys/syncRegKeys.cpp:    	strcpy (logFileDir, "/tmp");
+Lib7z/p7zip_15.14.1/CPP/Windows/FileDir.cpp:  path = L"c:/tmp/"; // final '/' is needed
+Lib7z/p7zip_15.14.1/CPP/7zip/UI/P7ZIP/wxP7ZIP.cpp:	sprintf(tempFile,"/tmp/7zExtract_%d_%d.tmp",(int)getpid(),count++);
+Lib7z/p7zip_15.14.1/CPP/7zip/UI/Common/CompressCall.cpp:  sprintf(tempFile,"/tmp/7zCompress_%d_%d.tmp",(int)getpid(),count++);
+Lib7z/p7zip_15.14.1/CPP/7zip/UI/Common/CompressCall.cpp:  sprintf(tempFile,"/tmp/7zExtract_%d_%d.tmp",(int)getpid(),count++);
+Lib7z/p7zip_15.14.1/CPP/myWindows/test_lib.cpp:		LPCTSTR dirPath=TEXT("/tmp/");
+Lib7z/p7zip_15.14.1/CPP/myWindows/test_lib.cpp:		assert(MyStringCompare(&resultPath[0],TEXT("/tmp/foo#12345@6789.tmp")) == 0);
+Lib7z/p7zip_9.20.1/ChangeLog:  - cygwin now supports '-o/tmp'
+Lib7z/p7zip_9.20.1/ChangeLog:  - fix "Bugs item #1306783" : "7za a /tmp/t.7z /etc/passwd"
+Lib7z/p7zip_9.20.1/CPP/myWindows/test_emul.cpp:		LPCTSTR dirPath=TEXT("/tmp/");
+Lib7z/p7zip_9.20.1/CPP/myWindows/test_emul.cpp:		assert(MyStringCompare(&resultPath[0],TEXT("/tmp/foo#12345@6789.tmp")) == 0);
+Binary file Lib7z/p7zip_9.20.1/CPP/7zip/UI/P7ZIP/wxP7ZIP.o matches
+Lib7z/p7zip_9.20.1/CPP/7zip/UI/P7ZIP/wxP7ZIP.cpp:	sprintf(tempFile,"/tmp/7zExtract_%d_%d.tmp",(int)getpid(),count++);
+Lib7z/p7zip_9.20.1/CPP/7zip/UI/Common/CompressCall.cpp:  sprintf(tempFile,"/tmp/7zCompress_%d_%d.tmp",(int)getpid(),count++);
+Lib7z/p7zip_9.20.1/CPP/7zip/UI/Common/CompressCall.cpp:  sprintf(tempFile,"/tmp/7zExtract_%d_%d.tmp",(int)getpid(),count++);
+Lib7z/p7zip_9.20.1/CPP/Windows/FileDir.cpp:  path = "c:/tmp/"; // final '/' is needed
+Lib7z/p7zip_9.20.1/CPP/Windows/FileDir.cpp:  path = L"c:/tmp/"; // final '/' is needed
+LVM/test_metadata.cpp:			string map_file = "/tmp/mapTEST_" + getShortName(lv_it->device) + "_" + ostr.str();    
+LVM/LVM_linux_lvm.cpp:		strcpy(meta_fname, "/tmp/cvmeta_XXXXXX");
+LVM/LVM_linux_lvm.cpp:		strcpy(meta_fname, "/tmp/cvmeta_XXXXXX");
+LVM/LVM_zfs.cpp:		cmd = "zpool import -f -d " + dirPathForImport + " -R /tmp/" + new_dg + " " + new_dg;
+LVM/LVM_zfs.cpp:				cmd = "zpool import -F -f -d " + dirPathForImport + " -R /tmp/" + new_dg + " " + new_dg;
+LVM/LVM_zfs.cpp:				cmd = "zpool import -D -f -d " + dirPathForImport + " -R /tmp/" + new_dg + " " + new_dg;
+LVM/LVM_zfs.cpp:						cmd = "zpool import -F -D -f -d " + dirPathForImport + " -R /tmp/" + new_dg + " " + new_dg;
+LVM/LVM_zfs.cpp:        string abs_plnm = ("/tmp/" + pl_name);
+LVM/LVM_zfs.cpp:            // Make sure we aren't deleting /tmp.
+LVM/LVM_zfs.cpp:            if (!stat("/tmp", &st_tmp) && st_pool.st_ino == st_tmp.st_ino)
+LVM/LVM_hp_impl.cpp:	return string( "/tmp" );
+LVM/LVM_hp_impl.cpp:	const char* DEFAULT_TMP = "/tmp";
+LVM/LVM_hp_impl.cpp:	const char* DEFAULT_TMP = "/tmp";
+LVM/LVM_hp_impl.cpp:	const char* DEFAULT_TMP = "/tmp";
+LVM/LVM_gpfs.cpp:		exportFileFullPath = "/tmp/cv_exportFile_" + getUniqueId() + vg.name;
+LVM/LVM_gpfs.cpp:				string exportFileFullPath = "/tmp/cv_exportFile_" + getUniqueId() + vgName;
+LVM/LVM_gpfs.cpp:			string exportFileFullPath = "/tmp/cv_exportFile_" + getUniqueId() + vgName;
+LVM/LVM_vxvm.cpp:** name provided is assumed to be under /tmp and /tmp/ is always prepended.
+LVM/LVM_vxvm.cpp:			if(access("/tmp/requireretag",0)==0)
+LVM/LVM_vxvm.cpp:	if( access("/tmp/userdgremove",0)==0)
+LVM/LVM_vxvm.cpp:	// always check for pending i/o - if( access("/tmp/vxdmp_iostat_2",0)==0)
+LVM/LVM_vxvm.cpp:		if(orig_metadata!=NULL && access("/tmp/showmetadata",0)==0)
+LVM/LVM_vxvm.cpp:			if(access( "/tmp/report.cmds",0)==0)
+LVM/LVM_vxvm.cpp:				ifstream in( "/tmp/report.cmds", ios_base::in );
+LVM/LVM_aix_lvm.cpp:                string map_file = "/tmp/map_" + getShortName(lvit->device) + "_" + ostr.str();
+LVM/LVM_aix_lvm.cpp:            string map_file = "/tmp/map_" + getShortName(lvit->device) + "_" + ostr.str();
+LVM/LVM_aix_lvm.cpp:            string map_file = "/tmp/map_" + getShortName(lvit->device) + "_" + ostr.str();
+LVM/LVM_aix_lvm.cpp://        outfile.open(string("/tmp/map_" + vgname + "_" + ostr.str()).c_str());
+LVM/LVM_aix_lvm.cpp://            THROW(func, "Failed to write LV MAP to file " + string("/tmp/map_") + vg.name + "_" + ostr.str());
+LVM/LVM_aix_lvm.cpp://        cmd += "-l /tmp/map_" + vgname + "_" + ostr.str();
+LVM/LVM_svm_diskid.c:			fpTmp = fopen("/tmp/get_svm_diskid.log", "w");
+LVM/LVM_svm_diskid.c:			fpTmp = fopen("/tmp/get_svm_diskid.log", "a");
+CvSnapXIV/CVSnapEngineXiv.cpp:#define hook_file "/tmp/CVSNAPHANDLERXIV_DEBUG_HOOK"
+CvDeviceTree/libkpartx/lopart.c:	/* Just creating a device, say in /tmp, is probably a bad idea -
+CVRemoteFile/Test/CVRemoteFileTestMain.cpp:	string sInputFile = "/tmp/test";
+CVRemoteFile/CurlWrapper.cpp:			if(0!=access("/tmp/CVREMOTEFILE_NO_OPENSSL_CALLBACK", F_OK)) 
+CVRemoteFile/CVBaseRemoteFile.cpp:				m_gsUserWriteFolder = "/tmp";
+CVRemoteFile/CVRFLocalFile.cpp:		m_sTempLocation = "/tmp";
+ManageEquallogic/manageequallogic.cpp:const char* MANAGEEQUALLOGIC_DEBUG_FILE = "/tmp/equallogic.debug"; 
+ManageEquallogic/manageequallogic.cpp:const char* MANAGEEQUALLOGIC_LOG_FILE = "/tmp/ManageEquallogic.log";
+ManageEquallogic/manageequallogic.cpp:const char* DELLEQUALLOGIC_PSAPI_LOG_FILE = "/tmp";
+CNnotification/CNnotificationProcess.cpp:					strcpy(tmpFile, "/tmp/");
+LREP/LREPVolumeReader.cpp:#define	DEBUGFILE char * dumpBLKInfostr  = "/tmp/lrepdumpblocksinfo.debug"; 
+LREP/LREPVolumeReader.cpp:	char * LREPTestPerf = "/tmp/LREPTestPerf.debug";
+LREP/LREPVolumeReader.cpp:	char * LREPTestPerf = "/tmp/LREPTestPerf.debug";
+CVSnapHandler/CVSOASM.cpp:		if(access("/tmp/skip_asm_mount_for_troubleshoot", 0) == 0)
+CVSnapHandler/CVSOASM.cpp:			GLOGOUT1J(LVL_NORMAL, jobId, " File \"/tmp/skip_asm_mount_for_troubleshoot\" exists, therefore skipping ASM mount for troubleshooting");
+CVSnapHandler/CVSOASM.cpp:		while (access("/tmp/snapdb.touch", 0) == 0)
+CVSnapHandler/CVSnapOSUtilShared.cpp:	string defaultsFile =  "/tmp/default_" + logdir.substr(logdir.rfind(slash) + 1);
+CVSnapHandler/CVSOUtilUnix.cpp:	if( a_DevName.length() == 0 /*&& access( "/tmp/badCleanUp", 0) != 0*/ )
+CVSnapHandler/CVSOUtilUnix.cpp:		if( strlen( a_devToDelete[i] ) == 0 /*&& access( "/tmp/badCleanUp", 0) != 0*/ )
+CVSnapHandler/CVOCFS2Helper.cpp:		baseTemp = "/tmp";
+CVSnapHandler/CVSOUtilSolaris.cpp:		fp1 = fopen("/tmp/configure", "w+");
+CVSnapHandler/CVSOUtilSolaris.cpp:			serrStr = "could not open /tmp/configure \n ";
+CVSnapHandler/CVSOUtilHp.cpp:						if( access("/tmp/donotassignnames_during_refresh",0)!=0)
+DBUpgradeUtils/CommonFunctions.cpp:		outFileName = "/tmp";
+CVSnapTP/CvSnapCommon.cpp:	strcpy(tmpDir, "/tmp");
+Binary file CVMMclientAPI/core matches
+CvSnapOperation/CvSnapOperations.cpp:					//tmpVolSnapInfo.setHopCount(2);
+Binary file IntelliSnap/ThirdParty/OpenPegasus/PegasusWindowsTools/bison.exe matches
+CvPatchesUpdateDBClient/CvPatchesUpdateDBClient.cpp:	cacheParamsFile=(char *)"/tmp/ManageFilesAsUser.params";
+CvPatchesUpdateDBClient/CvPatchesUpdateDBClient.cpp:	cacheStatusFile=( char *)"/tmp/ManageFilesAsUser.status";
+CvPatchesUpdateDBClient/CvPatchesUpdateDBClient.cpp:	cacheParamsFile=(char *)"/tmp/ManageFilesAsUser.params";
+CvPatchesUpdateDBClient/CvPatchesUpdateDBClient.cpp:	cacheStatusFile=(char *)"/tmp/ManageFilesAsUser.status";
+CvPatchesUpdateDBClient/CvPatchesUpdateDBClient.cpp:	cacheParamsFile=(char *)"/tmp/ManageFilesAsUser.params";
+CvPatchesUpdateDBClient/CvPatchesUpdateDBClient.cpp:	cacheStatusFile=(char *)"/tmp/ManageFilesAsUser.status";
+CvPatchesUpdateDBClient/CvPatchesUpdateDBClient.cpp:	//tmpBuffer = new char[strlen(svSPPatchList)+10];
+CvPatchesUpdateDBClient/CvPatchesUpdateDBClient.cpp:	char	*deletedfiles[2]={(char*)"/tmp/DeletedUpdates.txt", (char *)"/tmp/DeletedSPUpdates.txt"};
+CvPatchesUpdateDBClient/RemoteCacheOps.cpp:			spfp=fopen("/tmp/SPUpdates.txt", "w");
+CvPatchesUpdateDBClient/RemoteCacheOps.cpp:				m_dbgHandler.DebugLvl(function, QU_ERROR, "Could not open file /tmp/SPUpdates.txt with errno [%d]", errno);
+CvPatchesUpdateDBClient/RemoteCacheOps.cpp:				ufp=fopen("/tmp/Updates.txt", "w");
+CvPatchesUpdateDBClient/RemoteCacheOps.cpp:					m_dbgHandler.DebugLvl(function, QU_ERROR, "Could not open file /tmp/Updates.txt with errno [%d]", errno);
+CvPatchesUpdateDBClient/RemoteCacheOps.cpp:				if (DeleteDir("/tmp/Updates.txt")==false)
+CvPatchesUpdateDBClient/RemoteCacheOps.cpp:					m_dbgHandler.DebugLvl(function, QU_ERROR, uvjobid,"Could not delete file /tmp/Updates.txt, errno [%d]", errno);
+CvPatchesUpdateDBClient/RemoteCacheOps.cpp:				if (DeleteDir("/tmp/SPUpdates.txt")==false)
+CvPatchesUpdateDBClient/RemoteCacheOps.cpp:					m_dbgHandler.DebugLvl(function, QU_ERROR, uvjobid,"Could not delete file /tmp/SPUpdates.txt, errno [%d]", errno);
+CvPatchesUpdateDBClient/CopyFilesAsUser.cpp:const char *statusfile="/tmp/CopyFilesAsUser.status";
+CvPatchesUpdateDBClient/CopyFilesAsUser.cpp:	FILE *fparams=fopen("/tmp/patchforkparams", "r");
+CvPatchesUpdateDBClient/ManageFilesAsUser.cpp:const char *statusfile="/tmp/ManageFilesAsUser.status";
+CvPatchesUpdateDBClient/ManageFilesAsUser.cpp:const char *logfile="/tmp/ManageFilesAsUser.log";
+CvPatchesUpdateDBClient/ManageFilesAsUser.cpp:const char *paramsfile="/tmp/ManageFilesAsUser.params";
+CvPatchesUpdateDBClient/ManageFilesAsUser.cpp:			DeleteFiles (adddir, (char *)"/tmp/Updates.txt", (char *)"/tmp/DeletedUpdates.txt");
+CvPatchesUpdateDBClient/ManageFilesAsUser.cpp:			DeleteFiles (spdir, (char *)"/tmp/SPUpdates.txt", (char *)"/tmp/DeletedSPUpdates.txt");
+CvPatchesUpdateDBClient/ManageFilesAsUser.cpp:			RemoveFiles (adddir, (char *)"/tmp/Updates.txt", (char *)"/tmp/DeletedUpdates.txt");
+CvPatchesUpdateDBClient/ManageFilesAsUser.cpp:			RemoveFiles (spdir, (char *)"/tmp/SPUpdates.txt", (char *)"/tmp/DeletedSPUpdates.txt");
+CvPatchesUpdateDBClient/ManageFilesAsUser.cpp:			FindMissingUpdates (adddir, (char *)"/tmp/Updates.txt", (char *)"/tmp/MissingUpdates.txt");
+CvPatchesUpdateDBClient/ManageFilesAsUser.cpp:			FindMissingUpdates (spdir, (char *)"/tmp/SPUpdates.txt", (char *)"/tmp/MissingSPUpdates.txt");
+CvPatchesUpdateDBClient/DeleteFilesAsUser.cpp:const char *statusfile="/tmp/DeleteFilesAsUser.status";
+CvPatchesUpdateDBClient/DeleteFilesAsUser.cpp:	if ((fparams = fopen("/tmp/deleteupdateparams", "r")) == NULL)
+CvPatchesUpdateDBClient/DeleteFilesAsUser.cpp:		printf("File [/tmp/deleteupdateparams]  not found.");
+CvPatchesUpdateDBClient/DeleteFilesAsUser.cpp:		sprintf (errstr, "File [/tmp/deleteupdateparams]  not found.");
+CvPatchesUpdateDBClient/DeleteFilesAsUser.cpp:		DeleteFiles (adddir, (char *)"/tmp/Updates.txt", (char *)"/tmp/DeletedUpdates.txt");
+CvPatchesUpdateDBClient/DeleteFilesAsUser.cpp:		DeleteFiles (spdir, (char *)"/tmp/SPUpdates.txt", (char *)"/tmp/DeletedSPUpdates.txt");
+CvPatchesUpdateDBClient/DeleteFilesAsUser.cpp:		FindMissingUpdates (adddir, (char *)"/tmp/Updates.txt", (char *)"/tmp/MissingUpdates.txt");
+CvPatchesUpdateDBClient/DeleteFilesAsUser.cpp:		FindMissingUpdates (spdir, (char *)"/tmp/SPUpdates.txt", (char *)"/tmp/MissingSPUpdates.txt");
+CVSANPlatformSol/CVSANVolumeImplSol.cpp:    //tmpExtent.logicalOffsetLow = extentsBuf->Extents[i].StartingOffset.LowPart;
+CVSANPlatformSol/CVSANVolumeImplSol.cpp:    //tmpExtent.logicalOffsetHigh = extentsBuf->Extents[i].StartingOffset.HighPart;
+Binary file Messages/core matches
+->cxunix/source/include/ds_common.h
+->CvDataPipe/modules/h/server_agent.h:#define VLDB_BACKUP_DEBUG_HOOK "/tmp/GDB_VLDB_BACKUP_HOOK"
+CvDataPipe/modules/h/server_agent.h:#define VLDB_RESTORE_DEBUG_HOOK "/tmp/GDB_VLDB_RESTORE_HOOK"
+CvDataPipe/perf/c/DCContent.C:	"/var", "/tmp", "/sbin", "/lib64", "/opt", "/sys",
+CvDataPipe/perf/c/pipeline.c:/* TINKU_DEBUG - "/tmp/trackBuffer" To Debug Buffers Alloced, Sent & Freed */
+CvDataPipe/perf/c/Shared/CVDSpaceCheck.cpp:		m_event.DebugLvl(function, LVL_NORMAL, JOBID_NA, "Checking temp path: /tmp");
+CvDataPipe/perf/c/Shared/CVDSpaceCheck.cpp:		CheckDirectorySpace ("/tmp", minSpace, maxSpace,AN_MOD_SYS_TEMP_DIR_DISK_SPACE_LOW, CV_SPACECHECK_SYS_TEMP);
+CvDataPipe/perf/c/CvSessionHandlerUNIX.C:// plain /tmp was replaced with galaxy/Base/Temp to store pipeline
+CvDataPipe/perf/c/CvSessionHandlerUNIX.C:// IDs was Tru64, where all files created under /tmp become owned
+CvDataPipe/perf/c/CvSessionHandlerUNIX.C:			strcpy(tmp, "/tmp");
+CvDataPipe/perf/c/reSequencerList.C:	FILE *fp = fopen("/tmp/snl.out", "a");
+CvDataPipe/perf/c/sequencers.c:	 * if ((fp= fopen("/tmp/sequencers","a"))== NULL)
+CvDataPipe/perf/test/test0.c:   key = ftok("/tmp/1", 1);
+CvOfflineRegistry/CvOfflineRegistryTester/CvOfflineRegistryTester.cpp:	path = "/tmp";
+CVSVCRemoteConfig/CVSVCRemoteConfig.cpp:		//FILE *fp3 = fopen("/tmp/configure2", "a+");	
+CVSVCRemoteConfig/CVSVCRemoteConfig_hp.cpp:	if (!(fp = fopen("/tmp/devinfo", "a+")))
+CvCryptLib/cvcl_prng.c:		stat("/tmp", &s.st);
+CvCryptLib/cvcl_twister.c:		stat("/tmp", &s.st);
+Binary file CvCryptLib/sign/libcvcl.so matches
+CvLib/CvNamedSync.C:		string dir="/tmp";
+CvLib/CvNamedSync.C:			dir="/tmp";
+CvLib/CvProcessCache.C:	command = "ls -l /tmp | wc -l";
+CvLib/CvProcessCache.C:		command = "ls -l /tmp | wc -l";
+CvLib/CvProcessCache.C:		command = "ls -l /tmp | wc -l";
+CvLib/CvProcessCache.C:	command = "ls -l /tmp | wc -l";
+CvLib/CvProcessCache.C:	command = "ls -l /tmp | wc -l";
+CvLib/CvException.C:	if (!access("/tmp/CvException.log", F_OK))
+CvLib/test_lock.C:static const char * data_file="/tmp/test_lock.data";
+CvLib/test_lock.C:static const char * lock_file="/tmp/test_lock.data.lock";
+CvLib/test_lock.C:static const char * dummy_lock_file="/tmp/test_lock.dummy.lock";
+Binary file CvLib/core matches
+CvLib/test_mutex.C:static const char * data_file="/tmp/test_mutex.log";
+CvLib/test_mutex.C:			THROW(fname, string("Failed to open /tmp/test_mutex.log:\n")+
+CvLib/test_mutex.C:			THROW(fname, string("Failed to open /tmp/test_mutex.log:\n")+
+CvLib/test_mutex.C:		fprintf(stderr, "Now sort and check /tmp/test_mutex.log file for corruption\n");
+CvLib/test_sem.C:static const char * data_file="/tmp/test_sem.log";
+CvLib/test_sem.C:			THROW(fname, string("Failed to open /tmp/test_sem.log:\n")+
+CvLib/test_sem.C:			THROW(fname, string("Failed to open /tmp/test_sem.log:\n")+
+CvLib/test_sem.C:		fprintf(stderr, "Now sort and check /tmp/test_sem.log file for corruption\n");
+CvLib/test_fork.C:static const char * reg_base="/tmp/registry";
+CvLib/test_reg1.C:static const char * reg_base="/tmp/registry";
+CvLib/Shared/PerfCounter.cpp:		static const char *reset_fname = "/tmp/CV.perfcounter.reset";
+CvLib/Shared/PerfCounter.cpp:		static const char *fname = "/tmp/CV.perfcounter";
+CvLib/Shared/RegKeysToPreserve.xml:   <z:row ows_ID='51' ows_LinkTitleNoMenu='bCHECK_SYSTEM' ows_Reg_x0020_Type='DWORD' ows_Reg_x0020_Key='&lt;Instance Root&gt;\SpaceCheck (for 5.9 and 6.1).  &lt;Instance Root&gt;\QMachineMaint (for 7.0).' ows_Purpose='&lt;font face=&quot;Times New Roman&quot;&gt;If set to 1, cvd will check the space requirements specified for the system directories such as the %TEMP% directory for windows and /tmp or /var directories for UNIX.&lt;/font&gt;' ows_Scope='ALL' ows_Applies_x0020_to_x0020_Windows='YES' ows_Applies_x0020_to_x0020_UNIX='YES' ows_Created_x0020_By_x0020_Install='NO' ows_Reg_x0020_Data='&lt;font face=&quot;Times New Roman&quot;&gt;default: 1&lt;/font&gt;' ows_Preserved_x0020_During_x0020_Upg='NO' />
+CvLib/Shared/RegKeysToPreserve.xml:   <z:row ows_ID='587' ows_LinkTitleNoMenu='nSYSTEMP_MIN' ows_Reg_x0020_Type='DWORD' ows_Reg_x0020_Key='&lt;Instance Root&gt;\SpaceCheck (for 5.9 and 6.1).  &lt;Instance Root&gt;\QMachineMaint (for 7.0).' ows_Purpose='&lt;font face=&quot;Times New Roman&quot;&gt;This registry key specifies the minimum number of bytes that should be available in the System temp directory. &amp;nbsp;For example, in windows: %TEMP% and in Unix: /tmp. &amp;nbsp;If this value is set to 0, then the available space is not checked for this directory.&lt;/font&gt;' ows_Scope='ALL' ows_Applies_x0020_to_x0020_Windows='YES' ows_Applies_x0020_to_x0020_UNIX='YES' ows_Created_x0020_By_x0020_Install='NO' ows_Reg_x0020_Data='&lt;font face=&quot;Times New Roman&quot;&gt;default: 500MB&lt;/font&gt;' ows_Preserved_x0020_During_x0020_Upg='NO' />
+CvLib/Shared/RegKeysToPreserve.xml:   <z:row ows_ID='924' ows_LinkTitleNoMenu='sORATABPATHS ' ows_Reg_x0020_Type='string' ows_Reg_x0020_Key='&lt;Instance Root&gt;/OracleAgent' ows_Read_x0020_Only='NO' ows_Purpose='&lt;p&gt;For Autodiscovery on Unix /etc/oratab(/var/opt/oracle/oratab for SOLARIS platform) file get used to read instance configuration on client side. If use wants to specify alternate paths to read Oracle Instance config from this registry can be used. Its value is comma separated list of oratab file paths. If more than one path , they should be separated by comma. e.g.&amp;nbsp;&amp;nbsp;&amp;nbsp; sORATABPATHS=/etc/oratab, /tmp/oratab will read entries from both the files and complete the auto discovery&amp;nbsp; process.&lt;/p&gt;
+CvLib/Shared/RegKeysToPreserve.xml:&lt;div&gt;e.g.&amp;nbsp;&amp;nbsp;&amp;nbsp; sORATABPATHS=/etc/oratab, /tmp/oratab &lt;/div&gt;' ows_Preserved_x0020_During_x0020_Upg='NO' />
+CvLib/Shared/RegKeysToPreserve.xml:*.a *.so *.so.* *.lib lib* *.la *.o *.ln *.sl *.csh *.sh *.ksh /usr/** /bin/** /lib/** /boot/** /dev/** /etc/** /var/** /tmp/** /sbin/** /lib64/** /opt/** /sys/** /kernel/** /devices/** /proc/** /selinux/** /stand/** /*.DATACLASS_*/**
+CvLib/Shared/CXFileUtility.cpp:		// log file if file /tmp/CXIndexLogging (Unix) or c:\tmp\CXIndexLogging exists.
+CvLib/Shared/CXFileUtility.cpp:			sprintf(tempDir, "%s", "/tmp");
+CvLib/Shared/CXFileUtility.cpp:		FILE *fp = fopen("/tmp/dao.out", "a");
+CvLib/Shared/CXFileUtility.cpp:			FILE *fp = fopen("/tmp/dao.out", "a");
+CvLib/Shared/CXFileUtility.cpp:		FILE *fp = fopen("/tmp/dao.out", "a");
+CvLib/Shared/CXFileUtility.cpp:			FILE *fp = fopen("/tmp/dao.out", "a");
+CvIDA/Scan/Nutanix/NutanixAFSManager/NutanixAFSManagerAPIHelper.cpp:		m_strLogFolderPath = "/tmp/logs";
+CvIDA/Scan/Unix/GlusterScanEngine.cpp:	// Glusterfind command is run on the gluster server. This registry key is used to change that location from default /tmp
+CvIDA/Scan/Unix/GlusterScanEngine.cpp:		m_sGlusterCollectRemoteLocation = "/tmp";
+CvIDA/Scan/Unix/GlusterScanEngine.cpp:// Description 	: Removes the gluster collect based on the hook file present in /tmp directory
+CvIDA/Scan/Unix/GlusterScanTest.cpp:	string sCollect("/tmp/GlusterCollect.cvf");
+CvIDA/Scan/Unix/GlusterScanDBTest.cpp:	string sCollect("/tmp/GlusterCollect.cvf");
+CvIDA/Scan/Unix/GlusterScanDBTest.cpp:	string current_dbdir = "/tmp/current_dbdir/";
+CvIDA/Scan/Unix/GlusterScanDBTest.cpp:	string temp_dbdir = "/tmp/temp_dbdir/";
+CvIDA/Scan/Unix/GlusterScanDBTest.cpp:	string config = "/tmp/config.txt";
+CvIDA/Scan/FSSQLiteDB/UnitTest/FilesystemDatabaseTest.cpp:    		"\t\t -dbpath <Path where to create the database> (Required) ex : /tmp/DB.db ""\n"
+QiSQLite/DatabaseBase.cpp:		strTempPath = "/tmp";
+QiSQLite/Distribution/sqlite3.c:** Another approach to is to use files in /dev/shm or /dev/tmp or an
+QiSQLite/Distribution/sqlite3.c:     "/var/tmp",
+QiSQLite/Distribution/sqlite3.c:     "/usr/tmp",
+QiSQLite/Distribution/sqlite3.c:     "/tmp",
+QiSQLite/Distribution/sqlite3.c:  len = strlcpy(lPath, "/tmp/", maxLen);
+QiSQLite/Distribution/sqlite3.c:       "/var/tmp",
+QiSQLite/Distribution/sqlite3.c:       "/usr/tmp",
+QiSQLite/Distribution/sqlite3.c:       "/tmp",
+CvFirewall/daemon/cvfwd_ssl.c:		stat("/tmp", &s.st);
+CVSANUtil/CVSANPlatformW2K/CVSANVolumeImplWin2K.cpp:    //tmpExtent.logicalOffsetLow = extentsBuf->Extents[i].StartingOffset.LowPart;
+CVSANUtil/CVSANPlatformW2K/CVSANVolumeImplWin2K.cpp:    //tmpExtent.logicalOffsetHigh = extentsBuf->Extents[i].StartingOffset.HighPart;
+CvPatchesCommon/PackageCache.cpp:	// For Unix, use /tmp as temp folder
+CvPatchesCommon/PackageCache.cpp:	strcpy(szTempDirectory, "/tmp");
+DLP/DlpScan.cpp:			os_dirs.push_back("/tmp");
+Binary file fssubclients/core matches
+CvSession/CVSXdrConvert.cpp:			char * tmp_str=tempnam("/tmp", "cvs");
+CvSession/CvNetwork.cpp:		RETURN_ON_QIERR(PushWhitelistPath("/tmp", whitelistPaths));
+CvSession/CvNetwork_stfs.cpp:    if (!stat("/tmp/stfs_client",&file_stat)) {
+CvSession/CvNetwork_stfs.cpp:    while(!access("/tmp/cvsession.sleep",F_OK)) {
+ManageEMCUnity/ManageEMCUnity.cpp:	m_sCookieJar = "/tmp";
+CVSnapStorageCapture/HPUX.py:		self.metadataFileNameTemplate = "/tmp/CvSysInfoTool-VGMetadata"	
+Binary file CVSnapStorageCapture/CvSysInfo_64aix6.1.tar matches
+CVSnapStorageCapture/CaptureUsage.py:        print '    ./Capture -f /tmp/myoutput.xml VolGroup0 VolGroup1'
+CVSnapStorageCapture/CaptureUsage.py:        str = 'Captures VolGroup0, VolGroup1 data and saves the captured information to /tmp/myoutput.xml.'
+Binary file CVSnapStorageCapture/CvSysInfo_solaris2.10-x86_64.tar matches
+CVSnapStorageCapture/IBMAIX.py:                        #--If the command is successful, then  a file for each VG is created in the /tmp/vgdata/<vgname>/<vgname>.data directory
+CVSnapStorageCapture/IBMAIX.py:		#	bak_filename = "/tmp/CvSysInfoTool_" + vg
+CVSnapStorageCapture/IBMAIX.py:                #                filename = "/tmp/vgdata/" + vg + "/" + vg + ".data"
+CVSnapStorageCapture/output.xml:    # in progress.  A directory like /tmp that may get wiped on reboot is OK.
+CVSnapStorageCapture/output.xml:					/tmp1
+CVSnapStorageCapture/FindOS.py:                        print '\nUnable to find the OS platform...Exiting the tool...Please check /tmp/CvSysInfotool.log\n'
+CVSnapStorageCapture/FindOS.py:                print '\nUnable to find the OS platform...Exiting the tool...Please check /tmp/CvSysInfotool.log\n'
+CVSnapStorageCapture/README:        This tool also generates a log file under /tmp, named as
+CVSnapStorageCapture/README:        executes, you can as well do "tail -f /tmp/CvSysInfoTool.log"
+CVSnapStorageCapture/README:        Please refer  the generated /tmp/CvSysInfoTool.log file for
+CVSnapStorageCapture/Solaris.py:LOG_FILENAME = '/tmp/CvSysInfo_solaris.out'
+CVSnapStorageCapture/Solaris.py:        if mount.mnt in ['/', '/usr', '/var', '/sys', '/proc', '/tmp', '/opt', '/dev', '/dev/pts', '/home', '/boot', '/dev/shm']:
+Binary file CVSnapStorageCapture/CvSysInfo_hp11.23-ia64.tar matches
+Binary file CVSnapStorageCapture/.#CvSysInfo_linux-glibc2.3-x86_64.tar.1.16 matches
+Binary file CVSnapStorageCapture/.#CvSysInfo_hp11.23-ia64.tar.1.13 matches
+CVSnapStorageCapture/ReadmeGenerate.py:	str = 'This tool also generates a log file under /tmp, named as CvSysInfoTool.log. This log file records all the executed commands and  their stdouts and stderrs. While the tool executes, you can as well do "tail -f /tmp/CvSysInfoTool.log" to see the commands and their outputs/errors.'
+CVSnapStorageCapture/ReadmeGenerate.py:	str = 'Please refer  the generated /tmp/CvSysInfoTool.log file for the complete list of commands and their options executed by the tool. All these commands are mostly display commands for n/w interfaces, mount points, volume managers, disks-arrays, FC adapters, iscsi initiators/targets, operating system/kernel versions, multi-paths, clusters setup etc. Here are some of the sample commands executed by the tool:'
+CVSnapStorageCapture/Linux.py:		self.metadataFileNameTemplate = "/tmp/CvSysInfoTool-VGMetadata-%s"
+CVSnapStorageCapture/SubProcessHandler.py:LOG_FILENAME = '/tmp/CvSysInfoTool.log' 
+Binary file CVSnapStorageCapture/CvSysInfo_linux-glibc2.3.tar matches
+Binary file CVSnapStorageCapture/CvSysInfo_linux-glibc2.3-x86_64.tar matches
+CVSnapStorageCapture/Capture.py:		print "Please see /tmp/CvSysInfoTool.log for error details.\n"
+CVSnapStorageCapture/Capture.py:		tar_cmd = "tar -cvf "+ tar_file_name + " "  +chdir+ " " + os.path.basename(argsObj.filename) + " -C " + os.path.dirname("/tmp/CvSysInfoTool.log")+ " " +os.path.basename("/tmp/CvSysInfoTool.log")
+CVSnapStorageCapture/Capture.py:		tar_cmd = "tar -cvf "+ tar_file_name + " -C " + os.path.dirname("/tmp/CvSysInfoTool.log")+ " " +os.path.basename("/tmp/CvSysInfoTool.log")
+CVSnapStorageCapture/Capture.py:	#print "\tLog file: /tmp/CvSysInfoTool.log"
+MachDep/test_mutex.C:static const char * data_file="/tmp/test_mutex.log";
+MachDep/test_mutex.C:			THROW(fname, string("Failed to open /tmp/test_mutex.log:\n")+
+MachDep/test_mutex.C:		fprintf(stderr, "Now check the /tmp/test_mutex.log file for problems\n");
+MachDep/CVMutex.C:			lockFileName="/tmp/";
+CvISCSI/CvISCSIAIX.cpp:		string tmp_file = " /tmp/__etc_iscsi_targets_" + std::to_string(rand());
+Binary file QiUtils/core matches
+QiUtils/CrossPlatform_winapi.h:inline size_t GetTempPathA(_In_ size_t stCbBufSize, _Out_bytecap_(stCbBufSize) char* pszBuffer) { StringCbCopyA(pszBuffer, stCbBufSize, "/tmp"); return strlen(pszBuffer); }
+QiUtils/QiCLICmdBatch.cpp:	#define LD_PLINK_SLEEP_FILE "/tmp/plink32K.sleep"
+QiUtils/QiCLICmdBatch.cpp:	#define LD_TEMP_DIR "/tmp/"
+QiUtils/Unix/UnitTest.cpp:	const char* fromPath = "/tmp/symLinkTest/test1/a/b/c";
+QiUtils/Unix/UnitTest.cpp:	const char* toPath = "/tmp/symLinkTest/test1/a/1/2";
+QiUtils/Unix/UnitTest.cpp:	const char* dirPath = "/tmp/symLinkTest/test1/a/1/2/3/4";
+QiUtils/Unix/UnitTest.cpp:	const char* testPath = "/tmp/symLinkTest/test1/a/b/c/link/3/4";
+QiUtils/Unix/UnitTest.cpp:	const char* circle1 = "/tmp/symLinkTest/test1/a/b/c/r1";
+QiUtils/Unix/UnitTest.cpp:	const char* circle2 = "/tmp/symLinkTest/test1/a/b/c/r2";
+QiUtils/Unix/UnitTest.cpp:	FXFile::RemoveFolder("/tmp/symLinkTest", FXFile::REMFOL_RECURSIVE_DELETE );
+cvsup.out:cvs update: Updating CVScsi/SBC_write/tmp
+cvsup.out:cvs update: Updating CVScsi/tmp
+cvsup.out:cvs update: Updating CVScsi/tstPlatform/tmp
+sendLogFilesClient/sendLogFilesClientUNIX.cpp:	ifstream clusterNames (FXString::Format("/tmp/clusterNames_%s", timestamp.c_str()));
+sendLogFilesClient/sendLogFilesClientUNIX.cpp:	strcpy(jobResultFilePath,"/tmp/libcvobk.log");
+sendLogFilesClient/sendLogFilesClientUNIX.cpp:		strcpy(buf,"/tmp/libcvobk.log");
+sendLogFilesClient/sendLogFilesClientCrossPlatformCommon.cpp:		string targetFile = (cb.getGalaxyTempDirectory() ? cb.getGalaxyTempDirectory() : "/tmp");
+sendLogFilesClient/cvFetchClusterNamesScript.sh:fullPathClusterNames="/tmp/clusterNames_$1"
+sendLogFilesClient/cvCollectClusterLogScript.sh:fullPathAnsibleLogOutPut=/tmp/$fullNameAnsibleLogOutPut
+sendLogFilesClient/cvCollectClusterLogScript.sh:fullPathClusterLogOutPut=/tmp/$fullNameClusterLogOutPut
+Binary file CvCxx/core matches
+CvCxx/Makefile:GCC_S_SRC:=$(shell fnm="/tmp/cvgxx$$$$"; echo "main(){}" > $$fnm.c;\
+CvCxx/Makefile:STDCXX_SRC:=$(shell fnm="/tmp/cvgxx$$$$"; echo "main(){}" > $$fnm.c;\
+CvCxx/Makefile:GCC_LIBDIR:=$(shell fnm="/tmp/cvgxx$$$$"; echo "main(){}" > $$fnm.c;\
+CvCxx/Makefile:GCC_LIBDIR:=$(shell fnm="/tmp/cvgxx$$$$"; echo "main(){}" > $$fnm.c;\
+CvCxx/Makefile:	echo "void dummy_cvcxx_func(void) {}" > /tmp/$$$$.C &&\
+CvCxx/Makefile:	$(CXX) $(CFLAGS) $(SOFLAGS) $(LDFLAGS) /tmp/$$$$.C -o $(CVBIN)/libCvCxx.$(SO) &&\
+CvCxx/Makefile:	rm -f /tmp/$$$$.C
+Binary file CvCxx/12555.o matches
+DatabaseUpgrade/CSDBUpgrade.cpp:	currDir += "/tmp";
+DatabaseUpgrade/DBUpgradeFunctions.cpp:		outputFileName = "/tmp";
+CvMPIO/VeritasDMP/VeritasDMP.cpp:#define hook_file "/tmp/VERITASDMP_DEBUG_HOOK"
+CvMPIO/CvMPIO_Mgr/CvMPIO.cpp:	/* if( access( "/tmp/badCleanUp", 0) != 0 ) */
+CvMPIO/CvMPIO_Mgr/CvMPIO.cpp:		/*if( access( "/tmp/badCleanUp", 0) != 0 )*/
+CvMPIO/CvMPIO_Mgr/CvMPIO.cpp:	/*if( access( "/tmp/badCleanUp", 0) != 0 )*/
+->CvMPIO/SolarisNative/SolarisNative.cpp:#define hook_file "/tmp/SOLNATIVE_DEBUG_HOOK"
+CvMPIO/CvMPIO_HDLM/CvMPIO_HDLM.cpp:const string sMPIODebugFile = "/tmp/MPIO_HDLM_VERBOSE_LOGGING";
+CvSim/RegTool/reg_tool.C:   reg_tool -save Galaxy/Services /tmp/reg_dump.bin\n\
+CvSim/RegTool/reg_tool.C:   reg_tool -load Galaxy/Services /tmp/reg_dump.bin -r /tmp/registry\n\
+CvSim/RegTool/reg_tool.C:   reg_tool -push Galaxy/Services rex.commvault.com -f /tmp/reg_dump.bin\n\
+CvSim/RegTool/reg_tool.C:   reg_tool -pull Galaxy/Services rex.commvault.com -f /tmp/reg_dump.bin\n\n");
+CvSim/GetClientInfo/GetClientInfo.C:	const char* FileToWrite="/tmp/GalaxyClientList";
+CvSim/getHostFile/getallhosts.C:	FILE *fp = fopen("/tmp/cvinstall", "a+");
+CvSim/cvrem/cvrem.C:   cvrem -recv -v rex /etc/passwd /tmp/passwd\n\n");
+CvSim/CrcExtractor/crc_extractor.c:		char fname1[]={ "/tmp/vmlinuz_XXXXXX" };
+CvSim/CrcExtractor/crc_extractor.c:		char fname2[]={ "/tmp/vmlinux_XXXXXX" };
+CvSim/UpdateInstaller/makeInstallerMakeFile:##### delete /tmp after finish ###
+CvSim/UpdateInstaller/makeInstallerMakeFile:tmpid=$$`date +%H%M`  # id using for temporary file in /tmp
+CvSim/UpdateInstaller/makeInstallerMakeFile:rm -rf /tmp/ins.${tmpid} 
+CvSim/pkgcrypt/pkgcrypt.c:pkgcrypt -s \"Secret phrase\" -e -f /tmp/pkgpush_cfg /tmp/pkgpush_cfg.new\n\n");
+CvSim/CvsCleanup/cvs_cleanup.sh:WORKDIR="/tmp/cvs_cleanup"
+
+
+https://commvault.zoom.us/j/886377855?pwd=alRBWkhHcmpCVWMwVTBGRVk1Nlp6QT09
+
+// Hello
+->CVHDS/HDSProvider/CVHDSProvider.cpp:    string  hookfile = "/tmp/";
+=>PrePostInstall/PrePostInstall.cpp:/*		    string tmpPath = "/tmp";
+PrePostInstall/PrePostInstall.cpp:		sprintf(tempPath, "%s", "/tmp/.gxsetup/");	
+PrePostInstall/PrePostInstall.cpp:	        while (access("/tmp/PrePostInstall.sleep", 0)== 0)
+CvManageHuawei/CvManageHuawei.h:	//createSession creates a new session. Internally it creates a new base token and saves the cookie file to C:\\ or /tmp
+CvManageHuawei/CvManageHuawei.cpp:	m_sCookieFile = "/tmp";
+CvManageHuawei/HuaweiRestAPI.cpp:		//In case of windows it is C:\\ and in unix it is /tmp).
+CvClntCert/CvClntCert.cpp:				stat("/tmp", &s.st);
+SIMCallWrapper/SIMCallWrapper.cpp:			sOutputDir = "/tmp";
+CVScsi/CVS/Entries:D/tmp////
+CVScsi/SBC_write/tmp/CVS/Repository:vaultcx/Source/Common/CVScsi/SBC_write/tmp
+CVScsi/SBC_write/CVS/Entries:D/tmp////
+CVScsi/tstPlatform/CVS/Entries:D/tmp////
+CVScsi/tstPlatform/tmp/CVS/Repository:vaultcx/Source/Common/CVScsi/tstPlatform/tmp
+CVScsi/tmp/CVS/Repository:vaultcx/Source/Common/CVScsi/tmp
+CvRcgMgr/CvRcgCtrllr.cpp:    string tmpDir = "/tmp/prmconfsimpana"; 
+CvRcgMgr/hpuxRcg.cpp:    string tmpDir = "/tmp/prmconfcv";
+CvOracleTools/README:        6. By default log file is generated at  /tmp/migrateOracle.log.
+CvOracleTools/migrate.py:    cvhelper.setLogging("/tmp/migrateOracle.log")
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:<installFlags install32Base=\"0\" install64Base=\"0\" decoupledInstall=\"%d\" allowNewerCommserve=\"0\" allowMultipleInstances=\"1\" numberOfStreams=\"10\" unixGroup=\"%@\" unixGroupAccess=\"%ld\" unixOtherAccess=\"%ld\" unixTempDirectory=\"/tmp/.gxsetup\" restoreOnlyAgents=\"%d\" forceIPV4=\"0\" singleInterfaceBinding=\"0\" installLatestServicePack=\"0\" loadWAToKernel=\"0\" forceReboot=\"0\" useNewOS=\"0\" ignoreJobsRunning=\"0\" autoRegister=\"0\">\n\
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:<installFlags install32Base=\"0\" install64Base=\"0\" decoupledInstall=\"%d\" allowNewerCommserve=\"0\" allowMultipleInstances=\"1\" numberOfStreams=\"10\" unixGroup=\"%@\" unixGroupAccess=\"%ld\" unixOtherAccess=\"%ld\" unixTempDirectory=\"/tmp/.gxsetup\" restoreOnlyAgents=\"%d\" forceIPV4=\"0\" singleInterfaceBinding=\"0\" installLatestServicePack=\"0\" loadWAToKernel=\"0\" forceReboot=\"0\" useNewOS=\"0\" ignoreJobsRunning=\"0\" autoRegister=\"0\">\n\
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:<installFlags install32Base=\"0\" install64Base=\"0\" decoupledInstall=\"%d\" allowNewerCommserve=\"0\" allowMultipleInstances=\"1\" numberOfStreams=\"10\" unixGroup=\"%@\" unixGroupAccess=\"%ld\" unixOtherAccess=\"%ld\" unixTempDirectory=\"/tmp/.gxsetup\" restoreOnlyAgents=\"%d\" forceIPV4=\"0\" singleInterfaceBinding=\"0\" installLatestServicePack=\"0\" loadWAToKernel=\"0\" forceReboot=\"0\" useNewOS=\"0\" ignoreJobsRunning=\"0\" autoRegister=\"0\">\n\
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:    [self cp:fi to:@"/tmp/install.gz"];
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:            self.currentLog = @"/tmp/.gxsetup/sil_silent_install.log.";
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:            self.currentLog = @"/tmp/.gxsetup/sil_silent_install.log.";
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:            self.currentLog = @"/tmp/.gxsetup/sil_silent_install.log.";
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:                    self.currentLog = @"/tmp/.gxsetup/int_cvupdadd.log.";
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:                    self.currentLog = @"/tmp/.gxsetup/sil_silent_install.log.";
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:                    self.currentLog = @"/tmp/.gxsetup/sil_silent_install.log.";
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:            self.currentLog = @"/tmp/.gxunixsetup/int_cvpkgcfg.log.";
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:            self.currentLog = @"/tmp/.gxsetup/int_cvpkgadd.log.";
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:            self.currentLog = @"/tmp/.gxsetup/sil_silent_install.log.";
+CvSetup/CvSetup/CvAppDelegate+CvUtilities.m:            self.currentLog = @"/tmp/.gxsetup/int_cvpkgrm.log.";
+CvSetup/CvSetup/CvAppDelegate.m:    NSString *try = [NSString stringWithFormat:@"sudo ls -d /tmp 2>&1"];
+CvSetup/CvSetup/CvAppDelegate.m:    NSString *try = [NSString stringWithFormat:@"echo \"%@\" | sudo -S ls -d /tmp 2>&1", [self.password stringValue]];
+Binary file Partner/Snap/Infinidat/Win/x64/CvSnapINFINIDAT.dll matches
+Binary file Partner/Snap/Infinidat/Win/Win32/CvSnapINFINIDAT.dll matches
+QiNetwork/CurlWrapper.cpp:			if(0!=access("/tmp/CVREMOTEFILE_NO_OPENSSL_CALLBACK", F_OK)) 
+CVInstallClient/CVInstallClientProcessRequest.cpp:		sOutputDir = "/tmp";
+Oracle/OraAgentBase/SapJobProgress.cpp:					  if( access( "C:/tmp/SapJobProgress.debug", F_OK) == 0 )
+Oracle/OraAgentBase/SapJobProgress.cpp:					  if( access( "/tmp/SapJobProgress.debug", F_OK) == 0 )
+Oracle/OraAgentBase/OraAgentBase20.cpp:		"/tmp/ClOraAgentDebug.log";
+Oracle/OraInfo/OraObject.cpp:					 access("/tmp/cvquerytest.txt", 0) == 0
+Oracle/OraInfo/ASMSnapUtil.cpp:		sprintf(tmpSqlFilePtr + n, "/tmp_asm_%d.sql", getpid());
+Oracle/OraInfo/ASMSnapUtil.cpp:         //Disk "/tmp/snap_1233027203/sdt1" is marked an ASM disk with the label "VOL2"
+Oracle/OraLib/OraLib.cpp:			  "/tmp/61279|nonASM|/oracle/app/11.2.0/dbhome/dbs/initsen1.ora|61279|2|26258"
+CvDiagnostics/InformixLogCollector.cpp:	UNIX	- /tmp/bar_act.log
+CvDiagnostics/InformixLogCollector.cpp:		barLogPath = "/tmp/bar_act.log";
+CNMessages/BuildScripts/CNMsgGenerate.awk:	#	> "D:/tmp/Output/" TARGET_XMLSCHEMA_FILE
+CNMessages/BuildScripts/CNMsgGenerateCharOnly.awk:	#	> "D:/tmp/Output/" TARGET_XMLSCHEMA_FILE
+CvUnixSetup/cvp/uxnet.c:# define X11_UNIX_PATH "/tmp/.X11-unix/X"
+CvUnixSetup/cvp/uxshare.c:#define CONNSHARE_SOCKETDIR_PREFIX "/tmp/putty-connshare"
+CvUnixSetup/cvp/uxshare.c:     * /tmp/putty-connshare.<username>, because if we leave it around
+CvUnixSetup/cvp/ux_x11.c:     * work - file permissions in /tmp may prevent it, for example -
+CvUnixSetup/cvp/ux_x11.c:    unix_path = dupprintf("/tmp/.X11-unix/X%d", displayno);
+CvUnixSetup/cvp/ux_x11.c:        tmpdir = "/tmp";
+CvUnixSetup/cvp/uxnoise.c: * and scanning /tmp, load the saved random seed from disk, and
+CvUnixSetup/cvp/uxnoise.c:    fp = popen("ls -al /tmp 2>/dev/null", "r");
+CvUnixSetup/CvUnixSetupTest/MainForm.cs:                textBoxToDir.Text = "/tmp";
+CvUnixSetup/CvUnixSetupTest/MainForm.Designer.cs:            this.textBoxToDir.Text = "/tmp";
+CvUnixSetup/CvUnixSetupTest/MainForm.Designer.cs:            this.textBox1.Text = "/tmp";
+CvUnixSetup/scripts/detect:	[ -f /tmp/newinstall.gz ] && CV_USER_NEWINSTALL="/tmp/newinstall.gz"
+CvUnixSetup/scripts/detect:	[ -f /tmp/newinstall ] && CV_USER_NEWINSTALL="/tmp/newinstall"
+CvUnixSetup/scripts/detect:	# otherwise use ~ if HOME is / use /tmp
+CvUnixSetup/scripts/detect:	userHomeDir=$HOME; [ "x$userHomeDir" = "x/" -o "x$userHomeDir" = "x" ] && userHomeDir=/tmp
+CvUnixSetup/scripts/detect:		[ x$SUFFIX = x-x86_64 ] && [ "$RESET32BITLINUX" = "yes" -o -f /tmp/cvpkgadd_unlock_32 ] && SUFFIX=""
+CvUnixSetup/scripts/detect:		[ -f /tmp/cvpkgadd_unlock_32 ] && echo "i386" || echo "x86_64"
+CvUnixSetup/scripts/detect:	[ -f /tmp/cvpkgadd_unlock_CVGxFusion ] && return 0
+CvUnixSetup/scripts/detect:	[ -f /tmp/cvpkgadd_unlock_CVGxSQLServer ] && return 0
+CvUnixSetup/scripts/detect:	[ -f /tmp/cvpkgadd_unlock_CVGxIndexingServer ] && return 0
+CvUnixSetup/scripts/detect:	[ "$XML_install32Base" = "1" -o "$REG_sUpdateOSID" = "linux-x86" ] && RESET32BITLINUX=yes && touch /tmp/cvpkgadd_unlock_32 && setPFID
+CvUnixSetup/scripts/detect:		[ -f /tmp/newinstall ] && CV_NEWINSTALL="/tmp/newinstall"
+CvUnixSetup/scripts/detect:		[ -f "$CV_NEWINSTALL" ] || CV_NEWINSTALL="/tmp/newinstall"
+CvUnixSetup/scripts/detect:	if [ -f /tmp/.rom ]; then
+CvUnixSetup/scripts/detect:		. /tmp/.rom
+CvUnixSetup/scripts/detect:		rm -f /tmp/.rom
+CvUnixSetup/scripts/detect:	if [ -f /tmp/.foi ]; then
+CvUnixSetup/scripts/detect:		. /tmp/.foi
+CvUnixSetup/scripts/detect:		rm -f /tmp/.foi
+CvUnixSetup/putty-0.58/doc/pscp.but:\c{example.com} as user \c{fred} to the file \c{/tmp/foo} you would
+CvUnixSetup/putty-0.58/doc/pscp.but:\c pscp c:\documents\foo.txt fred@example.com:/tmp/foo
+CvUnixSetup/putty-0.58/doc/puttydoc.txt:       `example.com' as user `fred' to the file `/tmp/foo' you would type:
+CvUnixSetup/putty-0.58/doc/puttydoc.txt:         pscp c:\documents\foo.txt fred@example.com:/tmp/foo
+CvUnixSetup/putty-0.58/doc/puttydoc.txt:         /tmp/ssh-XXNP18Jz/agent.28794
+CvUnixSetup/putty-0.58/doc/pageant.but:\c /tmp/ssh-XXNP18Jz/agent.28794
+CvUnixSetup/putty-0.58/doc/Chapter9.html:/tmp/ssh-XXNP18Jz/agent.28794
+CvUnixSetup/putty-0.58/doc/Chapter5.html:So to copy the local file <code>c:\documents\foo.txt</code> to the server <code>example.com</code> as user <code>fred</code> to the file <code>/tmp/foo</code> you would type:
+CvUnixSetup/putty-0.58/doc/Chapter5.html:<pre><code>pscp c:\documents\foo.txt fred@example.com:/tmp/foo
+CvUnixSetup/putty-0.58/unix/uxnet.c:# define X11_UNIX_PATH "/tmp/.X11-unix/X"
+CvUnixSetup/putty-0.58/unix/uxnoise.c: * and scanning /tmp, load the saved random seed from disk, and
+CvUnixSetup/putty-0.58/unix/uxnoise.c:    fp = popen("ls -al /tmp 2>/dev/null", "r");
+CvUnixSetup/CvUnixSetup/CvUnixPushInstall.cpp:	ms_unixTempDirectory = CString("/tmp");
+CvUnixSetup/CvUnixSetup/CvUnixPushInstall.cpp:	ms_unixTempDirectory = CString("/tmp");
+CvUnixSetup/CvUnixSetup/CvUnixPushInstall.cpp:	if (isWhiteSpace(ms_unixTempDirectory)) ms_unixTempDirectory = CString("/tmp");
+CvUnixSetup/CvUnixSetup/CvUnixPushInstall.cpp:	if (isWhiteSpace(ms_unixTempDirectory)) ms_unixTempDirectory = CString("/tmp");
+CvApple/launchBrowser/launchBrowser.C:        as = fopen("/tmp/GalaxyReportLaunchBrowser", "w");
+CvApple/launchBrowser/launchBrowser.C:        //execl("/usr/bin/osascript", "/usr/bin/osascript", "/private/tmp/GalaxyReportLaunchBrowser", NULL);
+CvPdksh/misc/Bugs:tfile=/tmp/$tbase
+CvPdksh/misc/Bugs:sfile=/tmp/bug-s$$
+CvPdksh/misc/Bugs:#   		$ echo echo hi > /tmp/q ; chmod a+rx /tmp/q
+CvPdksh/misc/Bugs:#   		$ PATH=/tmp q
+CvPdksh/misc/Bugs:PATH=/tmp $tbase > /dev/null 2>&1
+CvPdksh/etc/profile:	""|/tmp)
+CvPdksh/etc/profile:		echo "Using /tmp for HOME"
+CvPdksh/etc/profile:		HOME=/tmp; export HOME
+CvPdksh/os2/README.os2:presense of /dev/null and /tmp.  (The emx layer provides an automatic map
+CvPdksh/ChangeLog.0:	* io.c(maketemp): use tmpdir variable if it is set, else use /tmp.
+CvPdksh/ChangeLog.0:	* io.c(maketemp): check/use TMPDIR variable instead of /tmp; allocate
+CvPdksh/ChangeLog.0:	  - `echo hi 1<> /tmp/does-not-exist' now works (used to say cannot
+CvPdksh/ksh.Man:directory, temporary files are created in \fB/tmp\fP.
+CvPdksh/io.c:	kshdebug_shf = shf_open("/tmp/ksh-debug.log",
+CvPdksh/io.c:	dir = tmpdir ? tmpdir : "/tmp";
+CvPdksh/NOTES:		echo 2+ > /tmp/x
+CvPdksh/NOTES:		read x < /tmp/x
+CvPdksh/NOTES:	$ xx: /tmp/sh1234.1: cannot open
+CvPdksh/NOTES:      output is also redirected. so "set -x; echo foo 2> /tmp/O > /dev/null"
+CvPdksh/NOTES:      will create /tmp/foo with the lines "+ > /dev/null" and "+ echo foo".
+CvPdksh/NOTES:	$ PATH=/tmp ksh -r
+CvPdksh/NOTES:	$ FPATH=/tmp
+CvPdksh/NOTES:	$ echo echo hi there > /tmp/aja
+CvPdksh/ksh.Man.orig:directory, temporary files are created in \fB/tmp\fP.
+CvPdksh/BUG-REPORTS:    cat > /tmp/foobar
+CvPdksh/BUG-REPORTS:  a pipeline.  e.g., in "cat < /tmp/*gz | grep foo", the /tmp/*gz is
+CvPdksh/tests/th:$temps = "/tmp/rts$$";
+CvPdksh/tests/th:$tempi = "/tmp/rti$$";
+CvPdksh/tests/th:$tempo = "/tmp/rto$$";
+CvPdksh/tests/th:$tempe = "/tmp/rte$$";
+CvPdksh/tests/th:$tempdir = "/tmp/rtd$$";
+CvPdksh/tests/regress.t:		$ echo echo hi > /tmp/q ; chmod a+rx /tmp/q
+CvPdksh/tests/regress.t:		$ PATH=/tmp q
+CvPdksh/tests/cdhist.t:	cd /tmp
+CvPdksh/tests/cdhist.t:	/tmp
+CvPdksh/tests/cdhist.t:	  0 /tmp
+ctree-10.3.1/sdk/sql.php/src/ctsql.c:		log = fopen("/tmp/php","at");
+ctree-10.3.1/source/ntipcunx.c:	sprintf( Handle->SName, "/tmp/%s%d.SRV", Handle->ServerName, Handle->ConnectionId );
+ctree-10.3.1/source/ntipcunx.c:	sprintf( Handle->CName, "/tmp/%s%d.CLI", Handle->ServerName, Handle->ConnectionId );	
+ctree-10.3.1/source/ntipcunx.c:						sprintf( Handle->SName, "/tmp/%s%d.SRV", Handle->ServerName, Handle->ConnectionId );
+ctree-10.3.1/source/ntipcunx.c:						sprintf( Handle->CName, "/tmp/%s%d.CLI", Handle->ServerName, Handle->ConnectionId );
+ctree-10.3.1/source/ntipcunx.c:					sprintf( Handle->SName, "/tmp/%s%d.SRV", Handle->ServerName, Handle->ConnectionId );
+ctree-10.3.1/source/ntipcunx.c:					sprintf( Handle->CName, "/tmp/%s%d.CLI", Handle->ServerName, Handle->ConnectionId );	
+ctree-10.3.1/source/ctclb2.c:		strcpy(tmp,"/tmp.XXXXXXXX");
+ctree-10.3.1/source/ctclb2.c:		** Have to write to /tmp/ first.  fcsrv had errors with
+ctree-10.3.1/source/ctclb2.c:		** calling tmpnam which returned a result in /tmp so just
+ctree-10.3.1/source/ctclb2.c:		** added /tmp to the base above.
+ctree-10.3.1/source/ctclb2.c:		strcpy(tmp,"/tmp/ctree.tmp.XXXXXXXX");
+ctree-10.3.1/source/ntree/sharemm/unix/ctnlib_v10.h:#define SERVER_ROOT	"/tmp/ctreedbs/"
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.426.32.unifrmat/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/macosx5_32.unx.105.32/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.426.32/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/sunos5_64.unx.10.64.unifrmat/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/sunos5_64.unx.10.64.unifrmat/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/intel_3.lnx.226.64.unifrmat/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/intel_3.lnx.226.64.unifrmat/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/macosx5_64.unx.105.64.unifrmat/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/intel_3.lnx.226.64/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/intel_3.lnx.226.64/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/sunos5_64.unx.11.64/libctreesql.a matches
+Binary file ctree-10.3.1/lib/License.Lib/macosx5_64.unx.105.64/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/intel_2.lnx.26.32.unifrmat/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.726.32/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.726.32/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.726.32/libctreesql.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.726.32/libctreebnd.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.726.32.unifrmat/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.726.32.unifrmat/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.326.64/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.326.64/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/solx64.unx.11.64/libctreesql.a matches
+Binary file ctree-10.3.1/lib/License.Lib/qnxrtp.unx.6.32.unifrmat/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/intel_3.lnx.26.64.unifrmat/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/intel_3.lnx.26.64.unifrmat/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/qnxrtp.unx.6.32/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.626.64/libctreesql.a matches
+Binary file ctree-10.3.1/lib/License.Lib/risc.lnx.626.64/libctreebnd.a matches
+Binary file ctree-10.3.1/lib/License.Lib/sunos5.unx.10.32/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/sunos5.unx.10.32/dynamic/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/sunos5.unx.11.32/libctreesql.a matches
+Binary file ctree-10.3.1/lib/License.Lib/macosx6_64.unx.106.64.unifrmat/libctreesrv.a matches
+Binary file ctree-10.3.1/lib/License.Lib/macosx6_64.unx.106.64.unifrmat/dynamic/libctreesrv.a matches
