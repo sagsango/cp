@@ -1,21 +1,22 @@
 class Solution {
 public:
-    int countQuadruplets(vector<int>& arr) {
-        int n = arr.size(), cnt = 0;
-        int dp[n+2][6][405]; // dp[ till i len ][ taken num ][ sum ] = ways
-        memset(dp,0,sizeof(dp));
-        dp[0][0][0] = 1;
+    int countQuadruplets(vector<int>& nums) {
+        // nums[a] + nums[b] + nums[c] == nums[d], and
+        // a < b < c < d
+        
+        // nums[a] + nums[b]  == nums[d] - nums[c]
+        // a < b < c < d
+        
+        unordered_map<int,int>hashMap;
+        int cnt = 0, n = nums.size();
         for(int i=0;i<n;++i){
-            cnt += dp[i][3][arr[i]];
-            for(int j=0;j<=3;++j){
-                for(int k=0;k<=400;++k){
-                    dp[i+1][j][k] += dp[i][j][k];
-                }
+            for(int j=i+1;j<n;++j){
+                int key = nums[j] - nums[i];
+                cnt += hashMap[key];
             }
-            for(int j=0;j<3;++j){
-                for(int k=0;k+arr[i]<=400;k++){
-                    dp[i+1][j+1][k+arr[i]] += dp[i][j][k];
-                }
+            for(int j=0;j<i;++j){
+                int key = nums[i] + nums[j];
+                hashMap[key] += 1;
             }
         }
         return cnt;
