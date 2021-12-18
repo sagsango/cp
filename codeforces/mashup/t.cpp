@@ -1,86 +1,85 @@
-//
-//  mod.cpp
-//  
-//
-//  Created by Sagar Singh on 17/12/20.
-//
+/*
+Author : sagsango
+*/
 
 #include <iostream>
-#include <iomanip>
-#include <fstream>
 #include <vector>
-#include <set>
-#include <map>
-#include <cstring>
-#include <string>
-#include <cmath>
-#include <cassert>
-#include <ctime>
-#include <algorithm>
-#include <numeric>
-#include <sstream>
-#include <list>
-#include <queue>
-#include <deque>
-#include <stack>
-#include <cstdlib>
-#include <cstdio>
-#include <iterator>
-#include <functional>
-#include <bitset>
-#include <unordered_map>
-#include <unordered_set>
-#define bug1( x )                   { cerr << (#x) <<"="<< x << endl; }
-#define bug2( x , y )               { cerr << (#x) <<"="<< (x) << "    " << (#y) << "="<< (y) << endl; }
-#define bug3( x , y , z )           { cerr << (#x) <<"="<<(x) << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << endl; }
-#define bug4( x , y , z , w)        { cerr << (#x) <<"="<<(x) << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << endl; }
-#define bug5( x , y , z , w ,p)     { cerr << (#x) <<"="<<(x) << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << endl; }
-#define bug6( x , y , z , w ,p , q) { cerr << (#x) <<"="<<(x) << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << "    " << (#q) <<"="<< q << endl; }
-#define bugn( x , n )               { cerr<<(#x)<<":";for(int i=0;i<n;i++)cout<<(#x)<<"["<<i<<"]:"<< x[i] << "    "; cout<<endl; }
-#define bugnm( x , n , m )          { cerr<<(#x)<<endl;for(int i=0;i<n;i++){ cout<<"Row #"<<i<<":"; for(int j=0;j<m;j++) cout<<x[i][j]<<"     "; cout << endl;} }
-typedef unsigned long long ul;
-typedef long double ld;
 typedef long long ll;
 using namespace std;
 
-template<typename T, typename K>
-inline bool smax(T &x,const K &y){ return x < y ? x = y, true : false; }
-template<typename T, typename K>
-inline bool smin(T &x,const K &y){ return x > y ? x = y, true : false; }
+const int nax = 2e5+5;
+vector<int>g[nax];
+ll dp[nax], sub[nax], ans[nax], mx, n;
 
-#if 0
-const int nax = 5e3+5;
-int dp[nax][nax][2], a[nax], n;
-int main(){
-    ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-    for(int i=0;i<nax;++i){
-        for(int j=0;j<nax;++j){
-            for(int k=0;k<2;++k){
-                dp[i][j][k] = -1e9;
-            }
-        }
-        dp[i][i][0] = dp[i][i][1] = 0;
-    }
-    cin >> n;
-    for(int i=0;i<n;++i){
-        cin >> a[i];
-    }
-    for(int len=2;len<=n;++len){
-        for(int l=0;l+len<=n;++l){
-            int r =
-        }
-    }
-    
-}
-#endif
-
-
-int main(){
-    ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-    
-    
+void dfs1(int u,int p){
+	sub[u] = 1;
+	for(auto v:g[u]){
+		if( v != p ){
+			dfs1(v,u);
+			sub[u] += sub[v];
+		}
+	}
 }
 
+void dfs2(int u,int p){
+	dp[u] = sub[u];
+	for(auto v:g[u]){
+		if( v != p ){
+			dfs2(v,u);
+			dp[u] += dp[v];
+		}
+	}
+}
+
+void dfs3(int u,int p){
+	if(p){
+		dp[p] -= dp[u];
+		dp[p] -= sub[p];
+		sub[p] -= sub[u];
+		dp[p] += sub[p];
+
+		dp[u] -= sub[u];
+		sub[u] += sub[p];
+		dp[u] += sub[u];
+		dp[u] += dp[p];
+	}
+	ans[u] = dp[u];
+	for(auto v:g[u]){
+		if( v != p ){
+			dfs3(v,u);
+		}
+	}
+	if(p){
+		dp[u] -= dp[p];
+		dp[u] -= sub[u];
+		sub[u] -= sub[p];
+		dp[u] += sub[u];
+
+		dp[p] -= sub[p];
+		sub[p] += sub[u];
+		dp[p] += sub[p];
+		dp[p] += dp[u];
+	}
+}
+
+
+int main(){
+	cin>>n;
+	for(int i=1;i<n;++i){
+		int u, v; cin >> u >> v;
+		g[u].push_back(v);
+		g[v].push_back(u);
+	}
+	dfs1(1,0);
+	dfs2(1,0);
+	dfs3(1,0);
+
+	for(int i=1;i<=n;++i){
+		mx = max(mx, ans[i]);
+	}
+	cout << mx << endl;
+	
+}
 
 
 
@@ -90,3 +89,30 @@ int main(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int dp[nax][2], clr[nax], n;
+void dfs(int u,int p){
+	dp[u][clr[u]] = 1;
+	for(auto v:g[u]){
+		if( v != p ){
+			dfs(v,u);
+			dp[u][0] = dp[u][0] * ( dp[v][0] + dp[v][1] );
+			dp[u][1] = dp[u][1] * ( dp[v][0] + dp[v][1] ) + dp[u][0] * ( dp[v][1] );
+		}
+	}
+}

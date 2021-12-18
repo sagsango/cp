@@ -1,48 +1,175 @@
-#include <string>
-#include <vector>
+//
+//  mod.cpp
+//
+//
+//  Created by Sagar Singh on 17/12/20.
+//
+//
+#pragma GCC target("popcnt")
+#pragma comment(linker, "/stack:200000000")
+#pragma GCC optimize("Ofast")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+
 #include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <vector>
+#include <set>
+#include <map>
+#include <cstring>
+#include <string>
+#include <cmath>
+#include <cassert>
+#include <ctime>
+#include <algorithm>
+#include <numeric>
+#include <sstream>
+#include <list>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <cstdlib>
+#include <cstdio>
+#include <iterator>
+#include <functional>
+#include <bitset>
+#include <unordered_map>
+#include <unordered_set>
+
+#ifdef LOCAL
+#define WHILE_ONCE  while(false)
+#define RESET           "\033[0m"
+#define RED             "\033[31m"                  /* Red */
+#define GREEN           "\033[32m"                  /* Green */
+#define YELLOW          "\033[33m"                  /* Yellow */
+#define BLUE            "\033[34m"                  /* Blue */
+#define MAGENTA         "\033[35m"                  /* Magenta */
+#define CYAN            "\033[36m"                  /* Cyan */
+#define WHITE           "\033[37m"                  /* White */
+#define BOLDBLACK   "\033[1m\033[30m"     /* Bold Black */
+#define BOLDRED     "\033[1m\033[31m"     /* Bold Red */
+#define BOLDGREEN   "\033[1m\033[32m"     /* Bold Green */
+#define BOLDYELLOW  "\033[1m\033[33m"     /* Bold Yellow */
+#define BOLDBLUE    "\033[1m\033[34m"     /* Bold Blue */
+#define BOLDMAGENTA "\033[1m\033[35m"     /* Bold Magenta */
+#define BOLDCYAN    "\033[1m\033[36m"     /* Bold Cyan */
+#define BOLDWHITE   "\033[1m\033[37m"     /* Bold White */
+#define cerr cerr<<RED
+#define endline RESET<<endl
+#define bug1( x )                   do{ cerr << (#x) << "=" << x << endline; }WHILE_ONCE;
+#define bug2( x , y )               do{ cerr << (#x) << "=" << x << "    " << (#y) << "=" << y << endline; }WHILE_ONCE;
+#define bug3( x , y , z )           do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << endline; }WHILE_ONCE;
+#define bug4( x , y , z , w)        do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << endline; }WHILE_ONCE;
+#define bug5( x , y , z , w ,p)     do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << endline; }WHILE_ONCE;
+#define bug6( x , y , z , w ,p , q) do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << "    " << (#q) <<"="<< q << endline; }WHILE_ONCE;
+#define bugn( x , n )               do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ cout  << x[i] << "    "; } cout << endline; }WHILE_ONCE;
+#define bugnm( x , n , m )          do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ for(int j=0;j<m;j++) cout << x[i][j] << "    "; } cout << endline; }WHILE_ONCE;
+#else
+#define bug2( x , y )
+#define bug3( x , y , z )
+#define bug4( x , y , z , w)
+#define bug5( x , y , z , w ,p)
+#define bug6( x , y , z , w ,p , q)
+#define bugn( x , n )
+#define bugnm( x , n , m )
+#endif // LOCAL
+
+typedef unsigned long long ul;
+typedef long double ld;
+typedef long long ll;
 using namespace std;
 
-int n, m;
-vector<vector<int>> g, gr, vis, dp;
+template<typename T, typename K>
+inline bool smax(T &x,K y){ return x < y ? x = y, true : false; }
+template<typename T, typename K>
+inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
 
 
-int main(){
-	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	int t; cin >> t;
-	while( t-- ){
-		cin >> n >> m;
-		vector<string>s(n);
-		for(int i=0;i<n;++i){
-			cin >> s[i];
-		}
-		g = gr = vis = vector<vector<int>>(n*m);
-		for(int i=0;i<n;++i){
-			for(int j=0;j<m;++j){
-				int x = i, y = j;
-				switch(s[i][j]){
-					case 'L';
-						y -= 1; break;
-					case 'R':
-						y += 1; break;
-					case 'U':
-						x -= 1; break;
-					case 'D':
-						x += 1; break;
-				}
-				if( x < n && x >= 0 && y < m && y >= 0 ){
-					g[i*m+j].push_back(x*m+y);
-					gr[x*m+y].push_back(i*m+j);
-				}
-			}
-		}
-		for(int i=0;i<n;++i){
-			for(int j=0;j<m;++j){
-				if( !vis[i*m+j] ){
-					dfs(i*m+j);
-				}
-			}
-		}
 
+const int mod = 1e9+7;
+int add(int x,int y){
+    int z = x + y;
+    if( z >= mod ){
+        z -= mod;
+    }
+    return z;
+}
+int sub(int x,int y){
+    int z = x - y;
+    if( z < 0 ){
+        z += mod;
+    }
+    return z;
+}
+int mul(int x,int y){
+    ll z = 1ll * x * y;
+    if( z >= mod ){
+        z %= mod;
+    }
+    return z;
+}
+int binpow(int a,ll p){
+    int r = 1;
+    while( p ){
+        if( p & 1 )
+            r = mul(r,a);
+        a = mul(a,a), p >>= 1;
+    }
+    return r;
+}
+
+const int nax = 100+10;
+vector<pair<int,int>> g[nax];
+vector<int> t[2], T;
+int clr[nax], cnt[2], n, m, ok, ans;
+void dfs(int u,int c){
+	clr[u] = c, cnt[c] += 1, t[c].push_back(u);
+	for(auto [v,w]:g[u]){
+		if( clr[v] == -1 ){
+			dfs(v,c^w);
+		}else if( clr[v] != ( c ^ w ) ){
+			ok = 0;
+		}
 	}
+}
+int32_t main(){
+	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	cin >> n >> m;
+	for(int i=1;i<=m;++i){
+		int u, v, w; cin >> u >> v >> w, w ^= 1;
+		g[u].push_back({v,w});
+		g[v].push_back({u,w});
+	}
+	memset(clr,-1,sizeof(clr));
+	for(int i=1;i<=n;++i){
+		if( clr[i] == -1 ){
+			ok = 1, cnt[0] = cnt[1] = 0;
+			dfs(i,0);
+			if( !ok ){
+				cout << "Impossible" << endl;
+				return 0;
+			}
+			if( cnt[0] <= cnt[1] ){
+				ans += cnt[0];
+				for(auto u:t[0]){
+					T.push_back(u);
+				}
+			}else{
+				ans += cnt[1];
+				for(auto u:t[1]){
+					T.push_back(u);
+				}
+			}
+			t[0].clear();
+			t[1].clear();
+		}
+	}
+	cout << ans << endl;
+	for(auto u:T){
+		cout << u <<" " << endl;
+	}
+
+
+
+}
 

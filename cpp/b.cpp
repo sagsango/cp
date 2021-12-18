@@ -118,51 +118,8 @@ int binpow(int a,ll p){
     return r;
 }
 
-string solve(int zero, int one){
-	if( one % 2 == 0 )
-		return "draw";
-	if( zero == 0 ){
-		if( ( one - 3 ) % 4 == 0 )
-			return "loose";
-		return "win";
-		int mine  = (one+1)/2;
-		int your  = one - mine;
-		if( mine % 2 == your % 2 )
-			return "draw";
-		if( mine % 2 )
-			return "win";
-		if( your % 2 )
-			return "loose";
-	}
-	return "win";
-}
 int main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	int t; cin >> t;
-	while( t-- ){
-		int n; cin >> n;
-		int a[n];
-		for(int i=0;i<n;++i){
-			cin >> a[i];
-		}
-		string ans = "DRAW";
-		for(int i=30;i>=0;--i){
-			int cnt[2] = {0,0};
-			for(int j=0;j<n;++j){
-				cnt[a[j]>>i&1] += 1;
-			}
-			string tmp = solve(cnt[1],cnt[0]);
-			if( tmp == "win" ){
-				ans = ( n & 1 ? "WIN" : "LOSE" );
-				break;
-			}
-			if( tmp == "loose"){
-				ans = (n & 1 ? "LOSE" : "WIN" );
-				break;
-			}
-		}
-		cout << ans << endl;
-	}
-
+	
 }
 
