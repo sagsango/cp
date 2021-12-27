@@ -1,3 +1,4 @@
+
 //
 //  mat.cpp
 //  
@@ -39,13 +40,13 @@
 #ifdef LOCAL
 #define WHILE_ONCE  while(false)
 #define RESET           "\033[0m"
-#define RED             "\033[31m"        /* Red */
-#define GREEN           "\033[32m"        /* Green */
-#define YELLOW          "\033[33m"        /* Yellow */
-#define BLUE            "\033[34m"        /* Blue */
-#define MAGENTA         "\033[35m"        /* Magenta */
-#define CYAN            "\033[36m"        /* Cyan */
-#define WHITE           "\033[37m"        /* White */
+#define RED             "\033[31m"                  /* Red */
+#define GREEN           "\033[32m"                  /* Green */
+#define YELLOW          "\033[33m"                  /* Yellow */
+#define BLUE            "\033[34m"                  /* Blue */
+#define MAGENTA         "\033[35m"                  /* Magenta */
+#define CYAN            "\033[36m"                  /* Cyan */
+#define WHITE           "\033[37m"                  /* White */
 #define BOLDBLACK   "\033[1m\033[30m"     /* Bold Black */
 #define BOLDRED     "\033[1m\033[31m"     /* Bold Red */
 #define BOLDGREEN   "\033[1m\033[32m"     /* Bold Green */
@@ -55,22 +56,21 @@
 #define BOLDCYAN    "\033[1m\033[36m"     /* Bold Cyan */
 #define BOLDWHITE   "\033[1m\033[37m"     /* Bold White */
 #define cerr cerr<<RED
-#define endl RESET<<endl
-#define bug1( x )                   do{ cerr << (#x) <<"="<< x << end; }WHILE_ONCE;
-#define bug2( x , y )               do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << endl; }WHILE_ONCE;
-#define bug3( x , y , z )           do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << endl; }WHILE_ONCE;
-#define bug4( x , y , z , w)        do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << endl; }WHILE_ONCE;
-#define bug5( x , y , z , w ,p)     do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << endl; }WHILE_ONCE;
-#define bug6( x , y , z , w ,p , q) do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << "    " << (#q) <<"="<< q << endl; }WHILE_ONCE;
-#define bugn( x , n )               do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ cout << x[i] << "    "; } cout << endl; }WHILE_ONCE;
-#define bugnm( x , n , m )          do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ for(int j=0;j<m;j++) cout << x[i][j] << "    "; } cout << endl; }WHILE_ONCE;
+#define endline RESET<<endl
+#define bug1( x )                   do{ cerr << (#x) << "=" << x << endline; }WHILE_ONCE;
+#define bug2( x , y )               do{ cerr << (#x) << "=" << x << "    " << (#y) << "=" << y << endline; }WHILE_ONCE;
+#define bug3( x , y , z )           do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << endline; }WHILE_ONCE;
+#define bug4( x , y , z , w)        do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << endline; }WHILE_ONCE;
+#define bug5( x , y , z , w ,p)     do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << endline; }WHILE_ONCE;
+#define bug6( x , y , z , w ,p , q) do{ cerr << (#x) << "=" << x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << "    " << (#q) <<"="<< q << endline; }WHILE_ONCE;
+#define bugn( x , n )               do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ cout  << x[i] << "    "; } cout << endline; }WHILE_ONCE;
+#define bugnm( x , n , m )          do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ for(int j=0;j<m;j++) cout << x[i][j] << "    "; } cout << endline; }WHILE_ONCE;
 #else
-#define bug1( x )
 #define bug2( x , y )
 #define bug3( x , y , z )
-#define bug4( x , y , z , w )
-#define bug5( x , y , z , w ,p )
-#define bug6( x , y , z , w ,p , q )
+#define bug4( x , y , z , w)
+#define bug5( x , y , z , w ,p)
+#define bug6( x , y , z , w ,p , q)
 #define bugn( x , n )
 #define bugnm( x , n , m )
 #endif // LOCAL
@@ -157,6 +157,59 @@ vvi binpow(vvi a,ll p){
 ////////////////////////////
 
 int main(){
+#define int long long
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	int n[4]; 
+	for(int i=0;i<4;++i){
+		cin >> n[i];
+	}
+	vector<int> c[4];
+	for(int i=0;i<4;++i){
+		c[i] = vector<int>(n[i]);
+		for(int j=0;j<n[i];++j){
+			cin >> c[i][j];
+		}
+	}
+	int m[3];
+	vector<vector<int>> g[3];
+	for(int i=0;i<3;++i){
+		cin >> m[i];
+		g[i] = vector<vector<int>>(n[i]);
+		for(int j=0;j<m[i];++j){
+			int u, v; cin >> u >> v; 
+			g[i][--u].push_back(--v);
+		}
+	}
+	vector<int>dp[4];
+	for(int i=0;i<4;++i){
+		dp[i] = vector<int>(n[i]);
+	}
+
+	dp[3] = c[3];
+	for(int i=2;i>=0;--i){
+		multiset<int>alive;
+		alive.insert(1e15);
+		for(int j=0;j<n[i+1];++j){
+			alive.insert(dp[i+1][j]);
+		}
+		for(int j=0;j<n[i];++j){
+			for(auto k:g[i][j]){
+				alive.erase(alive.find(dp[i+1][k]));
+			}
+			dp[i][j] = *alive.begin() + c[i][j];
+			for(auto k:g[i][j]){
+				alive.insert(dp[i+1][k]);
+			}
+		}
+	}
+	long long ans = 1e15;
+	for(int i=0;i<n[0];++i){
+		ans = min(ans, dp[0][i]);
+	}
+	if( ans > 1e10 ){
+		ans = -1;
+	}
+	cout << ans << endl;
+
 }
 
