@@ -56,7 +56,7 @@
 #define BOLDWHITE   "\033[1m\033[37m"     /* Bold White */
 #define cerr cerr<<RED
 #define endl RESET<<endl
-#define bug1( x )                   do{ cerr << (#x) <<"="<< x << end; }WHILE_ONCE;
+#define bug1( x )                   do{ cerr << (#x) <<"="<< x << endl; }WHILE_ONCE;
 #define bug2( x , y )               do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << endl; }WHILE_ONCE;
 #define bug3( x , y , z )           do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << endl; }WHILE_ONCE;
 #define bug4( x , y , z , w)        do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << endl; }WHILE_ONCE;

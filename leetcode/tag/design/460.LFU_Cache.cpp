@@ -22,42 +22,139 @@
 
 
 class LFUCache {
-    list<pair<int,list<int>>>m_list;
-    unordered_map<int,list<pair<int,list<int>>>::iterator> m_mpFrequencyIt; // Frequency list
-    unordered_map<int,list<int>::iterator>m_mpKeyIt; // LRU list
-    unordered_map<int,int>m_mpKeyFrequency;
-    int size;
-public:
-    LFUCache(int capacity) {
-        size = 0;
-    }
+	list<pair<int,list<pair<int,int>>>> l_List; // list<frequency, list<Key,value> > list
+	unordered_map<int,list<pair<int,int>>::iterator>mp_KeyValListPtr; // map<key,list<pair<key,value>::iterator>
+	unordered_map<int,list<pair<int,list<pair<int,int>>>>::iterator> mp_KeyValListHeadPtr;//map<key,list<frequency,list<pair<key,value>>::iterator>>
+	int m_capacity;
+	public:
+	LFUCache(int capacity) {
+		m_capacity = capacity;
+	}
 
-    int get(int key) {
-        if(  m_mpKeyFrequency.find(key) != m_mpKeyFrequency.end() ){
-            list<int>::iterator LRUList_it = m_mpKeyIt[key];
-            list<pair<int,list<int>>>::iterator FrequencyList_it = m_mpFrequencyIt[key];
-            int frequency = m_mpKeyFrequency[key];
-            int value = *LRUList_it;
+	int get(int key) {
+		int return_val = -1;
+		if( mp_KeyValListPtr.find(key) != mp_KeyValListPtr.end() ){
 
-            int new_frequency = frequency + 1;
-            list<pair<int,list<int>>>::iterator new_FrequencyList_it = FrequencyList_it; ++new_FrequencyList_it;
-            if( new_FrequencyList_it == m_list.end() || new_FrequencyList_it->first > new_frequency ){
-                m_list.insert(new_FrequencyList_it,{new_frequency,{}});
-                --new_FrequencyList_it;
-            }
-            new_FrequencyList_it->second.push_front(value);
-            list<int>::iterator new_LRUList_it = new_FrequencyList_it->second.begin();
+			list<pair<int,list<pair<int,int>>>>::iterator oldHeadPtr = mp_KeyValListHeadPtr[key];
+			list<pair<int,list<pair<int,int>>>>::iterator newHeadPtr = oldHeadPtr; ++newHeadPtr;
+			list<pair<int,int>>::iterator oldListPtr = mp_KeyValListPtr[key];
 
-						// TODO: Complete it.
+			int old_freq = oldHeadPtr->first;
+			int new_freq = old_freq + 1;
+			int val = oldListPtr->second;
+			return_val = val;
 
-        }
-        return -1;
-    }
 
-    void put(int key, int value) {
-			//TODO: Complete it.
+			// make a list if next one is not present
+			if( newHeadPtr ==  l_List.end() ||
+					newHeadPtr->first != new_freq ){
 
-    }
+				l_List.insert(newHeadPtr,{new_freq,{}});
+				newHeadPtr = oldHeadPtr; ++newHeadPtr;
+			}
+
+
+			// put in new list
+			newHeadPtr->second.push_back({key,val});
+			list<pair<int,int>>::iterator newListPtr = --(newHeadPtr->second.end());
+
+
+			// erase from old list
+			oldHeadPtr->second.erase(oldListPtr);
+			if( oldHeadPtr->second.empty() ){
+				l_List.erase(oldHeadPtr); // always clean the space which is not being used.
+			}
+
+
+			// update new info for key
+			mp_KeyValListHeadPtr[key] = newHeadPtr;
+			mp_KeyValListPtr[key] = newListPtr;
+		}
+		return return_val;
+	}
+
+
+
+	void put(int key, int new_value){
+		if( mp_KeyValListPtr.find(key) != mp_KeyValListPtr.end() ){
+
+			list<pair<int,list<pair<int,int>>>>::iterator oldHeadPtr = mp_KeyValListHeadPtr[key];
+			list<pair<int,list<pair<int,int>>>>::iterator newHeadPtr = oldHeadPtr; ++newHeadPtr;
+			list<pair<int,int>>::iterator oldListPtr = mp_KeyValListPtr[key];
+
+
+			int old_freq = oldHeadPtr->first;
+			int new_freq = old_freq + 1;
+			int val = oldListPtr->second;
+
+
+			// make a list if next one is not present
+			if( newHeadPtr ==  l_List.end() ||
+					newHeadPtr->first != new_freq ){
+
+				l_List.insert(newHeadPtr,{new_freq,{}});
+				newHeadPtr = oldHeadPtr; ++newHeadPtr;
+			}
+
+
+			// put in new list
+			newHeadPtr->second.push_back({key,new_value});
+			list<pair<int,int>>::iterator newListPtr = --(newHeadPtr->second.end());
+
+
+			// erase from old list
+			oldHeadPtr->second.erase(oldListPtr);
+			if( oldHeadPtr->second.empty() ){
+				l_List.erase(oldHeadPtr); // always clean the space which is not being used.
+			}
+
+
+			// update new info for key
+			mp_KeyValListHeadPtr[key] = newHeadPtr;
+			mp_KeyValListPtr[key] = newListPtr;
+		}else{
+			// capacity = 0, and if we can erase something.
+			if( m_capacity == 0 && !l_List.empty() ){
+
+
+				// remove from LRU
+				list<pair<int,list<pair<int,int>>>>::iterator HeadPtr = l_List.begin();
+				list<pair<int,int>>::iterator ListPtr = HeadPtr->second.begin();
+				int key = ListPtr->first;
+
+				HeadPtr->second.erase(ListPtr);
+
+				if( HeadPtr->second.empty() ){
+					l_List.erase(HeadPtr);
+				}
+
+
+				// remove key info.
+				mp_KeyValListHeadPtr.erase(key);
+				mp_KeyValListPtr.erase(key);
+				m_capacity += 1;
+
+			}
+			// If capacity is nonzero insert into LRU.
+			if( m_capacity ){
+				// insert into LRU
+				int frequency = 1;
+				list<pair<int,list<pair<int,int>>>>::iterator HeadPtr = l_List.begin();
+				if( HeadPtr->first != frequency ){
+					l_List.insert(HeadPtr,{frequency,{}});
+					HeadPtr = l_List.begin();
+				}
+				HeadPtr->second.push_back({key,new_value});
+				list<pair<int,int>>::iterator ListPtr = --(HeadPtr->second.end());
+
+				mp_KeyValListHeadPtr[key] = HeadPtr;
+				mp_KeyValListPtr[key] = ListPtr;
+
+				m_capacity -= 1;
+			}
+		}
+
+	}
 };
 
 /**

@@ -36,44 +36,6 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#ifdef LOCAL
-#define WHILE_ONCE  while(false)
-#define RESET           "\033[0m"
-#define RED             "\033[31m"        /* Red */
-#define GREEN           "\033[32m"        /* Green */
-#define YELLOW          "\033[33m"        /* Yellow */
-#define BLUE            "\033[34m"        /* Blue */
-#define MAGENTA         "\033[35m"        /* Magenta */
-#define CYAN            "\033[36m"        /* Cyan */
-#define WHITE           "\033[37m"        /* White */
-#define BOLDBLACK   "\033[1m\033[30m"     /* Bold Black */
-#define BOLDRED     "\033[1m\033[31m"     /* Bold Red */
-#define BOLDGREEN   "\033[1m\033[32m"     /* Bold Green */
-#define BOLDYELLOW  "\033[1m\033[33m"     /* Bold Yellow */
-#define BOLDBLUE    "\033[1m\033[34m"     /* Bold Blue */
-#define BOLDMAGENTA "\033[1m\033[35m"     /* Bold Magenta */
-#define BOLDCYAN    "\033[1m\033[36m"     /* Bold Cyan */
-#define BOLDWHITE   "\033[1m\033[37m"     /* Bold White */
-#define cerr cerr<<RED
-#define endl RESET<<endl
-#define bug1( x )                   do{ cerr << (#x) <<"="<< x << end; }WHILE_ONCE;
-#define bug2( x , y )               do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << endl; }WHILE_ONCE;
-#define bug3( x , y , z )           do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << endl; }WHILE_ONCE;
-#define bug4( x , y , z , w)        do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << endl; }WHILE_ONCE;
-#define bug5( x , y , z , w ,p)     do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << endl; }WHILE_ONCE;
-#define bug6( x , y , z , w ,p , q) do{ cerr << (#x) <<"="<< x << "    " << (#y) <<"="<< (y) << "    " << (#z) <<"="<< (z) << "    " << (#w) <<"="<< w << "    " << (#p) <<"="<< p << "    " << (#q) <<"="<< q << endl; }WHILE_ONCE;
-#define bugn( x , n )               do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ cout << x[i] << "    "; } cout << endl; }WHILE_ONCE;
-#define bugnm( x , n , m )          do{ cerr << (#x) << endl; for(int i=0;i<n;i++){ for(int j=0;j<m;j++) cout << x[i][j] << "    "; } cout << endl; }WHILE_ONCE;
-#else
-#define bug1( x )
-#define bug2( x , y )
-#define bug3( x , y , z )
-#define bug4( x , y , z , w )
-#define bug5( x , y , z , w ,p )
-#define bug6( x , y , z , w ,p , q )
-#define bugn( x , n )
-#define bugnm( x , n , m )
-#endif // LOCAL
 
 typedef unsigned long long ul;
 typedef long double ld;
@@ -84,7 +46,6 @@ template<typename T, typename K>
 inline bool smax(T &x,K y){ return x < y ? x = y, true : false; }
 template<typename T, typename K>
 inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
-
 
 
 const int mod = 1e9+7;
@@ -119,58 +80,65 @@ int binpow(int a,ll p){
     return r;
 }
 
-const int nax = 100+10;
-vector<pair<int,int>> g[nax];
-vector<int> t[2], T;
-int clr[nax], cnt[2], n, m, ok, ans;
-void dfs(int u,int c){
-	clr[u] = c, cnt[c] += 1, t[c].push_back(u);
-	for(auto [v,w]:g[u]){
-		if( clr[v] == -1 ){
-			dfs(v,c^w);
-		}else if( clr[v] != ( c ^ w ) ){
-			ok = 0;
-		}
-	}
+
+const int nax = 500;
+int par[nax], n, m, q;
+string A[nax], B[nax], X[nax], Y[nax];
+vector<string>arr;
+
+int root(int u){ return par[u] < 0 ? u : par[u] = root(par[u]); }
+void merge(int u,int v){
+	if( (u=root(u)) == (v=root(v)) )return;
+	if( par[u] > par[v] )swap(u,v);
+	par[u] += par[v];
+	par[v] = u;
 }
+
+#define index(s) ( lower_bound(arr.begin(),arr.end(),s) - arr.begin() )
+
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	cin >> n >> m;
-	for(int i=1;i<=m;++i){
-		int u, v, w; cin >> u >> v >> w, w ^= 1;
-		g[u].push_back({v,w});
-		g[v].push_back({u,w});
-	}
-	memset(clr,-1,sizeof(clr));
-	for(int i=1;i<=n;++i){
-		if( clr[i] == -1 ){
-			ok = 1, cnt[0] = cnt[1] = 0;
-			dfs(i,0);
-			if( !ok ){
-				cout << "Impossible" << endl;
-				return 0;
-			}
-			if( cnt[0] <= cnt[1] ){
-				ans += cnt[0];
-				for(auto u:t[0]){
-					T.push_back(u);
-				}
+	int t; cin >> t;
+	while( t-- ){
+		cin >> n, arr.clear();
+		for(int i=0;i<n;++i){
+			cin >> A[i] >> B[i];
+			transform(A[i].begin(), A[i].end(), A[i].begin(), ::tolower);
+			transform(B[i].begin(), B[i].end(), B[i].begin(), ::tolower);
+			arr.push_back(A[i]);
+			arr.push_back(B[i]);
+		}
+		cin >> q;
+		for(int i=0;i<q;++i){
+			cin >> X[i] >> Y[i];
+			transform(X[i].begin(), X[i].end(), X[i].begin(), ::tolower);
+			transform(Y[i].begin(), Y[i].end(), Y[i].begin(), ::tolower);
+			arr.push_back(X[i]);
+			arr.push_back(Y[i]);
+		}
+		sort(arr.begin(),arr.end());
+		arr.erase(unique(arr.begin(),arr.end()),arr.end());
+		m = arr.size();
+		for(int i=0;i<m;++i){
+			par[i] = -1;
+		}
+		for(int i=0;i<n;++i){
+			merge(index(A[i]),index(B[i]));
+		}
+		for(int i=0;i<q;++i){
+			if( root(index(X[i])) == root(index(Y[i])) ){
+				cout << "synonyms" << endl;
 			}else{
-				ans += cnt[1];
-				for(auto u:t[1]){
-					T.push_back(u);
-				}
+				cout << "different" << endl;
 			}
-			t[0].clear();
-			t[1].clear();
 		}
 	}
-	cout << ans << endl;
-	for(auto u:T){
-		cout << u <<" " << endl;
-	}
 
 
+		
+
+
+	
 
 }
 
