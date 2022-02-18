@@ -182,6 +182,11 @@ void bfs(vector<pair<int,int>>s, int X_final, int Y_final, int start, int end, i
 		}
 	}
 }
+
+// TODO:  can be done with flow.
+// 				flow > 1 IMPOSSIBLE
+// 				flow = 1 win
+// 				flow = 0 
 int main(){
     ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     int T; cin >> T;
