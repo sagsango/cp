@@ -80,61 +80,14 @@ int binpow(int a,ll p){
     return r;
 }
 
+static int arr[100];
 
-const int nax = 500;
-int par[nax], n, m, q;
-string A[nax], B[nax], X[nax], Y[nax];
-vector<string>arr;
-
-int root(int u){ return par[u] < 0 ? u : par[u] = root(par[u]); }
-void merge(int u,int v){
-	if( (u=root(u)) == (v=root(v)) )return;
-	if( par[u] > par[v] )swap(u,v);
-	par[u] += par[v];
-	par[v] = u;
-}
-
-#define index(s) ( lower_bound(arr.begin(),arr.end(),s) - arr.begin() )
-
+static char * c;
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	int t; cin >> t;
-	while( t-- ){
-		cin >> n, arr.clear();
-		for(int i=0;i<n;++i){
-			cin >> A[i] >> B[i];
-			transform(A[i].begin(), A[i].end(), A[i].begin(), ::tolower);
-			transform(B[i].begin(), B[i].end(), B[i].begin(), ::tolower);
-			arr.push_back(A[i]);
-			arr.push_back(B[i]);
-		}
-		cin >> q;
-		for(int i=0;i<q;++i){
-			cin >> X[i] >> Y[i];
-			transform(X[i].begin(), X[i].end(), X[i].begin(), ::tolower);
-			transform(Y[i].begin(), Y[i].end(), Y[i].begin(), ::tolower);
-			arr.push_back(X[i]);
-			arr.push_back(Y[i]);
-		}
-		sort(arr.begin(),arr.end());
-		arr.erase(unique(arr.begin(),arr.end()),arr.end());
-		m = arr.size();
-		for(int i=0;i<m;++i){
-			par[i] = -1;
-		}
-		for(int i=0;i<n;++i){
-			merge(index(A[i]),index(B[i]));
-		}
-		for(int i=0;i<q;++i){
-			if( root(index(X[i])) == root(index(Y[i])) ){
-				cout << "synonyms" << endl;
-			}else{
-				cout << "different" << endl;
-			}
-		}
-	}
 
-
+	c = (char*)malloc(sizeof(char)*100);
+	
 		
 
 
