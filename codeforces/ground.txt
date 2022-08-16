@@ -1,31 +1,158 @@
-Tree:
+===================: UNKNOWN PROBLEM :====================
+This is the point where you will be tested.
+You would not know the topic.
+You would not know anything
+Take an example, take one more,.....
+Think.. You would not take much time, if carefull.
+So solve them very carefully.
+
+
+
+
+OnGoing: ======
+DP-1900-01
+dfs1901
+
+
+
+
+
+Tree: ===================
 Tree-19-20
 
 
 
 
-Graph:
+Graph:===================
 dfs-and-similar-tag-2000-complete
+dfs1901
 
 
 
 
-DP:
+DP:===================
+DP Unsolved 18-19 
+DP-1900-01
+
+
+
+Combinatorix:=================
+Combinatorics-1600-1700-01 
+Combinatorics-1700-1800-1900-01
+
+
+Mix:===================
 
 
 
 
-Mix:
+
+Leetcode:===================
 
 
 
 
-Leetcode:
+InterviewBit:===================
 
 
 
-InterviewBit:
+
+Pramp:===================
 
 
 
-Pramp:
+
+
+ds + Algo Repo:===================
+
+
+
+cp algorithm:===================
+
+
+
+
+striver list:===================
+
+
+
+Past Problems:===================
+
+
+
+Careercup:===================
+
+
+Topics:===================
+  Array
+  String
+  Hash Table
+  Dynamic Programming
+  Math
+  Sorting
+  Depth-First Search
+  Greedy
+  Database
+  Breadth-First Search
+  Tree
+  Binary Search
+  Matrix
+  Binary Tree
+  Two Pointers
+  Bit Manipulation
+  Stack
+  DesignHeap (Priority Queue)
+  Graph
+  Simulation
+  Backtracking
+  Prefix Sum
+  Counting
+  Sliding Window
+  Linked List
+  Union Find
+  Ordered Set
+  Monotonic Stack
+  Recursion
+  Trie
+  Binary Search Tree
+  Divide and Conquer
+  Bitmask Enumeration
+  Queue
+  Geometry
+  Memoization
+  Segment Tree
+  Topological Sort
+  Game Theory
+  Hash Function
+  Binary Indexed Tree
+  Interactive
+  String Matching
+  Rolling Hash
+  Shortest Path
+  Data Stream
+  Number Theory
+  Combinatorics
+  Randomized
+  Monotonic
+  QueueIterator
+  Merge Sort
+  Concurrency
+  Doubly-Linked List
+  Brainteaser
+  Probability and Statistics
+  Quickselect
+  Bucket Sort
+  Suffix Array
+  Minimum Spanning Tree
+  Counting SortShell
+  Line Sweep
+  Reservoir Sampling
+  Eulerian Circuit
+  Strongly Connected Component
+  Radix Sort
+  Rejection 
+  Sampling
+  Biconnected Component
+
+
+  
