@@ -1,3 +1,4 @@
+
 //
 //  mod.cpp
 //
@@ -84,6 +85,40 @@ int binpow(int a,ll p){
 
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+  int T; cin >> T;
+  for(int t=1; t<=T; ++t){
+    int n; cin >> n;
+    string s; cin >> s;
+    string r = s;
+    reverse(r.begin(),r.end());
+    string str = r + "$" + s;
+    int N = str.length();
+    vector<int> pi(N);
+    for(int i=1;i<N;++i){
+      int j = pi[i-1];
+      while( j && str[i] != str[j] ){
+        j = pi[j-1];
+      }
+      if( str[j] == str[i] ){
+        ++j;
+      }
+      pi[i] = j;
+    }
+   
+    int idx = pi[N];
+    if( idx  == n ){
+      idx = pi[idx-1];
+    }
+    for(int i=0;i<n;++i){
+      cout << pi[i] <<" ";
+    }
+    cout << endl;
+
+
+    cout << "Case #" << t << ": " << pi[N-1] <<" "<< pi[pi[N-1]-1] << " "<< idx <<  endl;
+  }
+
+}
 
 	
 		
@@ -91,5 +126,5 @@ int32_t main(){
 
 	
 
-}
+
 

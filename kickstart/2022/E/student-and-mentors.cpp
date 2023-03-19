@@ -1,3 +1,4 @@
+
 //
 //  mod.cpp
 //
@@ -84,6 +85,36 @@ int binpow(int a,ll p){
 
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+  int T; cin >> T;
+  for(int t=1; t<=T; ++t){
+      int n; cin >> n;
+      multiset<int> st;
+      vector<int> arr(n), ans(n);
+      for(int i=0;i<n;++i){
+        cin >> arr[i];
+        st.insert(arr[i]);
+      }
+      for(int i=0; i<n;++i){
+        ans[i] = -1;
+        st.erase( st.find(arr[i]) );
+        auto it = st.upper_bound(arr[i]*2);
+        if( it != st.begin() ){
+          --it;
+        }
+        if( it != st.end() && *it <= arr[i]*2 ){
+          ans[i] = *it;
+        }
+        st.insert( arr[i] );
+      }
+      cout <<"Case #"<< t << ": ";
+      for(int i=0; i<n; ++i){
+        cout << ans[i] <<" ";
+      }
+      cout << endl;
+  
+
+
+  }
 
 	
 		

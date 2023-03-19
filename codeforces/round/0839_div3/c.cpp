@@ -1,3 +1,4 @@
+
 //
 //  mod.cpp
 //
@@ -83,8 +84,26 @@ int binpow(int a,ll p){
 }
 
 int32_t main(){
-	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+  ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+  int t;
+  scanf("%d", &t);
+  while (t--) {
+    int k, n;
+    scanf("%d %d", &k, &n);
+    int prv_ele = 1, diff = 0;
+    printf("%d ", prv_ele);
+    for(int i=1;i<k;++i){
+      // cur + k - i - 1 = last <= n
+      // cur <= last + i +  1 - k
+      // cur <= n + i + 1 - k
 
+      diff += 1;
+      int cur = min( prv_ele + diff, n + i + 1 - k );
+      printf("%d ", cur);
+      prv_ele = cur;
+    }
+    printf("\n");
+  }
 	
 		
 

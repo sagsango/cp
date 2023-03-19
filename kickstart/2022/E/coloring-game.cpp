@@ -1,3 +1,4 @@
+
 //
 //  mod.cpp
 //
@@ -82,14 +83,26 @@ int binpow(int a,ll p){
     return r;
 }
 
+#define BOT 0
+#define JHON 1
+const int nax = 1e6+10;
+int dp[nax][2], n;
+
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-
-	
-		
-
-
-	
-
+  int T; cin >> T;
+  for(int t=1; t<=T; ++t){
+    cin >> n;
+    for(int i=0;i<n;++i){
+      for(int j=0;j<2;++j){
+        dp[i][j] = 0;
+      }
+    }
+    for(int i=0; i<n; ++i){
+      dp[i][BOT] = 1 + min( (i - 2 >= 0 ? dp[i-2][JHON] : 0), (i - 3 >= 0 ? dp[i-3][JHON] : 0) );
+      dp[i][JHON] = 0 + (i -2 >= 0 ? dp[i-2][BOT] : 0 );
+    }
+    cout << "Case #" << t << ": " << dp[n-1][BOT] << endl;
+  }
 }
 

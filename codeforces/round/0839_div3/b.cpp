@@ -1,3 +1,4 @@
+
 //
 //  mod.cpp
 //
@@ -82,14 +83,39 @@ int binpow(int a,ll p){
     return r;
 }
 
+int arr[2][2];
+
+void rotate(){
+  int tmp = arr[0][0];
+  arr[0][0] = arr[1][0];
+  arr[1][0] = arr[1][1];
+  arr[1][1] = arr[0][1];
+  arr[0][1] = tmp;
+}
+
+bool is_beautiful(){
+  return arr[0][0] < arr[0][1] &&
+    arr[1][0] < arr[1][1] &&
+    arr[0][0] < arr[1][0] &&
+    arr[0][1] < arr[1][1];
+}
+
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-
-	
-		
-
-
-	
-
+    int t; 
+    scanf("%d",&t);
+    while (t--) {
+      for(int i=0;i<2;++i){
+        for(int j=0;j<2;++j){
+          scanf("%d", &arr[i][j]);
+        }
+      }
+      bool good = false;
+      for(int i=0;i<4;++i){
+        good |= is_beautiful();
+        rotate();
+      }
+      printf("%s\n", good ? "YES" : "NO");
+    }
 }
 
