@@ -81,7 +81,7 @@ template<typename T, typename K>
 inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
 
 
-
+/*
 const int mod = 1e9+7;
 int add(int x,int y){
     int z = x + y;
@@ -113,10 +113,60 @@ int binpow(int a,ll p){
     }
     return r;
 }
+*/
 
-int32_t main(){
+const int nax = 1e5+10;
+set < int > g[nax];
+int par[nax], c_par[nax], ans[nax], sub[nax], center[nax],n;
+
+void dfs(int u, int p) {
+	par[u] = p;
+	center[u] = u;
+	sub[u] = 1;
+	for (auto v: g[u]) {
+		if (v != p) {
+			dfs(v, u);
+			sub[u] += sub[v];
+		}
+	}
+	for (auto v: g[u]) {
+		if (v != p ) {
+			if (2 * sub[v] >= sub[u]) {
+				int c = center[v];
+				while (2 * sub[v] < sub[u]) {
+					c = par[c];
+				}
+				center[u] = c;
+			}
+		}
+	}
+}
+
+void decompose (int u, int p) {
+	dfs(u,p);
+	int c = center[u];
+	c_par[c] = p;
+
+	for (auto v:g[c]) {
+		g[v].erase(c);
+		decompose (v, c);
+	}
+}	
+
+int main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-
-	
+	cin >> n;
+	for (int i=0;i<n-1;++i) {
+		int u, v;
+		cin >> u >> v;
+		g[u].insert(v);
+		g[v].insert(u);
+	}
+	decompose(1, -1);
+	for (int i=1; i<=n; ++i) {
+		cout << c_par[i] <<" ";
+	}
+	cout << endl;
+	/* TODO: Has to debugged */
 }
 

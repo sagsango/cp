@@ -1,3 +1,10 @@
+//
+//  mod.cpp
+//
+//
+//  Created by Sagar Singh on 17/12/20.
+//
+//
 /*
 #pragma GCC target("popcnt")
 #pragma comment(linker, "/stack:200000000")
@@ -114,9 +121,50 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
-	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+struct node{
+	ll C, p, cost, power;
+	bool operator<(const node &other) const{
+		if (C != other.C) {
+			return C < other.C;
+		}
+		if (cost != other.cost) {
+			return cost < other.cost;
+		}
+		return p < other.p;
+	}
+};
 
-	
+vector <node> arr;
+int main(){
+	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	for (int C=1; C<=128; C<<=1) { // C
+		for (int p=2; p<=1000; ++p) { // which exponent
+			ll best_start = -1, best_cost = 1e9;
+			for (int start=1; start<=128; ++start) { // what starting point
+				ll cost = 0;
+				for (int S=10; S<=5000; ++S) {
+					ll power_sum = 0, power = start;
+					while (power_sum < S) {
+						cost += power + C;
+						power_sum += power;
+						power += p;
+					}
+				}
+				if (cost < best_cost) {
+					best_cost = cost;
+					best_start = start;
+				}
+			}
+			arr.push_back({C,p,best_cost, best_start});
+		}
+	}
+	int c = 0;
+	sort(arr.begin(), arr.end());
+	for (auto [C,p,cost,start]: arr) {
+		if (C > c) {
+			c = C;
+			cout << "C:" << C <<",P:" << p << ",cost:" << cost << "|" << start <<  endl;
+		}
+	}
 }
 

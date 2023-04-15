@@ -114,9 +114,71 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
-	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+const int nax = 5e3 + 10;
+vector<int> clr_idx[nax];
+int ncr[nax][nax], c[nax], n, k, t;
+pair<int,int> dp[nax];
+/*
+   dp[i] = <len in multiple of k, ways>
+*/
 
+#define query(i, l, r) (upper_bound(clr_idx[i].begin(), clr_idx[i].end(), r) - \
+						lower_bound(clr_idx[i].begin(), clr_idx[i].end(), l))
+int main(){
+	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	ncr[0][0] = 1;
+	for (int i=1; i < nax; ++i) {
+		for (int j = 0; j <= i; ++j) {
+			ncr[i][j] = add( (i-1 >= 0 ? ncr[i-1][j] : 0),
+					(i-1 >= 0 && j-1 >= 0 ? ncr[i-1][j-1] : 0));
+		}
+	}
+
+	cin >> t;
+	while (t--) {
+		cin >> n >> k;
+		for (int i=1; i<=n; ++i) {
+			cin >> c[i];
+			clr_idx[c[i]].push_back(i);
+		}
 	
+		dp[0] = {0,1};
+		for (int i=1; i<=n ;++i) {
+			dp[i] = {-1,0};
+		}
+
+		for (int i=0; i<=n; ++i) {
+			for (int j=i+1; j<=n; ++j) {
+				int cnt = query(c[j], i+1, j);
+				int len = dp[i].first + 1;
+				if (cnt >= k && len >= dp[j].first) {
+					if (len > dp[j].first) {
+						dp[j] = {0, 0};
+					}
+					dp[j] = {len, add(dp[j].second,
+							mul(dp[i].second, (k <= cnt ? ncr[cnt-1][k-1]: 0)))};
+				}
+			}
+		}
+
+		int max_len = 0, ans = 0;
+		for (int i=0; i<=n; ++i) {
+			if (dp[i].first > max_len) {
+				max_len = dp[i].first;
+			}
+		}
+		for (int i=0; i<=n; ++i) {
+			if (dp[i].first == max_len) {
+				ans = add(ans, dp[i].second);
+			}
+		}
+		cout << ans << endl;
+
+		for (int i=0; i<=n; ++i) {
+			dp[i] = {0,0};
+			c[i] = 0;
+			clr_idx[i].clear();
+		}
+	}
 }
 

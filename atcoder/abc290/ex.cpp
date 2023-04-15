@@ -114,8 +114,15 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
+const int nax = 300+5;
+ll dp[nax][nax], a[nax], b[nax], n, m;
+int main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	for (int i=0; i<nax; ++i) {
+		for (int j=0; j<nax; ++j) {
+			dp[i][j] = 1e18;
+		}
+	}
 
 	
 }

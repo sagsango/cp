@@ -1,15 +1,9 @@
-
-//
-//  mod.cpp
-//  
-//
-//  Created by Sagar Singh on 17/12/20.
-//
-
+/*
 #pragma GCC target("popcnt")
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+*/
 
 #include <iostream>
 #include <iomanip>
@@ -90,42 +84,38 @@ inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
 
 const int mod = 1e9+7;
 int add(int x,int y){
-	int z = x + y;
-	if( z >= mod ){
-		z -= mod;
-	}
-	return z;
+    int z = x + y;
+    if( z >= mod ){
+        z -= mod;
+    }
+    return z;
 }
 int sub(int x,int y){
-	int z = x - y;
-	if( z < 0 ){
-		z += mod;
-	}
-	return z;
+    int z = x - y;
+    if( z < 0 ){
+        z += mod;
+    }
+    return z;
 }
 int mul(int x,int y){
-	ll z = 1ll * x * y;
-	if( z >= mod ){
-		z %= mod;
-	}
-	return z;
+    ll z = 1ll * x * y;
+    if( z >= mod ){
+        z %= mod;
+    }
+    return z;
 }
 int binpow(int a,ll p){
-	int r = 1;
-	while( p ){
-		if( p & 1 )
-			r = mul(r,a);
-		a = mul(a,a), p >>= 1;
-	}
-	return r;
+    int r = 1;
+    while( p ){
+        if( p & 1 )
+            r = mul(r,a);
+        a = mul(a,a), p >>= 1;
+    }
+    return r;
 }
+
 int main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	vector<ld>a(100);
-	a[1] = 1;
-	for(int i=2;i<10;++i){
-		a[i] = a[i-1] + 1.00 / i;
-		cout << a[i] << endl;
-	}
+	
 }
 

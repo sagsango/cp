@@ -3,7 +3,7 @@
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
-*/
+ */
 
 #include <iostream>
 #include <iomanip>
@@ -80,43 +80,148 @@ inline bool smax(T &x,K y){ return x < y ? x = y, true : false; }
 template<typename T, typename K>
 inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
 
+// solution for : ( a or b) and ( c or ~k ) and ......
+const int maxn = 2e5;
+vector<int>g[maxn<<1],gr[maxn<<1],tpl,vis(maxn<<1),cmp(maxn<<1),sat(maxn<<1), par(maxn<<1,-1);
+int n,c=0;
 
+int root(int u) {
+	return par[u] < 0 ? u : par[u] = root(par[u]);
+}
 
-const int mod = 1e9+7;
-int add(int x,int y){
-    int z = x + y;
-    if( z >= mod ){
-        z -= mod;
-    }
-    return z;
+void merge(int u, int v) {
+	if ((u = root(u)) == (v = root(v)))
+		return;
+	if (par[u] > par[v]) 
+		swap(u,v);
+	par[u] += par[v];
+	par[v] = u;
 }
-int sub(int x,int y){
-    int z = x - y;
-    if( z < 0 ){
-        z += mod;
-    }
-    return z;
+
+void dfs1(int u){
+	vis[u]=1;
+	for(auto v:gr[u]){
+		if(!vis[v]){
+			dfs1(v);
+		}
+	}
+	tpl.push_back(u);
 }
-int mul(int x,int y){
-    ll z = 1ll * x * y;
-    if( z >= mod ){
-        z %= mod;
-    }
-    return z;
+void dfs2(int u){
+	cmp[u]=c;
+	for(auto v:g[u]){
+		if(!cmp[v]){
+			dfs2(v);
+		}
+	}
 }
-int binpow(int a,ll p){
-    int r = 1;
-    while( p ){
-        if( p & 1 )
-            r = mul(r,a);
-        a = mul(a,a), p >>= 1;
-    }
-    return r;
+// NOTE: Do not forget to pass u*2 and v*2 for making all type of edges
+void add_edge(int u,int v){
+	g[u].push_back(v);
+	gr[v].push_back(u);
+	merge(u,v);
 }
+void add_imp(int u,int v){ 
+	add_edge(u,v);
+}
+void add_equi(int u,int v){
+	add_imp(u,v);
+	add_imp(v,u);
+}
+void add_or(int u,int v){ 
+	// a or b = ~a -> b and ~b -> a
+	add_imp(u^1,v);
+	add_imp(v^1,u);
+}
+void add_xor(int u,int v){
+	// a ^ b = ( a and ~b ) or ( ~a and b ) = ( ( a and ~b ) or ~a ) and ( ( a and ~b ) or b )) = ( ( a or ~a ) and ( ~b or ~a ) and ( a or b ) and ( ~b or b) ) = ( ~b or ~a ) and ( a or b )
+	add_or(u,v);
+	add_or(u^1,v^1);
+}
+void add_xnor(int u,int v){
+	// a ⊕ b = ( a and b ) or ( ~a and ~b ) = ( (( a and b ) or ~a ) and ( ( a and b ) or ~b)  )= ( ( a or ~a ) and ( b or ~a ) and ( a or ~b ) and ( b or ~b) ) = ( b or ~a ) and ( a or ~b )
+	add_or(u^1,v);
+	add_or(u,v^1);
+}
+void add_true(int u){
+	// ~a -> a = ~(~a) or a = a or a = a
+	add_imp(u^1,u);
+}
+void add_and(int u,int v){
+	add_true(u);
+	add_true(v);
+}
+bool solve(){
+	for(int i=0;i<n<<1;i++){
+		if(!vis[i]){
+			dfs1(i);
+		}
+	}
+	for(int i=0;i<n<<1;i++){
+		int u = tpl[2*n-i-1];
+		if( !cmp[u] ){
+			c++;
+			dfs2(u);
+		}
+	}
+	for(int i=0;i<n;i++){
+		if( cmp[i<<1|0] == cmp[i<<1|1] ){
+			return 0;
+		}
+		/*if (root(i<<1|0) != root(i<<1|1)) {
+			sat[i] = 0; // laxicographical minimal
+			continue;
+		}*/
+		sat[i] =  cmp[i<<1|0] <  cmp[i<<1|1] ;// ~a -> a = a 
+	}
+	return 1;
+}
+
 
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-
-	
+	int q;
+	cin >> n >> q;
+	int a[q], b[q], o[q], ans[n];
+	memset(ans, 0, sizeof(ans));
+	for (int i=0; i<q; ++i) {
+		cin >> a[i] >> b[i] >> o[i];
+		a[i] -= 1;
+		b[i] -= 1;
+	}
+#define MAX_BIT  30
+	for (int bit=0; bit<MAX_BIT; ++bit) {
+		for (int i=0; i<q; ++i) {
+			int o_val = o[i] >> bit & 1;
+			if (o_val) {
+				add_or(a[i]<<1, b[i]<<1);
+			}
+			else {
+				add_true((a[i]<<1)^1);
+				add_true((b[i]<<1)^1);
+			}
+		}
+		if (!solve()) {
+			exit(EXIT_FAILURE);
+		}
+		for (int i=0; i<n; ++i) {
+			ans[i] |= sat[i] << bit;
+			//cout << "[" << i << "]:" << sat[i] << endl;
+		}
+		/*
+		    85 vector<int>g[maxn<<1],gr[maxn<<1],tpl,vis(maxn<<1),cmp(maxn<<1),sat(maxn<<1), par(maxn<<1,-1);
+			86 int n,c=0;
+		 */
+		c = 0;
+		tpl.clear();
+		for (int i=0; i<maxn<<1; ++i) {
+			g[i].clear(), gr[i].clear();
+			vis[i] = cmp[i] = sat[i] = 0;
+			par[i] = -1;
+		}
+	}
+	for (int i=0; i<n; ++i) {
+		cout << ans[i] << " ";
+	}
+	cout << endl;
 }
-

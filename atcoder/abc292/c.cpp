@@ -114,8 +114,21 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
+int main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	int n; 
+	cin >> n;
+	int cnt[n+1];
+	for (int i=1; i<=n; i++) {
+		for (int j=1; 1ll*i*j<=n; ++j) {
+			cnt[i*j] += 1;
+		}
+	}
+	ll ans = 0;
+	for (int i=1; i<=n; ++i) {
+		ans += 1ll * cnt[i] * cnt[n-i];
+	}
+	cout << ans << endl;
 
 	
 }

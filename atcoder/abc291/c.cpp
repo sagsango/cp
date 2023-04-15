@@ -114,9 +114,31 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
-	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-
+void move(char c, int &x, int &y) {
+	switch(c) {
+		case 'L': x -= 1; break;
+		case 'R': x += 1; break;
+		case 'U': y += 1; break;
+		case 'D': y -= 1; break;
+	}
+}
 	
+int main(){
+	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	int n, x = 0, y = 0, revisit = 0;
+	set < pair <int,int> > bst;
+	string s;
+	cin >>  n >> s;
+
+	bst.insert({x,y});
+	for (auto &c:s) {
+		move(c,x,y);
+		if (bst.find({x,y}) != bst.end()) {
+			revisit = true;
+			break;
+		}
+		bst.insert({x,y});
+	}
+	cout << (revisit ? "Yes" : "No") << endl;
 }
 

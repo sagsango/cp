@@ -82,7 +82,7 @@ inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
 
 
 
-const int mod = 1e9+7;
+const int mod = 998244353;
 int add(int x,int y){
     int z = x + y;
     if( z >= mod ){
@@ -114,9 +114,27 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
-	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+const int nax = 2e5+10;
+int arr[nax][2], dp[nax][2], n;
 
-	
+int main(){
+	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	cin >> n;
+	for (int i=0; i<n; ++i) {
+		for (int j=0; j<2; ++j) {
+			cin >> arr[i][j];
+		}
+	}
+	dp[0][0] = dp[0][1] = 1;
+	for (int i=1; i<n; ++i) {
+		for (int j=0; j<2; ++j) {
+			for (int k=0; k<2; ++k) {
+				if (arr[i][j] != arr[i-1][k]) {
+					dp[i][j] = add(dp[i][j], dp[i-1][k]);
+				}
+			}
+		}
+	}
+	cout << add(dp[n-1][0],dp[n-1][1]) << endl;
 }
 

@@ -1,14 +1,9 @@
-//
-//  blank.cpp
-//  
-//
-//  Created by Sagar Singh on 17/12/20.
-//
-
+/*
 #pragma GCC target("popcnt")
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+*/
 
 #include <iostream>
 #include <iomanip>

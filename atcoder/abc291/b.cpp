@@ -114,9 +114,21 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
+int main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-
+	int n;
+	cin >> n;
+	vector <int> arr(5*n);
+	for (int i=0;i<5*n;++i) {
+		cin >> arr[i];
+	}
+	sort (arr.begin(),arr.end());
+	ld sum = 0;
+	for (int i=n; i<4*n; ++i) {
+		sum += arr[i];
+	}
+	bugn(arr,5*n)
+	cout << fixed << setprecision(10) << sum / (3 * n) << endl;
 	
 }
 

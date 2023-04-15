@@ -1,0 +1,10 @@
+abc293: Ex
+abc192: G
+abc191: G
+
+
+abc288: G, Ex
+abc287: Ex
+
+abc285: Ex
+abc284: G, Ex

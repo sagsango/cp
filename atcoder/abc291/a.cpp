@@ -114,9 +114,22 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
-	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+struct status{
+	int root, size;
+};
 
-	
+const int nax = 1e5+10;
+vector <int> g[nax];
+int par[nax], n;
+
+int main(){
+	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	string s; 
+	cin >> s;
+	int i = 0;
+	while ('a' <= s[i] && s[i] <= 'z') {
+		++i;
+	}
+	cout << i + 1 << endl;
 }
 

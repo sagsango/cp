@@ -82,7 +82,7 @@ inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
 
 
 
-const int mod = 1e9+7;
+const int mod = 998244353;
 int add(int x,int y){
     int z = x + y;
     if( z >= mod ){
@@ -90,6 +90,7 @@ int add(int x,int y){
     }
     return z;
 }
+/*
 int sub(int x,int y){
     int z = x - y;
     if( z < 0 ){
@@ -97,6 +98,7 @@ int sub(int x,int y){
     }
     return z;
 }
+*/
 int mul(int x,int y){
     ll z = 1ll * x * y;
     if( z >= mod ){
@@ -114,9 +116,52 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
-	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+const int nax = 5000 + 5;
+int dp[nax][2][nax], tmp[2][nax], sub[nax], n;
+// dp[node][0: node included, 1: node not included][no of cmp] = wayse
+vector<int> g[nax];
 
-	
+void dfs(int u,int p) {
+	dp[u][0][0] = 1;
+	dp[u][1][1] = 1;
+	sub[u] = 1;
+	for (auto v:g[u]) {
+		if (v!=p) {
+			dfs(v,u);
+			for (int u_p=0; u_p<2; ++u_p) {
+				for (int v_p=0; v_p<2; ++v_p) {
+					for (int u_c=0; u_c<=sub[u]; ++u_c) {
+						for (int v_c=0; v_c<=sub[v]; ++v_c) {
+							tmp[u_p][u_c + v_c - (u_p & v_p)] = 
+								add(tmp[u_p][u_c + v_c - (u_p & v_p)],
+										mul(dp[u][u_p][u_c], dp[v][v_p][v_c]));
+						}
+					}
+				}
+			}
+			sub[u] += sub[v];
+			for (int u_p=0; u_p<2; ++u_p) {
+				for (int u_c=0; u_c<=sub[u]; ++u_c) {
+					dp[u][u_p][u_c] = tmp[u_p][u_c];
+					tmp[u_p][u_c] = 0;
+				}
+			}
+		}
+	}
+}
+
+int main(){
+	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	cin >> n;
+	for (int i=0; i<n-1; ++i) {
+		int u, v;
+		cin >> u >> v;
+		g[u].push_back(v);
+		g[v].push_back(u);
+	}
+	dfs(1, 0);
+	for (int c=1; c<=n; ++c) {
+		cout << add(dp[1][0][c], dp[1][1][c]) << endl;
+	}
 }
 

@@ -82,7 +82,7 @@ inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
 
 
 
-const int mod = 1e9+7;
+const int mod = 998244353;
 int add(int x,int y){
     int z = x + y;
     if( z >= mod ){
@@ -114,9 +114,146 @@ int binpow(int a,ll p){
     return r;
 }
 
-int32_t main(){
-	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
 
+const int nax = 40+2;
+int dp[nax][nax][10][10][2], n, m;
+string s[nax];
+
+/*
+
+
+   dp[Ith row][Jth col][total_incr][end digit][0: equal, 1:greater] = ways
+
+
+   // "There is always a way" -  No, Not in this case
+*/
+
+int main(){
+	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+	cin >> n >> m;
+	for (int i=0; i<n; ++i) {
+		cin >> s[i];
+	}
+
+	// dp[0th row][jth col][0][d][0] = 1
+	for (int d=0; d<10; ++d) {
+		if (s[0][0] == '?' || s[0][0] - '0' == d) {
+			dp[0][0][0][d][0] = 1;
+		}
+	}
+	
+	for (int j=1; j<m; ++j) {
+		for (int prv_c_d=0; prv_c_d<10; ++prv_c_d) {
+			for (int cur_d = 0; cur_d<10; ++cur_d) {
+				if (s[0][j] == '?' || s[0][j] - '0' == cur_d) {
+					dp[0][j][0][cur_d][0] += dp[0][j-1][0][prv_c_d][0];
+				}
+			}
+		}
+	}
+
+	for (int i=1; i<n; ++i) {
+		for (int prv_r_d=0; prv_r_d<10; ++prv_r_d) {
+			for (int incr=0; incr<n; ++incr) {
+				for (int cur_d=0; cur_d<10; ++cur_d) {
+					if (s[i][0] == '?' || s[i][0] - '0' == cur_d) {
+						if (cur_d > prv_r_d) {
+							dp[i][0][incr+1][cur_d][1] += dp[i-1][0][incr][prv_r_d][0] + dp[i-1][0][incr][prv_r_d][1];
+						}
+						if (cur_d == prv_r_d) {
+							dp[i][0][incr][cur_d][0] += dp[i-1][0][incr][prv_r_d][0] + dp[i-1][0][incr][prv_r_d][1];
+						}
+					}
+				}
+			}
+		}
+	}
+
+	for (int j=1; j<m; ++j) {
+		for (int i=1; i<n; ++i) {
+			for (int incr=0; incr<n; ++incr) {
+				for (int prv_r_digit=0; prv_r_digit<10; ++prv_r_digit) {
+					for (int prv_c_digit=0; prv_c_digit<10; ++prv_c_digit) {
+						int cur_d = prv_r_digit;
+						dp[i][j][incr][cur_d][0] += (dp[i-1][j][incr][prv_r_digit][0] + dp[i-1][j][incr][prv_r_digit][1]) * dp[i][j-1][incr][prv_c_digit][0];
+						for (++cur_d; cur_d<10; ++cur_d) {
+							dp[i][j][incr+1][cur_d][1] += (dp[i-1][j][incr][prv_r_digit][0] + dp[i-1][j][incr][prv_r_digit][1]) * dp[i][j-1][incr][prv_c_digit][0];
+						}
+						for (cur_d=0; cur_d<10; ++cur_d) {
+							dp[i][j][incr][cur_d][1] += (dp[i-1][j][incr][prv_r_digit][0] + dp[i-1][j][incr][prv_r_digit][1]) * dp[i][j-1][incr][prv_c_digit][1];
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	for (int i=0; i<n; ++i){
+		for (int j=0;j<m;++j) {
+			for (int incr=0;incr<n;++incr) {
+				for (int d=0; d<10; ++d) {
+					for (int s=0; s<2; ++s) {
+						if (dp[i][j][incr][d][s]) {
+							bug6(i, j, incr, d, s, dp[i][j][incr][d][s]);
+						}
+					}
+				}
+			}
+		}
+	}
+	//return 0;
+
+	ll ans = 0;
+	for (int d=0; d<10; ++d) {
+		for (int s=0; s<2; ++s) {
+			ans += dp[n-1][m-1][n-1][d][s];
+		}
+	}
+	cout << ans << endl;
+	bug1(ans);
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
