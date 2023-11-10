@@ -1,0 +1,17 @@
+Imp:
+Weekly 245:	D
+BiWeekly 54:	D
+Weekly 238: D
+2312. Selling Pieces of Wood :	https://leetcode.com/problems/selling-pieces-of-wood/description/
+https://leetcode.com/problems/selling-pieces-of-wood/submissions/
+https://leetcode.com/problems/shortest-impossible-sequence-of-rolls/description/
+https://leetcode.com/contest/weekly-contest-303/problems/number-of-excellent-pairs/
+https://leetcode.com/contest/weekly-contest-306/problems/count-special-integers/
+https://leetcode.com/contest/weekly-contest-322/problems/divide-nodes-into-the-maximum-number-of-groups/
+
+
+
+
+Ad-hok
+https://leetcode.com/contest/weekly-contest-339/problems/minimum-reverse-operations/
+https://leetcode.com/problems/minimum-time-to-complete-all-tasks/

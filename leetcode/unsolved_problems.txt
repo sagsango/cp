@@ -1,0 +1,18 @@
+Unsolved:
+Weekly contest 248: problem D.
+Biweekly Contest 50
+wc261 => 2029. Stone Game IX
+wc274: 2127. Maximum Employees to Be Invited to a Meeting
+wc282 :  https://leetcode.com/contest/weekly-contest-282/problems/minimum-time-to-finish-the-race/
+bc075 :  2223. Sum of Scores of Built Strings
+		 I know the workaround is Rabin Karp
+		 I know actual solution is z function
+		 I know phi function is not going to work.
+
+
+
+https://leetcode.com/problems/find-the-k-sum-of-an-array/description/
+https://leetcode.com/contest/weekly-contest-331/problems/rearranging-fruits/
+
+https://leetcode.com/contest/biweekly-contest-98/problems/handling-sum-queries-after-update/
+	Segtree
