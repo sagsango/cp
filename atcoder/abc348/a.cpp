@@ -115,77 +115,95 @@ int binpow(int a,ll p){
 }
 
 
+struct box{
+    int x, y, val;
+    bool operator<(const box other) const {
+        if (this->val != other.val) 
+            return this->val < other.val;
+        if (this->x != other.x) 
+            return this->x > other.x;
+        return this->y > other.y;
+    }
+};
+
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	int t; cin >> t;
-	while (t--) {
-		int n, x; cin >> n >> x;
-		int arr[n+1];
-		for (int i=1; i<=n; i++) {
-			cin >> arr[i];
-		}
-		int l = 1, r = n+1, k, k_v, m, m_v;
-		vector<int>to_big, to_small;
+    int n, m; cin >> n >> m;
+    string s[n];
 
-		for (int i=1; i<=n; ++i) {
-			if (x == arr[i]) {
-				k = i;
-				k_v = x;
-				break;
-			}
-		}
+    int x1, y1, x2, y2;
+    for (int i=0; i<n; ++i) {
+        cin >> s[i];
+        for (int j=0; j<m; ++j) {
+            if (s[i][j] == 'S') {
+                x1 = i, y1 = j;
+            }
+            if (s[i][j] == 'T') {
+                x2 = i, y2 = j;
+            }
+        }
+    }
 
-		while (l+1 != r) {
-			m = (l+r) >> 1;
-			m_v = arr[m];
 
-			if (k >= m) {
-				// l should be m
-				// m_v should be <= k_v
-				if (m_v > k_v) {
-					to_small.push_back(m);
-				}
-				l = m;
-			} else {
-				// r should be m
-				// m_v should be > k_v
-				if (m_v <= k_v) {
-					to_big.push_back(m);
-				}
-				r = m;
-			}
-		}
+    int k; cin >> k;
+    int med[n][m];
+    int dp[n][m]; 
+    int vis[n][m];
+  
+     for (int i=0; i<n; ++i){
+        for (int j=0; j<m; ++j) {
+            dp[i][j] = med[i][j] = vis[i][j] = 0;
+        }
+    }
 
-		// now l_v should be k_v
-		assert(to_small.size() == to_big.size() && "Size not Equal");
-		assert(to_small.size() <= 2u && "Size too big");
-		if (to_small.size() == 1u) {
-			int i = to_small[0];
-			int j = to_big[0];
-			bug3(n+1, i, j);
-			swap(arr[i], arr[j]);
-		} else if(to_small.size() == 2){
-			int i0 = to_small[0], i1 = to_small[1];
-			int j0 = to_big[0], j1 = to_big[1];
-			bug5(n+1, i0, j0, i1, j1)
-			swap(arr[i0], arr[j0]);
-			swap(arr[i1], arr[j1]);
-			if (arr[l] != arr[k]) {
-				swap(arr[i0], arr[j0]);
-				swap(arr[i1], arr[j1]);
-				
-				swap(to_small[0], to_small[1]);
-				
-				swap(arr[i0], arr[j1]);
-				swap(arr[i1], arr[j0]);
-			}
-		}
-		assert(arr[l] == arr[k] && "arr[l] != arr[k]");
-		int z = to_small.size();
-		cout << z << endl;
-		for (int i=0; i<z; ++i) {
-			cout << to_small[i] << " " << to_big[i] << endl;
-		}
-		
-	}
+    for (int i=0; i<k; ++i){
+        int x, y, e; cin >> x >> y >> e;
+        med[x-1][y-1] = e;
+    }
+
+
+  
+
+    queue<box> q;
+    vis[x1][y1] = 1;
+    dp[x1][y1] = med[x1][y1];
+    q.push({x1,y1, dp[x1][y1]});
+ 
+
+    while (!q.empty()) {
+        int x1 = q.front().x;
+        int y1 = q.front().y;
+
+        q.pop();
+
+        if (dp[x1][y1] <= 0) {
+            continue;
+        }
+
+        bug3(x1, y1, dp[x1][y1]);
+
+        static const int dx[4] = {+1, -1, +0, -0};
+        static const int dy[4] = {+0, -0, +1, -1};
+
+        for (int i=0; i<4; ++i) {
+            int x2 = x1 + dx[i];
+            int y2 = y1 + dy[i];
+            if (x2 >= 0 && y2 >= 0 && x2 < n && y2 < m && s[x2][y2] != '#') {
+                int new_val = max(med[x2][y2], dp[x1][y1] -1);
+                if (new_val > dp[x2][y2] || !vis[x2][y2]) {
+                    dp[x2][y2] = new_val;
+                    q.push({x2,y2, dp[x2][y2]});
+                    vis[x2][y2] = 1;
+                }
+            }
+        }
+    }
+
+    bug3(x2, y2, dp[x2][y2]);
+    cout << (vis[x2][y2]  ? "Yes" : "No") << endl;
+
+    
+    
+
 }
+

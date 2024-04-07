@@ -114,55 +114,38 @@ int binpow(int a,ll p){
     return r;
 }
 
-#define sub subtreesize
 
-int t, n, k, l, r, m, cut;
-vector<vector<int>> g;
-vector<int> sub;
 
-void dfs(int u, int p) {
-	sub[u] += 1;
-	for (auto v:g[u]) {
-		if (v!=p) {
-			dfs(v, u);
-			if (sub[v] >= m) {
-				cut += 1;
-			} else {
-				sub[u] += sub[v];
-			}
-		}
-	}
-}
-
-bool solve() {
-	fill(sub.begin(), sub.end(), 0);
-	cut = 0;
-	dfs(1, 0);
-	// Now we have evey cut except the root
-	if ((sub[1] >= m && cut >= k) || (cut > k)) {
-		return true;
-	}
-	return false;
-}
-	
-	
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	cin >> t;
+	int t = 1;
 	while (t--) {
-		cin >> n >> k;
-		g = vector <vector <int> > (n+1);
-		sub = vector<int>(n+1);
-		for (int i=1 ; i<n; ++i) {
-			int u, v; cin >> u >> v;
-			g[u].push_back(v);
-			g[v].push_back(u);
+		int n; cin >> n;
+		int flag[2] = {0,0};
+		int cnt[n][2], sum = 0;
+		for (int i=0; i<n; ++i){
+			string s; cin >> s;
+			cnt[i][0] = cnt[i][1] = 0;
+			for (auto &c: s) {
+				cnt[i][c-'0'] += 1;
+			}
+			int mn = min(cnt[i][0], cnt[i][1]);
+			for (int j=0; j<2; ++j){
+				if(cnt[i][j] == mn) {
+					flag[j] = 1;
+				}
+			}
+			sum += mn;
 		}
-		l = 1, r = n;
-		while (l+1<r) {
-			m = (l+r) >> 1;
-			(solve() ? l : r) = m;
+		if (flag[0] && flag[1]) {
+			cout << sum << endl;
+		} else {
+			int ans = 1e9;
+			for (int i=0; i<n; ++i) {
+				int mn = min(cnt[i][0], cnt[i][1]);
+				ans = min(ans, sum - mn + (cnt[i][0] + cnt[i][1]) - mn);
+			}
+			cout << ans << endl;
 		}
-		cout << l << endl;
 	}
 }

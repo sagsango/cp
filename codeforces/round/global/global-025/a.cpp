@@ -114,45 +114,49 @@ int binpow(int a,ll p){
     return r;
 }
 
-const int nax = 5005;
-int lcp[nax][nax];
-int n, mx;
+
+
 
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	int t; cin >> t;
-	while (t--) {
-		string s; cin >> s;
-		n = s.length();
-		mx = 0;
-		for (int i=0; i<n+1; ++i) {
-			for (int j=0; j<n+1; ++j) {
-				lcp[i][j] = 0;
-			}
-		}
-		for (int i=n-1; i >= 0; --i) {
-			for (int j=n-1; j >= 0; --j) {
-				if (s[i] == s[j] || s[i] == '?' || s[j] == '?') {
-					lcp[i][j] = 1 + lcp[i+1][j+1];
-				}
-			}
-		}
+    int T; cin >> T;
+    while (T--) {
+        int n, m, k; cin >> n >> m >> k;
+        multiset<int> st;
+        int arr[n];
+        for (int i=0; i<n; ++i) {
+            cin >> arr[i];
+            st.insert(arr[i]);
+        }
 
-		for (int i=0; i<n; ++i) {
-			for (int j=i+1; j<n; ++j) {
-				int l = lcp[i][j];
-				int d = j - i;
+        int need = (k+m-1)/m;
+        while (st.size() > need) {
+            st.erase(st.find(*st.rbegin()));
+        }
 
-				l = min (l, d);
+        vector<int> a;
+        for (int i=0; i<n; ++i) {
+            if (st.find(arr[i]) != st.end()) {
+                
+            }
+        }
 
-				if (i+l == j) {
-					mx = max(mx, l*2);
-					bug6(i, j, l, d, s.substr(i, l), s.substr(j, l));
-				}
-			}
-		}
-	
-		cout << mx << endl;
-		
-	}
+        ll sum = 0, bought = 0;
+        for (int i=0; i<n; ++i) {
+            if (st.find(arr[i]) != st.end() && k) {
+                int x = k % m;
+                if (x == 0) {
+                    x = m;
+                }
+                bug5(k, arr[i], x, bought, x * (arr[i] + bought));
+                sum += x * (arr[i] + bought);
+                bought += x;
+                k -= x;
+                st.erase(st.find(arr[i]));
+                
+            }
+        }
+        cout << sum << endl;
+    }
+
 }

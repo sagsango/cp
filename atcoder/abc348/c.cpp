@@ -114,19 +114,8 @@ int binpow(int a,ll p){
     return r;
 }
 
-
-
-int32_t main(){
+int main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	int t = 1;
-	while (t--) {
-	/*
-		(0,0) -> x1 + y1
-		(n-1, 0) -> same : (n-1-x1) + y1
-					diff : (n-1-x2) + y2
-		
-		(0, m-1) -> same : x1 + (m-1-y1)
-					diff : x2 + (m-1-y2)
-	*/
-	}
+	
 }
+
