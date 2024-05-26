@@ -1,0 +1,6 @@
+[submodule "algorithms"]
+	path = algorithms
+	url = https://github.com/sagsango/algorithms.git
+[submodule "data-structure"]
+	path = data-structure
+	url = https://github.com/sagsango/data-structure.git
