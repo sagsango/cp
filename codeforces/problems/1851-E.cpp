@@ -3,7 +3,7 @@
 #pragma comment(linker, "/stack:200000000")
 #pragma GCC optimize("Ofast")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
-*/
+ */
 
 #include <iostream>
 #include <iomanip>
@@ -84,71 +84,99 @@ inline bool smin(T &x,K y){ return x > y ? x = y, true : false; }
 
 const int mod = 1e9+7;
 int add(int x,int y){
-    int z = x + y;
-    if( z >= mod ){
-        z -= mod;
-    }
-    return z;
+	int z = x + y;
+	if( z >= mod ){
+		z -= mod;
+	}
+	return z;
 }
 int sub(int x,int y){
-    int z = x - y;
-    if( z < 0 ){
-        z += mod;
-    }
-    return z;
+	int z = x - y;
+	if( z < 0 ){
+		z += mod;
+	}
+	return z;
 }
 int mul(int x,int y){
-    ll z = 1ll * x * y;
-    if( z >= mod ){
-        z %= mod;
-    }
-    return z;
+	ll z = 1ll * x * y;
+	if( z >= mod ){
+		z %= mod;
+	}
+	return z;
 }
 int binpow(int a,ll p){
-    int r = 1;
-    while( p ){
-        if( p & 1 )
-            r = mul(r,a);
-        a = mul(a,a), p >>= 1;
-    }
-    return r;
+	int r = 1;
+	while( p ){
+		if( p & 1 )
+			r = mul(r,a);
+		a = mul(a,a), p >>= 1;
+	}
+	return r;
 }
 
-int t, n, k, p, l, r;
-vector<vector<int>> g;
+int n, k, m;
+vector<vector<int>>g, gr;
+vector<ll>cst, dp, vis, tlp;
 
-pair <int,int> dfs(int p, int u, int mh) {
-	int dep = 1, cnt = 0;
+void dfs (int u) {
+	bug2("dfs", u);
+	vis[u] = 1;
 	for (auto v:g[u]) {
-		pair <int,int> ans = dfs(u, v, mh);
-		bug6(mh, u, v, ans.first, ans.second, (ans.first == mh));
-		if (ans.first == mh && u != 1) {
-			cnt += 1;
-			bug2("Cut", cnt);
-			ans.first = 0;
+		if (!vis[v]) {
+			dfs(v);
+		} else if (vis[v] == 1) {
+			assert	(false && "Graph is having cycle.\n");
 		}
-		dep = max(dep, 1 + ans.first);
-		cnt += ans.second;
 	}
-	bug5(p, u, mh, dep, cnt)
-	return make_pair(dep,cnt);
+	tlp.push_back(u);
+	vis[u] = 2;
 }
 
 int32_t main(){
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-	cin >> t;
+	int t; cin >> t;
 	while (t--) {
 		cin >> n >> k;
-		g = vector <vector <int> > (n+1);
-		for (int u = 2; u <= n; ++u) {
-			cin >> p;
-			g[p].push_back(u);
+		g = gr = vector<vector<int>>(n+1);
+		cst = dp = vis = vector<ll>(n+1);
+		tlp.clear();
+		for (int i=1; i<=n; ++i) {
+			cin >> cst[i];
 		}
-		l = 0, r = n-1;
-		while (l+1<r) {
-			int m = (l+r) >> 1;
-			(dfs(0, 1, m).second <= k ? r : l) = m;
+		for (int i=0; i<k; ++i) {
+			int p; cin >> p;
+			cst[p] = 0;
 		}
-		cout << r << endl;
+		for (int i=1; i<=n; ++i) {
+			cin >> m;
+			for (int j=0; j<m; ++j) {
+				int p; cin >> p;
+				g[p].push_back(i);
+				gr[i].push_back(p);
+			}
+		}
+		for (int i=1; i<=n; ++i) {
+			if (!vis[i]) {
+				dfs(i);
+			}
+		}
+		reverse (tlp.begin(), tlp.end());
+		for (auto u: tlp) {
+			dp[u] = 1e18;
+			if (gr[u].size()) {
+				ll sum = 0;
+				for (auto v:gr[u]) {
+					sum += dp[v];
+				}
+				dp[u] = min( sum, cst[u]);
+			} else {
+				dp[u] = cst[u];
+			}
+			bug2(u, dp[u]);
+		}
+		for (int i=1; i<=n; ++i) {
+			cout << dp[i] << " ";
+		}
+		cout << endl;
 	}
 }
