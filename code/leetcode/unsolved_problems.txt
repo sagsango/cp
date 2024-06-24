@@ -16,3 +16,6 @@ https://leetcode.com/contest/weekly-contest-331/problems/rearranging-fruits/
 
 https://leetcode.com/contest/biweekly-contest-98/problems/handling-sum-queries-after-update/
 	Segtree
+
+https://leetcode.com/problems/find-the-sum-of-subsequence-powers/solutions/4947532/simple-dp-explained/
+https://leetcode.com/problems/minimize-or-of-remaining-elements-using-operations/
