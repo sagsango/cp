@@ -3,6 +3,15 @@ Go back to front.
 
 
 Front to back: 
+wc 419
+ |
+ V
+wc 414
+wc 413
+bc 138
+
+wc 411
+bc 137
 wc 410
 wc 409
 bc 136
