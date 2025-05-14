@@ -3,13 +3,14 @@ Go back to front.
 
 
 Front to back: 
+wc 434
 wc 419
- |
- V
+..DONE
+..DONE
 wc 414
 wc 413
 bc 138
-
+wc 412
 wc 411
 bc 137
 wc 425
@@ -24,17 +25,22 @@ wc 420
 ec 419
 bc 141
 wc 418
-..
-..
+..DONE
+..DONE
 wc 410
 wc 409
 bc 136
 wc 408
 wc 402
-Weekly 401 to Weekly 395 Done; = 10 contests 
-completed till wc 393
-completed till bc 128
-completed wc 123
-completed till wc 376
-wc 375
-Biweekly Contest 119
+wc 401
+..DONE
+..DONE
+wc 395 
+..DONE
+..DONE
+bc 119
+wc 374
+wc 373
+bc 118
+wc 372
+wc 371
