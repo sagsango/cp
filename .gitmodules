@@ -7,3 +7,6 @@
 [submodule "google-coding-competitions-archive"]
 	path = google-coding-competitions-archive
 	url = https://github.com/sagsango/google-coding-competitions-archive.git
+[submodule "ac-library"]
+	path = ac-library
+	url = https://github.com/sagsango/ac-library.git
